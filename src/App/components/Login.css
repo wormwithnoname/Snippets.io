@@ -46,11 +46,12 @@
   font-size: 14px;
   line-height: 16px;
   /* identical to box height */
-
-  text-align: center;
+  background-color: transparent;
+  border: 2px solid #e0f0f5;
+  border-radius: 5px;
+  color: #e0f0f5;
 
   /* Neutral/0 */
-
 }
 .Login-card {
   /* Login Card */

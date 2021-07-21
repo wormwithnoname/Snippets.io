@@ -3,12 +3,10 @@ import React from "react";
 export class Subtitle extends React.Component {
     render() {
         return (
-            <div className="Subtitle">
-                <p className="Subtitle-body">
-                    something that explains what the web application does
-                </p>
-            </div>
-            
+            <p className="Subtitle-body">
+                An organized, searchable, shareable, and simple code snippets clipboard.
+            </p>
+
         );
     }
 }
