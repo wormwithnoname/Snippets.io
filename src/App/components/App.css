@@ -2,15 +2,20 @@
   text-align: center;
 }
 
+.App-logo {
+  position: absolute;
+  left: 37.43%;
+  right: 58.61%;
+  top: 23.33%;
+  bottom: 67.41%;
+}
 .App-title {
   /* Snippets.io */
-
   position: absolute;
-  left: 45.07%;
-  right: 34.93%;
-  top: 14.81%;
-  bottom: 71.11%;
-
+  left: 42.78%;
+  right: 37.36%;
+  top: 24.2%;
+  bottom: 68.02%;
   /* Heading/LG */
 
   font-family: "Raleway", sans-serif;
@@ -41,4 +46,13 @@
   line-height: 28px;
 
   color: #fffdfd;
+}
+
+.App-bg{
+  background: url('../assets/bg2.png');
+  background-size: cover;
+  background-position: bottom;
+  min-height: 100%;
+  height: 100vh;
+  position: relative;
 }
