@@ -28,7 +28,7 @@ function Login() {
     }
     return (
         <div className="Login">
-            <Card style={{ width: 280, height: 200, boxShadow: "0px 0px 2px 2px rgba(208, 216, 243, 0.6)" }} className="Login-card">
+            <Card className="Login-card">
                 <p className="Login-welcomeback">
                     Welcome Back!
                 </p>
@@ -38,7 +38,6 @@ function Login() {
                         Sign in with Google
                     </Button>
                 </Space>
-
             </Card>
         </div>
     );
