@@ -7,24 +7,15 @@ import { auth, googleProvider } from '../services/FirebaseService';
 import './Login.css';
 
 function Login() {
-    const googleSignIn = e => {
-        auth.signInWithPopup(googleProvider)
-            .then((result) => {
-                /*FOR FUTURE REFERENCE
-                // var credential = result.credential;
-                // var token = credential.accessToken;
-                */
-                var user = result.user;
-                console.log(user.email, user.displayName);
-            }).catch((error) => {
-                /* FOR FURTHER TESTING
-                // var errorCode = error.code;
-                //  var email = error.email;
-                */
-                var errorMessage = error.message;
-                console.log(errorMessage);
-            });
+    const googleSignIn = async () => {
+        try {
+            const response = await auth.signInWithPopup(googleProvider)
+            const user = response.user
 
+            console.log('user object', user)
+        } catch (error) {
+            console.error(error.message)
+        }
     }
     return (
         <div className="Login">
