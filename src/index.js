@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App/components/App';
-import { Subtitle } from "./App/components/Subtitle";
-import { Login } from "./App/components/Login";
+import App from './components/App';
+import { Subtitle } from "./components/Subtitle";
+import { Login } from "./components/Login";
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

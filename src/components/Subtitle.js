@@ -1,5 +1,5 @@
-import './Subtitle.css';
 import React from "react";
+import './Subtitle.css';
 export class Subtitle extends React.Component {
     render() {
         return (
