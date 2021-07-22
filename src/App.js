@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import Logo from './assets/snippetslogo.png';
-import Subtitle from './components/Subtitle';
-import Login  from './components/Login';
+import Subtitle from './pages/Subtitle';
+import Login  from './pages/Login';
 
 
 
