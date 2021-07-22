@@ -1,15 +1,16 @@
 import React from "react";
-import './Login.css';
+
 import { Button, Card, Space } from 'antd';
 import { GoogleCircleFilled } from '@ant-design/icons';
-import firebase, { auth } from './fire';
+import { auth,googleProvider} from '../services/FirebaseService';
+
+import './Login.css';
 
 export class Login extends React.Component {
    
     render() {
         const googleSignIn = e => {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            auth.signInWithPopup(provider)
+            auth.signInWithPopup(googleProvider)
             .then((result) =>{
                 /*FOR FUTURE REFERENCE
                 // var credential = result.credential;
