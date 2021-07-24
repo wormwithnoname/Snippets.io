@@ -1,0 +1,21 @@
+@import '../../../utils/variables.scss';
+
+.login-page {
+  padding: 48px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-logo {
+  width: 100%;
+}
+
+.login-subtitle {
+  font-family: $roboto;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}

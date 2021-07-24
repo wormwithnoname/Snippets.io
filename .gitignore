@@ -65,3 +65,4 @@ build/
 
 # dotenv environment variables file
 .env
+.DS_Store

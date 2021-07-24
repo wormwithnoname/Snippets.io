@@ -1,23 +1,21 @@
-import React from 'react';
-import './App.css';
-import Logo from './assets/snippetslogo.png';
-import Subtitle from './pages/Subtitle';
-import Login  from './pages/Login';
+import { lazy, Suspense, React } from 'react';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-
+// Pages/Routes
+const Login = lazy(() => import('pages/LoginSignup'));
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-bg">
-        <img className="App-logo" src={Logo} alt="" />
-        <title className="App-title">
-          Snippets.io
-        </title>
-        <Subtitle />
-        <Login />
-      </div>
-    </div>
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Redirect to="/login" />
+        </Switch>
+      </Suspense>
+    </Router>
   );
 }
 

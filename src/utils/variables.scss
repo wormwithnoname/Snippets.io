@@ -1,0 +1,23 @@
+$primary-background: #15322f;
+$secondary-color: #8dc7c3;
+
+$raleway: Raleway, Arial, Helvetica Neue, Helvetica, sans-serif;
+$roboto: Roboto, Arial, Helvetica Neue, Helvetica, sans-serif;
+
+.robotoM {
+  font-family: $roboto;
+  font-style: 'normal';
+  font-weight: 600;
+}
+
+.robotoR {
+  font-family: $roboto;
+  font-style: 'normal';
+  font-weight: 400;
+}
+
+.ralewayB {
+  font-family: $raleway;
+  font-style: 'normal';
+  font-weight: 700;
+}
