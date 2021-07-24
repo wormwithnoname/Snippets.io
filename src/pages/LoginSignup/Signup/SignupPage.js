@@ -1,21 +1,21 @@
 import React from 'react';
 
-import LoginCard from 'components/LoginCard/LoginCard';
+import SignupCard from 'components/SignupCard/SignupCard';
 
 import Logo from 'assets/img/logowhite.svg';
 
-import './LoginPage.scss';
+import './SignupPage.scss';
 
-function LoginPage() {
+function SignupPage() {
   return (
-    <div className="login-page">
+    <div className="signup-page">
       <img src={Logo} alt="snippets logo" />
-      <p className="login-subtitle">
+      <p className="signup-subtitle">
         An organized, searchable, shareable, and simple code snippets clipboard
       </p>
-      <LoginCard />
+      <SignupCard />
     </div>
   );
 }
 
-export default LoginPage;
+export default SignupPage;

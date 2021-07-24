@@ -1,6 +1,6 @@
 @import '../../../utils/variables.scss';
 
-.login-page {
+.signup-page {
   padding: 48px;
   height: 100vh;
   display: flex;
@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.login-subtitle {
+.signup-subtitle {
   font-family: $roboto;
   color: #fff;
   font-size: 1rem;

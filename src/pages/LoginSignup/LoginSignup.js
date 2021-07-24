@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Switch } from 'react-router-dom';
 import './LoginSignup.scss';
 
 const Login = lazy(() => import('./Login'));
+const Signup = lazy(() => import('./Signup'));
 
 function LoginSignup() {
   return (
@@ -13,6 +14,9 @@ function LoginSignup() {
           <Switch>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
             </Route>
           </Switch>
         </Suspense>
