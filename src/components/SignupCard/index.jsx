@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import './SignupCard.scss';
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
 function SignupCard() {
   return (
@@ -75,7 +76,7 @@ function SignupCard() {
       <Space direction="vertical" size="medium">
         <Text className="Login-subtitle">
           Have an account?{' '}
-          <Link className="Login-subtitle" href="./login">
+          <Link className="Login-subtitle" to="./login">
             Sign In!
           </Link>
         </Text>

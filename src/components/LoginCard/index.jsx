@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { auth, googleProvider } from 'services/FirebaseService';
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
@@ -7,7 +8,7 @@ import { GoogleCircleFilled } from '@ant-design/icons';
 
 import './LoginCard.scss';
 
-const { Text, Link } = Typography;
+const { Text } = Typography;
 
 function LoginCard() {
   const googleSignIn = async () => {
@@ -68,7 +69,7 @@ function LoginCard() {
         </Button>
         <Text className="Login-subtitle">
           Don&apos;t have an account yet?
-          <Link className="Login-subtitle" href="./signup">
+          <Link className="Login-subtitle" to="./signup">
             Sign Up!
           </Link>
         </Text>
