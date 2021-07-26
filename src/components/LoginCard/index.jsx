@@ -5,6 +5,7 @@ import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled } from '@ant-design/icons';
 
+
 import './LoginCard.scss';
 
 const { Text, Link } = Typography;
@@ -76,4 +77,4 @@ function Login() {
     </Card>
   );
 }
-export default Login;
+export default LoginCard;

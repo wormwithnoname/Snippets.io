@@ -83,4 +83,4 @@ function Signup() {
     </Card>
   );
 }
-export default Signup;
+export default SignupCard;
