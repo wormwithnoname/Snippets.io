@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Button, Card, Space, Form, Input } from 'antd';
+import { Button, Card, Form, Input, Space } from 'antd';
 
 import './SignupCard.scss';
 
-function Signup() {
+function SignupCard() {
   return (
     <Card className="Login-card">
       <Space direction="vertical" size="large">
@@ -79,4 +79,4 @@ function Signup() {
     </Card>
   );
 }
-export default Signup;
+export default SignupCard;

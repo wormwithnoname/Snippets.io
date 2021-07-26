@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { auth, googleProvider } from 'services/FirebaseService';
-import { Button, Card, Space, Form, Input } from 'antd';
-
+import { Button, Card, Form, Input, Space } from 'antd';
 import { GoogleCircleFilled } from '@ant-design/icons';
+
+import { auth, googleProvider } from 'services/FirebaseService';
 
 import './LoginCard.scss';
 
-function Login() {
+function LoginCard() {
   const googleSignIn = async () => {
     try {
       const response = await auth.signInWithPopup(googleProvider);
@@ -71,4 +71,4 @@ function Login() {
     </Card>
   );
 }
-export default Login;
+export default LoginCard;
