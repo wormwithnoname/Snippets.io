@@ -12,9 +12,10 @@ function Login() {
     try {
       const response = await auth.signInWithPopup(googleProvider);
       const { user } = response.user;
-
+      // eslint-disable-next-line
       console.log('user object', user);
     } catch (error) {
+      // eslint-disable-next-line
       console.error(error.message);
     }
   };
