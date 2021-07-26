@@ -3,6 +3,8 @@ import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-d
 
 import * as routes from 'constants/routes';
 
+import './App.css';
+
 function App() {
   return (
     <Router>
