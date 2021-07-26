@@ -5,12 +5,11 @@ import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled } from '@ant-design/icons';
 
-
 import './LoginCard.scss';
 
 const { Text, Link } = Typography;
 
-function Login() {
+function LoginCard() {
   const googleSignIn = async () => {
     try {
       const response = await auth.signInWithPopup(googleProvider);

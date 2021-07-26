@@ -6,11 +6,11 @@ import './SignupCard.scss';
 
 const { Text, Link } = Typography;
 
-function Signup() {
+function SignupCard() {
   return (
     <Card className="Login-card">
       <Space direction="vertical" size="small">
-        <p className="Login-welcomeback">Sign up!</p>
+        <Text className="Login-welcomeback">Sign up!</Text>
         <Form name="basic" labelCol={{ span: 8 }} wrapperCol={{ span: 20 }}>
           <Form.Item
             className="Login-text"
