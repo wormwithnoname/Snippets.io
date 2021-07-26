@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { Button, Card, Space, Form, Input } from 'antd';
+import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import './SignupCard.scss';
+
+const { Text, Link } = Typography;
 
 function Signup() {
   return (
     <Card className="Login-card">
-      <Space direction="vertical" size="large">
+      <Space direction="vertical" size="small">
         <p className="Login-welcomeback">Sign up!</p>
         <Form name="basic" labelCol={{ span: 8 }} wrapperCol={{ span: 20 }}>
           <Form.Item
@@ -69,12 +71,14 @@ function Signup() {
             Submit
           </Button>
         </Form>
-        <p className="Login-subtitle">
+      </Space>
+      <Space direction="vertical" size="medium">
+        <Text className="Login-subtitle">
           Have an account?{' '}
-          <a className="Login-subtitle" href="./login">
+          <Link className="Login-subtitle" href="./login">
             Sign In!
-          </a>
-        </p>
+          </Link>
+        </Text>
       </Space>
     </Card>
   );

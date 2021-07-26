@@ -1,11 +1,13 @@
 import React from 'react';
 
 import { auth, googleProvider } from 'services/FirebaseService';
-import { Button, Card, Space, Form, Input } from 'antd';
+import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled } from '@ant-design/icons';
 
 import './LoginCard.scss';
+
+const { Text, Link } = Typography;
 
 function Login() {
   const googleSignIn = async () => {
@@ -22,7 +24,7 @@ function Login() {
   return (
     <Card className="Login-card">
       <Space direction="vertical" size="large">
-        <p className="Login-welcomeback">Welcome Back!</p>
+        <Text className="Login-welcomeback">Welcome Back!</Text>
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -64,10 +66,12 @@ function Login() {
           <GoogleCircleFilled className="Login-margin" />
           Sign in with Google
         </Button>
-        <p className="Login-subtitle">Don&apos;t have an account yet?</p>
-        <a className="Login-subtitle" href="./signup">
-          Sign Up!
-        </a>
+        <Text className="Login-subtitle">
+          Don&apos;t have an account yet?
+          <Link className="Login-subtitle" href="./signup">
+            Sign Up!
+          </Link>
+        </Text>
       </Space>
     </Card>
   );

@@ -3,6 +3,7 @@
 /* Login Page */
 .Login-welcomeback {
   /* Welcome Back */
+  justify-content: center;
   font-family: $ibm-plex-mono;
   font-style: normal;
   font-weight: bold;
@@ -66,6 +67,7 @@
 }
 
 .Login-subtitle {
+  align-self: auto;
   font-family: $ibm-plex-mono;
   font-style: normal;
   font-weight: normal;
