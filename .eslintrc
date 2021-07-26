@@ -10,11 +10,7 @@
   },
   "plugins": ["prettier"],
   "rules": {
-<<<<<<< HEAD
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
-=======
     "prettier/prettier": [ "error", { "endOfLine": "auto" } ],
->>>>>>> 9b2b2628b90a8af8bc5d66d9959c0f34aaf16de4
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
