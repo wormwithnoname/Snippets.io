@@ -13,19 +13,20 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-      <Suspense
-        fallback={
-          <div className="spinner-div">
-            <Spin />
-          </div>
-        }
-      >
-        <Switch>
-          <Route path="/login" component={routes.Login} />
-          <Route path="/signup" component={routes.Signup} />
-          <Redirect to="/login" />
-        </Switch>
-      </Suspense>
+        <Suspense
+          fallback={
+            <div className="spinner-div">
+              <Spin />
+            </div>
+          }
+        >
+          <Switch>
+            <PrivateRoute exact path="/" component={routes.Dashboard} />
+            <Route path="/login" component={routes.Login} />
+            <Route path="/signup" component={routes.Signup} />
+            <Redirect to="/login" />
+          </Switch>
+        </Suspense>
       </AuthProvider>
     </Router>
   );
