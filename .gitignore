@@ -65,6 +65,7 @@ build/
 
 # dotenv environment variables file
 .env
+.env.local
 .DS_Store
 # Local Netlify folder
 .netlify
