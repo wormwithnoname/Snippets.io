@@ -1,1 +1,8 @@
 @import '~antd/dist/antd.css';
+
+.spinner-div {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

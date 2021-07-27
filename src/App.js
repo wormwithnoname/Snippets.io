@@ -10,7 +10,13 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <Suspense fallback={<Spin />}>
+      <Suspense
+        fallback={
+          <div className="spinner-div">
+            <Spin />
+          </div>
+        }
+      >
         <Switch>
           <Route path="/login" component={routes.Login} />
           <Route path="/signup" component={routes.Signup} />
