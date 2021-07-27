@@ -1,19 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 
 import './SignupCard.scss';
+import { useAuth } from 'services/AuthProvider';
 
 const { Text } = Typography;
 
 function SignupCard() {
+  const { signup } = useAuth();
+  // eslint-disable-next-line no-unused-vars
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  async function handleSubmit(userInput) {
+    try {
+      /* CHANGE LOADER */
+      setLoading(true);
+      await signup(userInput.email, userInput.password, userInput.username);
+      setLoading(false);
+      return history.push('/');
+    } catch (errors) {
+      /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
+      // eslint-disable-next-line no-console
+      return console.log(errors.message);
+    }
+  }
+
   return (
     <Card className="Login-card">
       <Space direction="vertical" align="center" size="small">
         <Text className="Login-welcomeback">Sign up!</Text>
         <Form
+          onFinish={handleSubmit}
           className="Login-form"
           name="basic"
           labelCol={{ span: 10 }}
@@ -65,12 +86,20 @@ function SignupCard() {
           </Form.Item>
 
           <Form.Item
-            name="confirm-password"
+            name="confirmpassword"
             rules={[
               {
                 required: true,
                 message: 'Please input your password!',
               },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('Passwords do not match!'));
+                },
+              }),
             ]}
           >
             <Input
