@@ -1,0 +1,18 @@
+@import '../../utils/variables.scss';
+@import '../Login/LoginPage.scss';
+
+.signup-page {
+  padding: 48px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-subtitle {
+  font-family: $roboto;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+}

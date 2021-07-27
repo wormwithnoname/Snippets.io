@@ -1,23 +1,29 @@
-import React from 'react';
+import { Suspense, React } from 'react';
+import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+
+import { Spin } from 'antd';
+
+import * as routes from 'constants/routes';
+
 import './App.css';
-import Logo from './assets/snippetslogo.png';
-import Subtitle from './pages/Subtitle';
-import Login  from './pages/Login';
-
-
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-bg">
-        <img className="App-logo" src={Logo} alt="" />
-        <title className="App-title">
-          Snippets.io
-        </title>
-        <Subtitle />
-        <Login />
-      </div>
-    </div>
+    <Router>
+      <Suspense
+        fallback={
+          <div className="spinner-div">
+            <Spin />
+          </div>
+        }
+      >
+        <Switch>
+          <Route path="/login" component={routes.Login} />
+          <Route path="/signup" component={routes.Signup} />
+          <Redirect to="/login" />
+        </Switch>
+      </Suspense>
+    </Router>
   );
 }
 
