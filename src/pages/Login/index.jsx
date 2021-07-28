@@ -5,7 +5,7 @@ import { Space, Typography } from 'antd';
 import Logo from 'assets/img/logowhite.svg';
 import LoginCard from 'components/LoginCard';
 
-import './LoginPage.scss';
+import './styles.scss';
 
 const { Title } = Typography;
 

@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Button, Card, Form, Input, Space, Typography } from 'antd';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 
-import './SignupCard.scss';
+import './styles.scss';
 import { useAuth } from 'services/AuthProvider';
 
 const { Text } = Typography;

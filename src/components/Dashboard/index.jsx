@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, Space, Typography, Button } from 'antd';
 
 import { useAuth } from 'services/AuthProvider';
-import './Dashboard.scss';
+import './styles.scss';
 import { useHistory } from 'react-router-dom';
 
 const { Text } = Typography;

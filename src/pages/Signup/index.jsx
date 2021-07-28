@@ -6,7 +6,7 @@ import SignupCard from 'components/SignupCard';
 
 import Logo from 'assets/img/logowhite.svg';
 
-import './SignupPage.scss';
+import './styles.scss';
 
 const { Title } = Typography;
 

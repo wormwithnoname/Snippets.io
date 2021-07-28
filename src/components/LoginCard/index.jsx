@@ -5,7 +5,7 @@ import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-import './LoginCard.scss';
+import './styles.scss';
 import { useAuth } from 'services/AuthProvider';
 import { googleProvider } from 'services/FirebaseService';
 

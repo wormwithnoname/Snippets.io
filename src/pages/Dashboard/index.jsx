@@ -5,7 +5,7 @@ import { Space, Typography } from 'antd';
 import Logo from 'assets/img/logowhite.svg';
 import Dashboard from 'components/Dashboard';
 
-import './DashboardPage.scss';
+import './styles.scss';
 
 const { Title } = Typography;
 
