@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Button, Card, Form, Input, Space, Typography } from 'antd';
+import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
@@ -15,38 +15,42 @@ const { Text } = Typography;
 
 function LoginCard() {
   const { emailLogin, googleLogin } = useAuth();
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [modalText, setModalText] = useState('');
   const history = useHistory();
+
+  const promptModal = (message) => {
+    setVisible(true);
+    setModalText(message);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
 
   async function handleSubmit(userInput) {
     try {
-      /* CHANGE LOADER */
-      setLoading(true);
       await emailLogin(userInput.email, userInput.password);
-      setLoading(false);
-      return history.push(routes.ROOT);
+      history.push(routes.ROOT);
     } catch (errors) {
-      /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
-      // eslint-disable-next-line no-console
-      return console.log(errors.message);
+      promptModal(errors.message);
     }
   }
 
   async function handleClick() {
     try {
-      setLoading(true);
       await googleLogin(googleProvider);
-      setLoading(false);
-      return history.push(routes.ROOT);
+      history.push(routes.ROOT);
     } catch (errors) {
-      // eslint-disable-next-line no-console
-      return console.log(errors.message);
+      promptModal(errors.message);
     }
   }
 
   return (
     <Card className="Login-card">
+      <Modal title="Login Failed" centered visible={visible} onCancel={handleCancel} footer={null}>
+        <p>{modalText}</p>
+      </Modal>
       <Space direction="vertical" align="center" size="large">
         <Text className="Login-welcomeback">Welcome Back!</Text>
         <Form

@@ -14,8 +14,8 @@ export function AuthProvider({ children }) {
 
   async function signup(email, password, uname) {
     return auth.createUserWithEmailAndPassword(email, password).then((userData) => {
-      emailLogin(email, password).then(() => {
-        db.collection('users').doc(userData.user.uid).set({
+      emailLogin(email, password).then(async () => {
+        await db.collection('users').doc(userData.user.uid).set({
           username: uname,
           bookmarks: [],
           folderNames: [],
@@ -25,7 +25,15 @@ export function AuthProvider({ children }) {
   }
 
   async function googleLogin() {
-    return auth.signInWithPopup(googleProvider);
+    return auth.signInWithPopup(googleProvider).then(async (user) => {
+      if (user.additionalUserInfo.isNewUser) {
+        await db.collection('users').doc(user.user.uid).set({
+          username: user.user.displayName,
+          bookmarks: [],
+          folderNames: [],
+        });
+      }
+    });
   }
 
   async function logout() {
