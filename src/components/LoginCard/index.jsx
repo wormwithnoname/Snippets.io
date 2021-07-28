@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
@@ -15,25 +15,20 @@ const { Text } = Typography;
 
 function LoginCard() {
   const { emailLogin, googleLogin } = useAuth();
-  const [visible, setVisible] = useState(false);
-  const [modalText, setModalText] = useState('');
   const history = useHistory();
-
-  const promptModal = (message) => {
-    setVisible(true);
-    setModalText(message);
-  };
-
-  const handleCancel = () => {
-    setVisible(false);
-  };
 
   async function handleSubmit(userInput) {
     try {
       await emailLogin(userInput.email, userInput.password);
       history.push(routes.ROOT);
     } catch (errors) {
-      promptModal(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Login Failed',
+      });
     }
   }
 
@@ -42,15 +37,18 @@ function LoginCard() {
       await googleLogin(googleProvider);
       history.push(routes.ROOT);
     } catch (errors) {
-      promptModal(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Login Failed',
+      });
     }
   }
 
   return (
     <Card className="Login-card">
-      <Modal title="Login Failed" centered visible={visible} onCancel={handleCancel} footer={null}>
-        <p>{modalText}</p>
-      </Modal>
       <Space direction="vertical" align="center" size="large">
         <Text className="Login-welcomeback">Welcome Back!</Text>
         <Form

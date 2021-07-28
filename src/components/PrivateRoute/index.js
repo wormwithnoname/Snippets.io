@@ -4,7 +4,7 @@ import { useAuth } from 'hooks/Hooks';
 
 import routes from 'constants/routes';
 
-export default function PrivateRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
 
   return (
@@ -14,3 +14,5 @@ export default function PrivateRoute({ component: Component, ...rest }) {
     />
   );
 }
+
+export default PrivateRoute;
