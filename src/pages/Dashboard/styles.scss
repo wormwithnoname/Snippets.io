@@ -29,3 +29,31 @@
   cursor: pointer;
   /* Neutral/0 */
 }
+
+.dashboard-add-button {
+  position: fixed;
+  right: 64px;
+  bottom: 64px;
+  color: $dark-green;
+  background-color: $secondary-color;
+  width: 100px;
+  height: 100px;
+
+  .ant-btn-circle.ant-btn-lg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  .ant-btn-circle {
+    width: 100px;
+    padding-right: 0;
+    padding-left: 0;
+    text-align: center;
+    border-radius: 50%;
+  }
+
+  .ant-btn-icon-only.ant-btn-lg > * {
+    font-size: 60 px;
+  }
+}
