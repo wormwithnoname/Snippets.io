@@ -7,7 +7,7 @@ import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icon
 
 import { useAuth } from 'services/AuthProvider';
 import { googleProvider } from 'services/FirebaseService';
-import routes from 'constants/pathroutes';
+import routes from 'constants/routes';
 
 import './styles.scss';
 

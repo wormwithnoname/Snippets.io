@@ -7,7 +7,7 @@ import './App.css';
 
 import { AuthProvider } from 'services/AuthProvider';
 import PrivateRoute from 'components/PrivateRoute';
-import routes from 'constants/pathroutes';
+import routes from 'constants/routes';
 
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));

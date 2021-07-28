@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from 'services/AuthProvider';
 
-import routes from 'constants/pathroutes';
+import routes from 'constants/routes';
 
 // eslint-disable-next-line react/prop-types
 export default function PrivateRoute({ component: Component, ...rest }) {

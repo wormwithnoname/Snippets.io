@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { Card, Space, Typography, Button } from 'antd';
 
 import { useAuth } from 'services/AuthProvider';
-import routes from 'constants/pathroutes';
+import routes from 'constants/routes';
 
 import './styles.scss';
 
