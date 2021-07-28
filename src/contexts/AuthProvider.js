@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db, googleProvider } from 'services/FirebaseService';
 
+import collections from 'constants/collections';
+
 export const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
@@ -11,27 +13,27 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   }
 
-  async function signup(email, password, uname) {
-    return auth.createUserWithEmailAndPassword(email, password).then((userData) => {
-      emailLogin(email, password).then(async () => {
-        await db.collection('users').doc(userData.user.uid).set({
-          username: uname,
-          bookmarks: [],
-          folderNames: [],
-        });
-      });
-    });
-  }
-
   async function googleLogin() {
     return auth.signInWithPopup(googleProvider).then(async (user) => {
       if (user.additionalUserInfo.isNewUser) {
-        await db.collection('users').doc(user.user.uid).set({
+        await db.collection(collections.USERLIST).doc(user.user.uid).set({
           username: user.user.displayName,
           bookmarks: [],
           folderNames: [],
         });
       }
+    });
+  }
+
+  async function signup(email, password, uname) {
+    return auth.createUserWithEmailAndPassword(email, password).then((userData) => {
+      emailLogin(email, password).then(async () => {
+        await db.collection(collections.USERLIST).doc(userData.user.uid).set({
+          username: uname,
+          bookmarks: [],
+          folderNames: [],
+        });
+      });
     });
   }
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
@@ -13,33 +13,25 @@ const { Text } = Typography;
 
 function SignupCard() {
   const { signup } = useAuth();
-  const [visible, setVisible] = useState(false);
-  const [modalText, setModalText] = useState('');
   const history = useHistory();
-
-  const promptModal = (message) => {
-    setVisible(true);
-    setModalText(message);
-  };
-
-  const handleCancel = () => {
-    setVisible(false);
-  };
 
   async function handleSubmit(userInput) {
     try {
       await signup(userInput.email, userInput.password, userInput.username);
       history.push(routes.ROOT);
     } catch (errors) {
-      promptModal(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Signup Failed',
+      });
     }
   }
 
   return (
     <Card className="Login-card">
-      <Modal title="Signup Failed" centered visible={visible} onCancel={handleCancel} footer={null}>
-        <p>{modalText}</p>
-      </Modal>
       <Space direction="vertical" align="center" size="small">
         <Text className="Login-welcomeback">Sign up!</Text>
         <Form

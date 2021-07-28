@@ -84,3 +84,7 @@
   color: $white;
   margin-bottom: 10px;
 }
+
+.ant-modal-confirm-error .ant-modal-confirm-body > .anticon {
+  color: $primary-background
+}
