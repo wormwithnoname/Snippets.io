@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db, googleProvider } from 'services/FirebaseService';
 
-import collections from 'constants/collections';
+import collections from 'constants/firestore';
 
 export const AuthContext = React.createContext();
 
