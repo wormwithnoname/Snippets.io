@@ -3,7 +3,6 @@ import { auth, db, googleProvider } from 'services/FirebaseService';
 
 export const AuthContext = React.createContext();
 
-// eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);

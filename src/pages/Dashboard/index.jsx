@@ -19,7 +19,6 @@ function DashboardPage() {
       await logout();
       history.push(routes.LOGIN);
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   }
