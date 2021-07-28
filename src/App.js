@@ -6,8 +6,8 @@ import { Spin } from 'antd';
 import './App.css';
 
 import { AuthProvider } from 'services/AuthProvider';
+import PrivateRoute from 'components/PrivateRoute';
 import routes from 'constants/pathroutes';
-import PrivateRoute from 'services/PrivateRoute';
 
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));

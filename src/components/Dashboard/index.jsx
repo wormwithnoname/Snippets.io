@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { Card, Space, Typography, Button } from 'antd';
 
 import { useAuth } from 'services/AuthProvider';
+import routes from 'constants/pathroutes';
+
 import './styles.scss';
-import { useHistory } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -15,7 +17,7 @@ function Dashboard() {
   async function handleLogout() {
     try {
       await logout();
-      history.push('/login');
+      history.push(routes.LOGIN);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error.message);
