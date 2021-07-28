@@ -9,26 +9,6 @@
     color: $white;
   }
 
-  .dashboard-button {
-    width: 250px;
-    height: 35px;
-
-    font-family: $ibm-plex-mono;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.85rem;
-    line-height: 16px;
-    /* identical to box height */
-    background-color: transparent;
-    border: 2px solid $white;
-    border-radius: 5px;
-    color: $white;
-
-    margin: 0;
-    cursor: pointer;
-    /* Neutral/0 */
-  }
-
   .ant-btn.dashboard-add-button {
     padding: 0;
     border: none;
@@ -42,5 +22,32 @@
     width: 3em;
     height: 3em;
     background-color: $dark-green;
+
+    :hover {
+      color: $secondary-background;
+    }
+  }
+}
+
+.dashboard-button {
+  width: 250px;
+  height: 35px;
+
+  font-family: $ibm-plex-mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.85rem;
+  line-height: 16px;
+  /* identical to box height */
+  background-color: transparent;
+  border: 2px solid $white;
+  border-radius: 5px;
+  color: $white;
+
+  margin: 0;
+  cursor: pointer;
+  /* Neutral/0 */
+  .ant-btn:hover {
+    background-color: $secondary-color;
   }
 }
