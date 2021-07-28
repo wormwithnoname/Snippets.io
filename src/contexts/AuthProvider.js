@@ -1,11 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { auth, db, googleProvider } from './FirebaseService';
+import React, { useState, useEffect } from 'react';
+import { auth, db, googleProvider } from 'services/FirebaseService';
 
-const AuthContext = React.createContext();
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const AuthContext = React.createContext();
 
 // eslint-disable-next-line react/prop-types
 export function AuthProvider({ children }) {
@@ -54,10 +50,12 @@ export function AuthProvider({ children }) {
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
-  const value = {
+  const authFunctions = {
     currentUser,
     emailLogin,
     googleLogin,
@@ -68,5 +66,9 @@ export function AuthProvider({ children }) {
     updatePassword,
   };
 
-  return <AuthContext.Provider value={value}> {!loading && children} </AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={authFunctions}> {!loading && children} </AuthContext.Provider>
+  );
 }
+
+export default AuthProvider;

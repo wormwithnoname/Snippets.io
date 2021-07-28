@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { useAuth } from 'services/AuthProvider';
+import { useAuth } from 'hooks/Hooks';
 
 import routes from 'constants/routes';
 

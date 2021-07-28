@@ -5,7 +5,7 @@ import { Spin } from 'antd';
 
 import './App.css';
 
-import { AuthProvider } from 'services/AuthProvider';
+import { AuthProvider } from 'contexts/AuthProvider';
 import PrivateRoute from 'components/PrivateRoute';
 import routes from 'constants/routes';
 

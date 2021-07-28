@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { Card, Space, Typography, Button } from 'antd';
 
-import { useAuth } from 'services/AuthProvider';
+import { useAuth } from 'hooks/Hooks';
 import routes from 'constants/routes';
 
 import './styles.scss';

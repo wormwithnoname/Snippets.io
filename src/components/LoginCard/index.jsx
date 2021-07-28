@@ -5,7 +5,7 @@ import { Button, Card, Form, Input, Space, Typography } from 'antd';
 
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'services/AuthProvider';
+import { useAuth } from 'hooks/Hooks';
 import { googleProvider } from 'services/FirebaseService';
 import routes from 'constants/routes';
 
