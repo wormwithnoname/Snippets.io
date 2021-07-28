@@ -2,18 +2,30 @@
 
 .dashboard {
   height: 100vh;
+  display: flex;
 
   h4.ant-typography {
     font-family: $roboto;
     color: $white;
   }
+}
 
-  .dashboard-page {
-    padding: 48px;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.dashboard-button {
+  width: 250px;
+  height: 35px;
+
+  font-family: $ibm-plex-mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.85rem;
+  line-height: 16px;
+  /* identical to box height */
+  background-color: transparent;
+  border: 2px solid $white;
+  border-radius: 5px;
+  color: $white;
+
+  margin: 0;
+  cursor: pointer;
+  /* Neutral/0 */
 }
