@@ -1,30 +1,21 @@
 import React from 'react';
 
-import { Space, Typography } from 'antd';
+import { Space } from 'antd';
 
-import Logo from 'assets/img/logowhite.svg';
 import Dashboard from 'components/Dashboard';
 
 import './styles.scss';
 
-const { Title } = Typography;
-
-function LoginPage() {
+function DashboardPage() {
   return (
-    <div className="login">
-      <div className="login-bg">
-        <div className="login-page">
-          <Space align="center" direction="vertical" size="large">
-            <img alt="snippets logo" className="login-logo" src={Logo} />
-            <Title level={4} className="login-subtitle">
-              An organized, searchable, shareable, and simple code snippets clipboard
-            </Title>
-            <Dashboard />
-          </Space>
-        </div>
+    <div className="dashboard">
+      <div className="dashboard-page">
+        <Space align="center" direction="vertical" size="large">
+          <Dashboard />
+        </Space>
       </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default DashboardPage;
