@@ -6,6 +6,7 @@ import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 
 import './styles.scss';
 import { useAuth } from 'services/AuthProvider';
+import routes from 'constants/pathroutes';
 
 const { Text } = Typography;
 
@@ -21,7 +22,7 @@ function SignupCard() {
       setLoading(true);
       await signup(userInput.email, userInput.password, userInput.username);
       setLoading(false);
-      return history.push('/');
+      return history.push(routes.ROOT);
     } catch (errors) {
       /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
       // eslint-disable-next-line no-console

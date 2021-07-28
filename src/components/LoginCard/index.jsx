@@ -8,6 +8,7 @@ import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icon
 import './styles.scss';
 import { useAuth } from 'services/AuthProvider';
 import { googleProvider } from 'services/FirebaseService';
+import routes from 'constants/pathroutes';
 
 const { Text } = Typography;
 
@@ -23,7 +24,7 @@ function LoginCard() {
       setLoading(true);
       await emailLogin(userInput.email, userInput.password);
       setLoading(false);
-      return history.push('/');
+      return history.push(routes.ROOT);
     } catch (errors) {
       /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
       // eslint-disable-next-line no-console
@@ -36,7 +37,7 @@ function LoginCard() {
       setLoading(true);
       await googleLogin(googleProvider);
       setLoading(false);
-      return history.push('/');
+      return history.push(routes.ROOT);
     } catch (errors) {
       // eslint-disable-next-line no-console
       return console.log(errors.message);
