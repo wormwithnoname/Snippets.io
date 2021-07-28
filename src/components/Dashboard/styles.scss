@@ -1,30 +1,14 @@
 @import '../../utils/variables.scss';
 
-/* Login Page */
-.Login-welcomeback {
-  /* Welcome Back */
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1rem;
+/* Dashboard Page */
 
-  text-align: center;
-
-  color: $white;
-}
-
-.Login-container {
+.dashboard-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.Login-form {
-  margin: 0;
-  padding: 0;
-}
-
-.Login-button {
+.dashboard-button {
   width: 250px;
   height: 35px;
   margin-top: 14px;
@@ -44,27 +28,33 @@
   /* Neutral/0 */
 }
 
-.Login-card {
-  /* Login Card */
+.dashboard-card {
+  /* dashboard Card */
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
 
-  width: 350px;
-  height: max-content;
+  width: 250px;
+  height: 90px;
   box-shadow: $card-box-shadow;
-  padding: 20px;
 
-  background: $card-background;
+  background: $secondary-background;
   border-radius: 16px;
 }
 
-.Login-margin {
+.dashboard-margin {
   margin: 2px;
 }
 
-.Login-text {
+.dashboard-text {
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $secondary-color;
+    text-shadow: 0 0 0.25px currentColor;
+  }
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar {
+    bottom: 0;
+    color: $secondary-color;
+}
   font-family: $ibm-plex-mono;
   font-style: normal;
   font-weight: normal;
@@ -74,7 +64,7 @@
   margin-bottom: 10px;
 }
 
-.Login-subtitle {
+.dashboard-subtitle {
   align-self: auto;
   font-family: $ibm-plex-mono;
   font-style: normal;
