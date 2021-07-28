@@ -31,29 +31,12 @@
 }
 
 .dashboard-add-button {
+  padding: 0;
+  border: none;
+  background: none;
   position: fixed;
   right: 64px;
-  bottom: 64px;
-  color: $dark-green;
-  background-color: $secondary-color;
-  width: 100px;
-  height: 100px;
-
-  .ant-btn-circle.ant-btn-lg {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-
-  .ant-btn-circle {
-    width: 100px;
-    padding-right: 0;
-    padding-left: 0;
-    text-align: center;
-    border-radius: 50%;
-  }
-
-  .ant-btn-icon-only.ant-btn-lg > * {
-    font-size: 60 px;
-  }
+  bottom: 60px;
+  color: $secondary-color;
+  border: 2px solid $white;
 }

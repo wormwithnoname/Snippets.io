@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Button } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusCircleFilled } from '@ant-design/icons';
 
 import TabsBar from 'components/TabsBar';
 
@@ -32,9 +32,7 @@ function DashboardPage() {
       </Button>
       <Button
         className="dashboard-add-button"
-        icon={<PlusOutlined />}
-        shape="circle"
-        size="large"
+        icon={<PlusCircleFilled style={{ fontSize: '300%' }} />}
       />
     </div>
   );
