@@ -32,7 +32,9 @@ function DashboardPage() {
       </Button>
       <Button
         className="dashboard-add-button"
-        icon={<PlusCircleFilled style={{ fontSize: '300%' }} />}
+        icon={<PlusCircleFilled />}
+        size="large"
+        shape="round"
       />
     </div>
   );
