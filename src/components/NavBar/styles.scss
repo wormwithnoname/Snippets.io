@@ -4,10 +4,12 @@
   background-color: $secondary-color;
   display: flex;
   align-items: center;
-  padding-bottom: 10px;
+  padding: 20px 50px;
+  justify-content: space-between;
+  z-index: 1;
+
   .App-logo {
-    height: 30px;
-    margin: 10px;
+    width: 187px;
   }
 
   .ant-input-affix-wrapper {

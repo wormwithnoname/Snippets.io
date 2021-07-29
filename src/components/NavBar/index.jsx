@@ -43,31 +43,24 @@ function NavBar() {
   return (
     <Layout>
       <Header className="NavBar">
-        <Space size={780}>
-          <img className="App-logo" src={snippetslogo} alt="snippetslogo" />
-          <div className="rightOfNav">
-            <Space size={25}>
-              <Form className="ant-input-affix-wrapper">
-                <Input
-                  bordered={false}
-                  id="searchID"
-                  placeholder="Search code snippet"
-                  suffix={
-                    <Button
-                      className="ant-btn"
-                      icon={<SearchOutlined />}
-                      onClick={onSearch}
-                      ghost
-                    />
-                  }
-                />
-              </Form>
-              <Dropdown overlay={menu} placement="bottomCenter">
-                <Avatar style={{ backgroundColor: '#313837' }} icon={<UserOutlined />} />
-              </Dropdown>
-            </Space>
-          </div>
-        </Space>
+        <img className="App-logo" src={snippetslogo} alt="snippetslogo" />
+        <div className="rightOfNav">
+          <Space size={25}>
+            <Form className="ant-input-affix-wrapper">
+              <Input
+                bordered={false}
+                id="searchID"
+                placeholder="Search code snippet"
+                suffix={
+                  <Button className="ant-btn" icon={<SearchOutlined />} onClick={onSearch} ghost />
+                }
+              />
+            </Form>
+            <Dropdown overlay={menu} placement="bottomCenter">
+              <Avatar style={{ backgroundColor: '#313837' }} icon={<UserOutlined />} />
+            </Dropdown>
+          </Space>
+        </div>
       </Header>
     </Layout>
   );
