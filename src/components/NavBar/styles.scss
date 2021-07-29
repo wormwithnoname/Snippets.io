@@ -1,0 +1,54 @@
+@import '../../utils/variables.scss';
+
+.App-logo {
+  height: 30px;
+  margin: 10px;
+}
+
+.ant-input-affix-wrapper {
+  height: 30px;
+  width: 250px;
+  border-radius: 25px;
+  border-color: $primary-background;
+  display: flex;
+  align-items: flex-end;
+  background-color: #598986;
+
+  font-family: $ibm-plex-mono;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.ant-input-affix-wrapper:focus {
+  color: #598986;
+}
+
+.ant-btn {
+  display: flex;
+  align-items: flex-end;
+  border: none;
+  color: #313837;
+  outline: none;
+  padding-left: 15px;
+}
+
+.NavBar {
+  background-color: #8DC7C3;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.rightOfNav {
+  display: flex;
+  align-items: flex-end;
+}
+
+#searchID::placeholder {
+  color: #313837;
+  opacity: 1;
+  font-family: $ibm-plex-mono;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+}
