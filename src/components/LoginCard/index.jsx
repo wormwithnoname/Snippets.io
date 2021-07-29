@@ -104,7 +104,7 @@ function LoginCard() {
             </Button>
             <Text className="Login-subtitle">
               Don&apos;t have an account yet?{' '}
-              <Link className="Login-subtitle" to="./signup">
+              <Link className="Login-link" to="./signup">
                 Sign Up!
               </Link>
             </Text>

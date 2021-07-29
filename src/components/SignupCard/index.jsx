@@ -124,7 +124,7 @@ function SignupCard() {
         <Space direction="vertical" size="medium">
           <Text className="Login-subtitle">
             Have an account?{' '}
-            <Link className="Login-subtitle" to="./login">
+            <Link className="Login-link" to="./login">
               Sign In!
             </Link>
           </Text>

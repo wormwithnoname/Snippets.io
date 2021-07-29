@@ -1,50 +1,49 @@
 @import '../../utils/variables.scss';
 
-/* Login Page */
-.Login-welcomeback {
-  /* Welcome Back */
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 1rem;
-
-  text-align: center;
-
-  color: $white;
-}
-
-.Login-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.Login-form {
-  margin: 0;
-  padding: 0;
-}
-
-.Login-button {
-  width: 250px;
-  height: 35px;
-  margin-top: 14px;
-
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.85rem;
-  line-height: 16px;
-  /* identical to box height */
-  background-color: transparent;
-  border: 2px solid $white;
-  border-radius: 5px;
-  color: $white;
-
-  cursor: pointer;
-  /* Neutral/0 */
-}
-
 .Login-card {
+  /* Login Page */
+  .Login-welcomeback {
+    /* Welcome Back */
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1rem;
+
+    text-align: center;
+
+    color: $white;
+  }
+
+  .Login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Login-form {
+    margin: 0;
+    padding: 0;
+  }
+
+  .Login-button {
+    width: 250px;
+    height: 35px;
+    margin-top: 14px;
+
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.85rem;
+    line-height: 16px;
+    /* identical to box height */
+    background-color: transparent;
+    border: 2px solid $white;
+    border-radius: 5px;
+    color: $white;
+
+    cursor: pointer;
+    /* Neutral/0 */
+  }
   /* Login Card */
   display: flex;
   flex-direction: column;
@@ -58,29 +57,32 @@
 
   background: $card-background;
   border-radius: 16px;
-}
 
-.Login-margin {
-  margin: 2px;
-}
+  .Login-margin {
+    margin: 2px;
+  }
 
-.Login-text {
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.85rem;
-  text-align: center;
-  color: $white;
-  margin-bottom: 10px;
-}
+  .Login-text {
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.85rem;
+    text-align: center;
+    color: $white;
+    margin-bottom: 10px;
+  }
 
-.Login-subtitle {
-  align-self: auto;
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.75rem;
-  text-align: center;
-  color: $white;
-  margin-bottom: 10px;
+  .Login-subtitle {
+    align-self: auto;
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.75rem;
+    text-align: center;
+    color: $white;
+    margin-bottom: 10px;
+  }
+  .Login-link {
+    color: $secondary-color;
+  }
 }
