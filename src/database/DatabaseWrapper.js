@@ -7,7 +7,11 @@ import {
   fetchUsers,
   fetchEditSnippetIDs,
   fetchEditSnippets,
+  fetchSnippets,
 } from './queries/fetch';
+
+export const getAllSnippets = async () => fetchSnippets();
+export const getAllUsers = async () => fetchUsers();
 
 export const getOwnedSnippets = async (uid) => {
   const snippetIDs = await fetchOwnedSnippetIDs(uid);

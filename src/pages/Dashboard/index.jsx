@@ -9,7 +9,10 @@ import TabsBar from 'components/TabsBar';
 import { useAuth } from 'hooks/Hooks';
 import routes from 'constants/routes';
 
+import Grid from 'antd/lib/card/Grid';
 import {
+  getAllSnippets,
+  getAllUsers,
   getEditSnippets,
   getOwnedSnippets,
   getUserInfo,
@@ -33,22 +36,29 @@ function DashboardPage() {
   return (
     <div className="dashboard">
       <TabsBar />
-      <Button onClick={() => getUserInfo('user1')}> get userinfo</Button>
 
-      <Button
-        onClick={() =>
-          getOwnedSnippets('user1').then((res) => {
-            console.log('done');
-            console.log(res);
-          })
-        }
-      >
-        {' '}
-        get owned snippets
-      </Button>
-      <Button onClick={() => getViewSnippets('user1')}> get view snippets</Button>
+      <Grid>
+        <Button onClick={() => getUserInfo('user1')}> get userinfo</Button>
 
-      <Button onClick={() => getEditSnippets('user1')}> get edit snippets</Button>
+        <Button
+          onClick={() =>
+            getOwnedSnippets('user1').then((res) => {
+              console.log('done');
+              console.log(res);
+            })
+          }
+        >
+          {' '}
+          get owned snippets
+        </Button>
+
+        <Button onClick={() => getAllUsers()}> get all users</Button>
+        <Button onClick={() => getAllSnippets()}> get all snippets</Button>
+        <Button onClick={() => getViewSnippets('user1')}> get view snippets</Button>
+
+        <Button onClick={() => getEditSnippets('user1')}> get edit snippets</Button>
+      </Grid>
+
       <Button onClick={handleLogout} type="primary" className="dashboard-button">
         Logout
       </Button>

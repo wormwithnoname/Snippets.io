@@ -3,17 +3,22 @@ import { Snippet } from '../../classes/Snippet';
 import { User } from '../../classes/User';
 import { UserInfo } from '../../classes/UserInfo';
 
-export const fetchUsers = async () => {
-  const doc = await db.collection('users-test').doc('user1').get();
-  const user = User.from(doc.data());
-  console.log(user.data());
-};
+const users = db.collection('users-test');
+const snippets = db.collection('snippets-test');
+const userInfo = db.collection('user-info-test');
 
-export const fetchSnippets = async () => {
-  const doc = await db.collection('snippets').get();
-  const snippet = Snippet.from(doc.data());
-  console.log(snippet);
-};
+// Admin fetch all
+export const fetchUsers = async () =>
+  users
+    .get()
+    .then()
+    .map((user) => User.from(user));
+
+export const fetchSnippets = async () =>
+  snippets
+    .get()
+    .then()
+    .map((snip) => Snippet.from(snip));
 
 // User Data-related
 export const fetchOwnedSnippetIDs = async (uid) => {
@@ -27,7 +32,7 @@ export const fetchOwnedSnippetIDs = async (uid) => {
 
 export const fetchOwnedSnippets = async (snippetIDs) => {
   const ownedSnippets = snippetIDs.map(async (sID) => {
-    const snippet = Snippet.from((await db.collection('snippets-test').doc(sID).get()).data());
+    const snippet = Snippet.from((await snippets.doc(sID).get()).data());
     return snippet;
   });
   console.log(ownedSnippets);
@@ -45,7 +50,7 @@ export const fetchEditSnippetIDs = async (uid) => {
 
 export const fetchEditSnippets = async (snippetIDs) => {
   const editSnippets = snippetIDs.map(async (sID) => {
-    const snippet = Snippet.from((await db.collection('snippets-test').doc(sID).get()).data());
+    const snippet = Snippet.from((await snippets.doc(sID).get()).data());
     return snippet;
   });
   console.log(editSnippets);
@@ -63,7 +68,7 @@ export const fetchViewSnippetIDs = async (uid) => {
 
 export const fetchViewSnippets = async (snippetIDs) => {
   const viewSnippets = snippetIDs.map(async (sID) => {
-    const snippet = Snippet.from((await db.collection('snippets-test').doc(sID).get()).data());
+    const snippet = Snippet.from((await snippets.doc(sID).get()).data());
     return snippet;
   });
   console.log(viewSnippets);
@@ -72,7 +77,7 @@ export const fetchViewSnippets = async (snippetIDs) => {
 
 // public
 export const fetchUserInfo = async (uid) => {
-  const data = (await db.collection('user-info-test').doc(uid).get()).data();
+  const data = (await userInfo.doc(uid).get()).data();
   console.log(UserInfo.from(data));
   return UserInfo.from(data);
 };
