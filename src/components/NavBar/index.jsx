@@ -21,7 +21,7 @@ function NavBar() {
       await logout();
       history.push(routes.LOGIN);
     } catch (error) {
-      console.error('error');
+      console.error(error);
     }
   }
 
