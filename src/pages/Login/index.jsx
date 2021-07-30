@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Space, Typography } from 'antd';
 
+import Logo from 'assets/img/logowhite.svg';
 import LoginCard from 'components/LoginCard';
 
 import './styles.scss';
-import Logo from 'assets/img/logowhite.svg';
 
 const { Title } = Typography;
 
