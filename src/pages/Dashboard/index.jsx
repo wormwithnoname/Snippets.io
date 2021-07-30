@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Layout } from 'antd';
+import { Button, Layout } from 'antd';
+import { PlusCircleFilled } from '@ant-design/icons';
 
 import NavBar from 'components/NavBar';
 import TabsBar from 'components/TabsBar';
@@ -14,6 +15,12 @@ function DashboardPage() {
         <NavBar />
         <TabsBar />
       </Layout>
+      <Button
+        className="dashboard-add-button"
+        icon={<PlusCircleFilled />}
+        size="large"
+        shape="round"
+      />
     </div>
   );
 }
