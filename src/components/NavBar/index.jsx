@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Layout, Input, Space, Dropdown, Menu, Avatar, Button, Form } from 'antd';
 
-import { UserOutlined, SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
 
 import { useAuth } from 'hooks/useAuth';
 
@@ -17,7 +17,7 @@ import snippetslogo from 'assets/img/logoblack.svg';
 const { Header } = Layout;
 
 function NavBar() {
-  const { logout } = useAuth();
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
 
   async function handleLogout() {
@@ -58,7 +58,7 @@ function NavBar() {
               />
             </Form>
             <Dropdown overlay={menu} placement="bottomCenter">
-              <Avatar className="Nav-avatar" icon={<UserOutlined />} />
+              <Avatar className="Nav-avatar" src={currentUser.photoURL} />
             </Dropdown>
           </Space>
         </div>
