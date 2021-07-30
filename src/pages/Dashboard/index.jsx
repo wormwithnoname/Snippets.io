@@ -11,6 +11,8 @@ import routes from 'constants/routes';
 
 import Grid from 'antd/lib/card/Grid';
 import {
+  createNewUser,
+  createNewSnippet,
   getAllSnippets,
   getAllUsers,
   getEditSnippets,
@@ -18,6 +20,7 @@ import {
   getUserInfo,
   getViewSnippets,
 } from '../../database/DatabaseWrapper';
+import { setSnips } from '../../database/UserData-test';
 import './styles.scss';
 
 function DashboardPage() {
@@ -38,21 +41,22 @@ function DashboardPage() {
       <TabsBar />
 
       <Grid>
+        <Button onClick={() => createNewUser('user1', 'John Doe', 'johndoe21', 0)}>
+          create new User
+        </Button>
         <Button onClick={() => getUserInfo('user1')}> get userinfo</Button>
 
+        <Button onClick={() => setSnips()}> get owned snippets</Button>
         <Button
           onClick={() =>
-            getOwnedSnippets('user1').then((res) => {
-              console.log('done');
-              console.log(res);
-            })
+            createNewSnippet('finding the min of a list', 'user1', 'python', 'min(list)')
           }
         >
-          {' '}
-          get owned snippets
+          create snippet
         </Button>
 
         <Button onClick={() => getAllUsers()}> get all users</Button>
+        <Button onClick={() => getOwnedSnippets('user1')}> get owned snnippets2</Button>
         <Button onClick={() => getAllSnippets()}> get all snippets</Button>
         <Button onClick={() => getViewSnippets('user1')}> get view snippets</Button>
 
