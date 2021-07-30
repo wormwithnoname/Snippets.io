@@ -4,7 +4,7 @@ import { Layout, Input, Space, Dropdown, Menu, Avatar, Button, Form } from 'antd
 
 import { UserOutlined, SearchOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/Hooks';
+import { useAuth } from 'hooks/useAuth';
 
 import routes from 'constants/routes';
 
@@ -38,8 +38,9 @@ function NavBar() {
   );
 
   // eslint-disable-next-line no-console
-  const onSearch = (value) => console.log(value);
-
+  function onSearch(value) {
+    console.log(value);
+  }
   return (
     <Layout>
       <Header className="NavBar">
@@ -57,7 +58,7 @@ function NavBar() {
               />
             </Form>
             <Dropdown overlay={menu} placement="bottomCenter">
-              <Avatar style={{ backgroundColor: '#313837' }} icon={<UserOutlined />} />
+              <Avatar className="Nav-avatar" icon={<UserOutlined />} />
             </Dropdown>
           </Space>
         </div>
