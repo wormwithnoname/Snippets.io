@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Button, Card, Form, Input, Space, Typography } from 'antd';
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
+import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 
-import './SignupCard.scss';
-import { useAuth } from 'services/AuthProvider';
+import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
+
+import './styles.scss';
 
 const { Text } = Typography;
 
 function SignupCard() {
   const { signup } = useAuth();
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   async function handleSubmit(userInput) {
     try {
-      /* CHANGE LOADER */
-      setLoading(true);
       await signup(userInput.email, userInput.password, userInput.username);
-      setLoading(false);
-      return history.push('/');
+      history.push(routes.ROOT);
     } catch (errors) {
-      /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
-      // eslint-disable-next-line no-console
-      return console.log(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Signup Failed',
+      });
     }
   }
 
@@ -115,7 +116,7 @@ function SignupCard() {
         <Space direction="vertical" size="medium">
           <Text className="Login-subtitle">
             Have an account?{' '}
-            <Link className="Login-subtitle" to="./login">
+            <Link className="Login-link" to={routes.LOGIN}>
               Sign In!
             </Link>
           </Text>

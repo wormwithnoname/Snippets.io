@@ -1,30 +1,28 @@
 import React from 'react';
 
-import { Space, Typography } from 'antd';
+import { Button, Layout } from 'antd';
+import { PlusCircleFilled } from '@ant-design/icons';
 
-import Logo from 'assets/img/logowhite.svg';
-import Dashboard from 'components/Dashboard';
+import NavBar from 'components/NavBar';
+import TabsBar from 'components/TabsBar';
 
-import './DashboardPage.scss';
+import './styles.scss';
 
-const { Title } = Typography;
-
-function LoginPage() {
+function DashboardPage() {
   return (
-    <div className="login">
-      <div className="login-bg">
-        <div className="login-page">
-          <Space align="center" direction="vertical" size="large">
-            <img alt="snippets logo" className="login-logo" src={Logo} />
-            <Title level={4} className="login-subtitle">
-              An organized, searchable, shareable, and simple code snippets clipboard
-            </Title>
-            <Dashboard />
-          </Space>
-        </div>
-      </div>
+    <div className="dashboard">
+      <Layout>
+        <NavBar />
+        <TabsBar />
+      </Layout>
+      <Button
+        className="dashboard-add-button"
+        icon={<PlusCircleFilled />}
+        size="large"
+        shape="round"
+      />
     </div>
   );
 }
 
-export default LoginPage;
+export default DashboardPage;

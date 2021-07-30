@@ -1,45 +1,48 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-import { Button, Card, Form, Input, Space, Typography } from 'antd';
-
+import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-import './LoginCard.scss';
-import { useAuth } from 'services/AuthProvider';
+import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
 import { googleProvider } from 'services/FirebaseService';
+
+import './styles.scss';
 
 const { Text } = Typography;
 
 function LoginCard() {
   const { emailLogin, googleLogin } = useAuth();
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   async function handleSubmit(userInput) {
     try {
-      /* CHANGE LOADER */
-      setLoading(true);
       await emailLogin(userInput.email, userInput.password);
-      setLoading(false);
-      return history.push('/');
+      history.push(routes.ROOT);
     } catch (errors) {
-      /* FOR TESTING (NEEDS IMPLEMENTATION OF ERROR HANDLING) */
-      // eslint-disable-next-line no-console
-      return console.log(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Login Failed',
+      });
     }
   }
 
   async function handleClick() {
     try {
-      setLoading(true);
       await googleLogin(googleProvider);
-      setLoading(false);
-      return history.push('/');
+      history.push(routes.ROOT);
     } catch (errors) {
-      // eslint-disable-next-line no-console
-      return console.log(errors.message);
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Login Failed',
+      });
     }
   }
 
@@ -98,7 +101,7 @@ function LoginCard() {
             </Button>
             <Text className="Login-subtitle">
               Don&apos;t have an account yet?{' '}
-              <Link className="Login-subtitle" to="./signup">
+              <Link className="Login-link" to={routes.SIGNUP}>
                 Sign Up!
               </Link>
             </Text>

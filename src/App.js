@@ -1,13 +1,17 @@
-import { Suspense, React } from 'react';
+import { Suspense, React, lazy } from 'react';
 import { Route, BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
 import { Spin } from 'antd';
 
 import './App.css';
 
-import { AuthProvider } from 'services/AuthProvider';
-import PrivateRoute from 'services/PrivateRoute';
-import * as routes from 'constants/routes';
+import { AuthProvider } from 'contexts/AuthProvider';
+import PrivateRoute from 'components/PrivateRoute';
+import routes from 'constants/routes';
+
+const Login = lazy(() => import('pages/Login'));
+const Signup = lazy(() => import('pages/Signup'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
 
 function App() {
   return (
@@ -21,10 +25,10 @@ function App() {
           }
         >
           <Switch>
-            <PrivateRoute exact path="/" component={routes.Dashboard} />
-            <Route path="/login" component={routes.Login} />
-            <Route path="/signup" component={routes.Signup} />
-            <Redirect to="/login" />
+            <PrivateRoute exact path={routes.ROOT} component={Dashboard} />
+            <Route path={routes.LOGIN} component={Login} />
+            <Route path={routes.SIGNUP} component={Signup} />
+            <Redirect to={routes.LOGIN} />
           </Switch>
         </Suspense>
       </AuthProvider>
