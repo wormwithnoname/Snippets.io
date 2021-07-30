@@ -124,7 +124,7 @@ function SignupCard() {
         <Space direction="vertical" size="medium">
           <Text className="Login-subtitle">
             Have an account?{' '}
-            <Link className="Login-link" to="./login">
+            <Link className="Login-link" to={routes.LOGIN}>
               Sign In!
             </Link>
           </Text>
