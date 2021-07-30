@@ -5,64 +5,55 @@
 .dashboard {
   display: flex;
   justify-content: center;
-}
+  background: $primary-background;
 
-.dashboard-card {
-  /* dashboard Card */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .dashboard-text {
+    .ant-tabs-nav-list {
+      background-color: $secondary-background;
+      height: 50px;
+      width: 300px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      :hover {
+        color: $secondary-color;
+      }
+    }
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: $black;
+      background-color: $secondary-color;
+      padding: 5px 25px;
+      border-radius: 25px;
+    }
 
-  width: 250px;
-  height: 90px;
-  box-shadow: $card-box-shadow;
+    .ant-tabs-ink-bar {
+      background: transparent;
+      pointer-events: none;
+    }
 
-  background: $secondary-background;
-  border-radius: 16px;
-}
+    .dashboard-subtitle {
+      align-self: auto;
+      font-family: $ibm-plex-mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.75rem;
+      text-align: center;
+      color: $white;
+      margin-bottom: 10px;
+    }
 
-.dashboard-margin {
-  margin: 2px;
-}
+    ::before {
+      display: none;
+    }
 
-.dashboard-text {
-  .ant-tabs-nav-list {
-    background-color: $secondary-background;
-    height: 50px;
-    width: 300px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .ant-tabs-tab-active .ant-tabs-tab-btn {
+    font-family: $raleway;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
     color: $black;
-    background-color: $secondary-color;
-    padding: 5px 25px;
-    border-radius: 25px;
+    margin-bottom: 10px;
+    padding-top: 25px;
   }
-
-  .ant-tabs-ink-bar {
-    background: transparent;
-    pointer-events: none;
-  }
-
-  font-family: $raleway;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 1rem;
-  text-align: center;
-  color: $black;
-  margin-bottom: 10px;
-}
-
-.dashboard-subtitle {
-  align-self: auto;
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.75rem;
-  text-align: center;
-  color: $white;
-  margin-bottom: 10px;
 }

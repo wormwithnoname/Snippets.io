@@ -2,9 +2,8 @@ import React from 'react';
 
 import { Space, Typography } from 'antd';
 
-import SignupCard from 'components/SignupCard';
-
 import Logo from 'assets/img/logowhite.svg';
+import SignupCard from 'components/SignupCard';
 
 import './styles.scss';
 

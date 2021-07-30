@@ -2,12 +2,11 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
-
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/Hooks';
-import { googleProvider } from 'services/FirebaseService';
 import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
+import { googleProvider } from 'services/FirebaseService';
 
 import './styles.scss';
 
@@ -102,7 +101,7 @@ function LoginCard() {
             </Button>
             <Text className="Login-subtitle">
               Don&apos;t have an account yet?{' '}
-              <Link className="Login-subtitle" to="./signup">
+              <Link className="Login-link" to={routes.SIGNUP}>
                 Sign Up!
               </Link>
             </Text>

@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/Hooks';
 import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
 
 import './styles.scss';
 
@@ -21,7 +21,6 @@ function SignupCard() {
       history.push(routes.ROOT);
     } catch (errors) {
       Modal.error({
-        className: '.modal-body',
         autoFocusButton: null,
         centered: true,
         content: errors.message,
@@ -117,7 +116,7 @@ function SignupCard() {
         <Space direction="vertical" size="medium">
           <Text className="Login-subtitle">
             Have an account?{' '}
-            <Link className="Login-subtitle" to="./login">
+            <Link className="Login-link" to={routes.LOGIN}>
               Sign In!
             </Link>
           </Text>

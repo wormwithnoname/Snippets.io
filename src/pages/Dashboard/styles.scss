@@ -3,29 +3,49 @@
 .dashboard {
   height: 100vh;
   display: flex;
-
+  background-color: $white;
   h4.ant-typography {
     font-family: $roboto;
     color: $white;
   }
-}
+  .ant-btn.dashboard-add-button {
+    padding: 0;
+    border: none;
+    position: fixed;
+    right: 64px;
+    bottom: 60px;
+    color: $secondary-color;
+    & span {
+      font-size: 3em;
+    }
+    width: 3em;
+    height: 3em;
+    background-color: $dark-green;
 
-.dashboard-button {
-  width: 250px;
-  height: 35px;
+    :hover {
+      color: $secondary-background;
+    }
+  }
+  .dashboard-button {
+    width: 250px;
+    height: 35px;
 
-  font-family: $ibm-plex-mono;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.85rem;
-  line-height: 16px;
-  /* identical to box height */
-  background-color: transparent;
-  border: 2px solid $white;
-  border-radius: 5px;
-  color: $white;
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.85rem;
+    line-height: 16px;
+    /* identical to box height */
+    background-color: transparent;
+    border: 2px solid $white;
+    border-radius: 5px;
+    color: $white;
 
-  margin: 0;
-  cursor: pointer;
-  /* Neutral/0 */
+    margin: 0;
+    cursor: pointer;
+    /* Neutral/0 */
+    .ant-btn:hover {
+      background-color: $secondary-color;
+    }
+  }
 }
