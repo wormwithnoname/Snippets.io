@@ -31,9 +31,11 @@ function NavBar() {
   }
 
   const menu = (
-    <Menu onClick={handleLogout}>
-      <Menu.Item key="1">Profile</Menu.Item>
-      <Menu.Item key="2">Logout</Menu.Item>
+    <Menu>
+      <Menu.Item key="1">{currentUser.displayName}</Menu.Item>
+      <Menu.Item onClick={handleLogout} key="2">
+        Logout
+      </Menu.Item>
     </Menu>
   );
 
