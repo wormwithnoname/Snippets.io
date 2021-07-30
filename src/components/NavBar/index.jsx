@@ -1,17 +1,13 @@
 import React from 'react';
-
-import { Layout, Input, Space, Dropdown, Menu, Avatar, Button, Form } from 'antd';
-
-import { SearchOutlined } from '@ant-design/icons';
-
-import { useAuth } from 'hooks/useAuth';
-
-import routes from 'constants/routes';
-
 import { useHistory } from 'react-router-dom';
 
-import './styles.scss';
+import { Avatar, Button, Dropdown, Form, Input, Layout, Menu, Space } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 
+import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
+
+import './styles.scss';
 import snippetslogo from 'assets/img/logoblack.svg';
 
 const { Header } = Layout;
@@ -26,16 +22,16 @@ function NavBar() {
       history.push(routes.LOGIN);
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error.message);
+      console.error();
     }
   }
 
   const menu = (
-    <Menu>
-      <Menu.Item key="1">{currentUser.displayName}</Menu.Item>
-      <Menu.Item onClick={handleLogout} key="2">
-        Logout
-      </Menu.Item>
+    <Menu onClick={handleLogout}>
+      <Menu.ItemGroup title={currentUser.displayName}>
+        <Menu.Item key="1">Profile</Menu.Item>
+        <Menu.Item key="2">Logout</Menu.Item>
+      </Menu.ItemGroup>
     </Menu>
   );
 
