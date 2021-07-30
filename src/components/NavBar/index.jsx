@@ -13,6 +13,7 @@ import { useHistory } from 'react-router-dom';
 import './styles.scss';
 
 import snippetslogo from 'assets/img/logoblack.svg';
+import Modal from 'antd/lib/modal/Modal';
 
 const { Header } = Layout;
 
@@ -24,9 +25,14 @@ function NavBar() {
     try {
       await logout();
       history.push(routes.LOGIN);
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log(error.message);
+    } catch (errors) {
+      Modal.error({
+        autoFocusButton: null,
+        centered: true,
+        content: errors.message,
+        okType: { className: 'Login-button' },
+        title: 'Logout Failed',
+      });
     }
   }
 

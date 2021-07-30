@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { auth, db, googleProvider } from 'services/FirebaseService';
 
-import collections from 'constants/firestore';
+import collections, { defaultPhoto } from 'constants/collections';
 
 export const AuthContext = React.createContext();
 
@@ -26,7 +26,11 @@ export function AuthProvider({ children }) {
   }
 
   async function signup(email, password, uname) {
-    return auth.createUserWithEmailAndPassword(email, password).then((userData) => {
+    return auth.createUserWithEmailAndPassword(email, password).then(async (userData) => {
+      await userData.user.updateProfile({
+        displayName: uname,
+        photoURL: defaultPhoto,
+      });
       emailLogin(email, password).then(async () => {
         await db.collection(collections.USERLIST).doc(userData.user.uid).set({
           username: uname,

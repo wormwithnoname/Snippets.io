@@ -21,7 +21,6 @@ function SignupCard() {
       history.push(routes.ROOT);
     } catch (errors) {
       Modal.error({
-        className: '.modal-body',
         autoFocusButton: null,
         centered: true,
         content: errors.message,
