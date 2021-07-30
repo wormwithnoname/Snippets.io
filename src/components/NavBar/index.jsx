@@ -4,7 +4,7 @@ import { Layout, Input, Space, Dropdown, Menu, Avatar, Button, Form } from 'antd
 
 import { UserOutlined, SearchOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/useAuth';
+import { useAuth } from 'hooks/Hooks';
 
 import routes from 'constants/routes';
 
