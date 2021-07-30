@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { auth, db, googleProvider } from 'services/FirebaseService';
 
 import collections, { defaultPhoto } from 'constants/collections';
+import { auth, db, googleProvider } from 'services/FirebaseService';
 
 export const AuthContext = React.createContext();
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   async function emailLogin(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
@@ -56,17 +67,6 @@ export function AuthProvider({ children }) {
   async function updatePassword(password) {
     return currentUser.updatePassword(password);
   }
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return () => {
-      unsubscribe();
-    };
-  }, []);
 
   const authFunctions = {
     currentUser,

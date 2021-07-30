@@ -2,12 +2,11 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
-
 import { GoogleCircleFilled, LockOutlined, UserOutlined } from '@ant-design/icons';
 
+import routes from 'constants/routes';
 import { useAuth } from 'hooks/useAuth';
 import { googleProvider } from 'services/FirebaseService';
-import routes from 'constants/routes';
 
 import './styles.scss';
 

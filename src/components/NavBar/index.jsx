@@ -1,14 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Layout, Input, Space, Dropdown, Menu, Avatar, Button, Form } from 'antd';
-
+import { Avatar, Button, Dropdown, Form, Input, Layout, Menu, Space } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/useAuth';
-
 import routes from 'constants/routes';
-
-import { useHistory } from 'react-router-dom';
+import { useAuth } from 'hooks/useAuth';
 
 import './styles.scss';
 
@@ -37,11 +34,11 @@ function NavBar() {
   }
 
   const menu = (
-    <Menu>
-      <Menu.Item key="1">{currentUser.displayName}</Menu.Item>
-      <Menu.Item onClick={handleLogout} key="2">
-        Logout
-      </Menu.Item>
+    <Menu onClick={handleLogout}>
+      <Menu.ItemGroup title={currentUser.displayName}>
+        <Menu.Item key="1">Profile</Menu.Item>
+        <Menu.Item key="2">Logout</Menu.Item>
+      </Menu.ItemGroup>
     </Menu>
   );
 

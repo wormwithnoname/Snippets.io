@@ -2,10 +2,10 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { Button, Card, Form, Input, Modal, Space, Typography } from 'antd';
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 
-import { useAuth } from 'hooks/useAuth';
 import routes from 'constants/routes';
+import { useAuth } from 'hooks/useAuth';
 
 import './styles.scss';
 

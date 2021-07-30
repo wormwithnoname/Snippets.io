@@ -3,7 +3,6 @@ import React from 'react';
 import { Layout } from 'antd';
 
 import NavBar from 'components/NavBar';
-
 import TabsBar from 'components/TabsBar';
 
 import './styles.scss';
