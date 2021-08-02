@@ -5,17 +5,19 @@ import { Layout } from 'antd';
 import NavBar from 'components/NavBar';
 import TabsBar from 'components/TabsBar';
 import AddButton from 'components/AddButton';
-import SnippetCard from 'components/SnippetCard';
 
 import './styles.scss';
+
+const { Content } = Layout;
 
 function DashboardPage() {
   return (
     <div className="dashboard">
       <Layout>
         <NavBar />
-        <TabsBar />
-        <SnippetCard />
+        <Content>
+          <TabsBar />
+        </Content>
       </Layout>
       <AddButton />
     </div>

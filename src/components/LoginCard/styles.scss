@@ -51,7 +51,7 @@
   align-items: center;
 
   width: 350px;
-  height: 300px;
+  height: max-content;
   box-shadow: $card-box-shadow;
   padding: 20px;
 
@@ -88,5 +88,5 @@
 }
 
 .ant-modal-confirm-error .ant-modal-confirm-body > .anticon {
-    color: $primary-background
+  color: $primary-background;
 }

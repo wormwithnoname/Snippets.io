@@ -1,20 +1,34 @@
 @import '../../utils/variables.scss';
 
 .snippet-container {
-  height: 300px;
-  width: 300px;
   top: auto;
   padding-left: 3px;
+  border-radius: 16px;
+
+  .snippet-card {
+    font-weight: 600;
+  }
+
   .ant-card.snippet-card {
     box-shadow: $card-box-shadow;
-    padding: 10px;
+    // padding: 10px;
     background: $snippet-card;
-    border-radius: 16px;
+    // border-radius: 16px;
+    height: max-content;
+    width: 400px;
   }
-  .ant-card-bordered{
-      border: none;
+  .ant-card-bordered {
+    border: none;
   }
-  .ant-card-head{
-      background-color: $secondary-color;
+  .ant-card-head {
+    background-color: $secondary-color;
+    // border-radius: 16px;
+    font-size: 14px;
+    font: $raleway;
+  }
+
+  .ant-card-extra {
+    font-size: 20px;
+    padding: 0 0;
   }
 }
