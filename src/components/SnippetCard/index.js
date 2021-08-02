@@ -11,6 +11,8 @@ function SnippetCard() {
     <div className="snippet-container">
       <Card className="snippet-card" title="Default size card">
         <Text>content hereeee</Text>
+        <Text>content hereeee</Text>
+        <Text>content hereeee</Text>
       </Card>
     </div>
   );
