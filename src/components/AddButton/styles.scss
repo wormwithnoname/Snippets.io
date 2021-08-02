@@ -1,0 +1,44 @@
+@import '../../utils/variables.scss';
+
+.add-button {
+  .ant-btn.dashboard-add-button {
+    padding: 0;
+    border: none;
+    position: fixed;
+    right: 64px;
+    bottom: 60px;
+    color: $secondary-color;
+    & span {
+      font-size: 3em;
+    }
+    width: 3em;
+    height: 3em;
+    background-color: $dark-green;
+
+    :hover {
+      color: $secondary-background;
+    }
+  }
+  .dashboard-button {
+    width: 250px;
+    height: 35px;
+
+    font-family: $ibm-plex-mono;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.85rem;
+    line-height: 16px;
+    /* identical to box height */
+    background-color: transparent;
+    border: 2px solid $white-primary;
+    border-radius: 5px;
+    color: $white-primary;
+
+    margin: 0;
+    cursor: pointer;
+    /* Neutral/0 */
+    .ant-btn:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
