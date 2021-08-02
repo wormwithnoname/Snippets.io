@@ -15,8 +15,8 @@ function DashboardPage() {
       <Layout>
         <NavBar />
         <TabsBar />
+        <SnippetCard />
       </Layout>
-      <SnippetCard />
       <AddButton />
     </div>
   );

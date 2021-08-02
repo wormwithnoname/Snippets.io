@@ -1,1 +1,28 @@
 @import '../../utils/variables.scss';
+
+.snippet-container {
+  display: flex;
+  align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+  background-color: none;
+  background: none;
+  height: max-content;
+  width: max-content;
+  .ant-card.snippet-card {
+    display: flex;
+    box-shadow: $card-box-shadow;
+    padding: 10px;
+
+    background: $snippet-card;
+    border-radius: 16px;
+  }
+  .ant-card-bordered{
+      border: none;
+  }
+  .ant-card-head{
+      background-color: $secondary-color;
+  }
+}
