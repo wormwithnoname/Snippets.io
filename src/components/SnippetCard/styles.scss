@@ -46,6 +46,17 @@
     align-items: center;
   }
 
+  .ant-card-actions{
+    background-color: transparent;
+    border-top: none;
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  .ant-card-actions > li{
+    border-right: 0;
+  }
+
   :hover {
     transition: all 0.2s ease-out;
     top: -3px;
@@ -60,6 +71,11 @@
     color: $black;
     border: none;
     margin-right: 8px;
+  }
+
+  .tagButton{
+    background: $primary-background;
+    color: white;
   }
 
   .ant-btn:not([disabled]):hover,

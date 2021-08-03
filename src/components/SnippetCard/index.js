@@ -29,10 +29,19 @@ const menu = (
   </Menu>
 );
 
+const tagNames = ['Frontend', 'Web'];
+
+const tags = tagNames.map((tagName) => (
+  <Button className="tagButton" shape="round">
+    {tagName}
+  </Button>
+));
+
 function SnippetCard() {
   return (
     <div className="snippet-container">
       <Card
+        actions={[tags]}
         className="snippet-card"
         extra={
           <>
