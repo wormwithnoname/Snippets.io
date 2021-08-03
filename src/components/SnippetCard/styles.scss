@@ -4,10 +4,9 @@
   top: auto;
   padding-left: 3px;
   border-radius: 16px;
-
-  .snippet-card {
-    font-weight: 600;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .ant-card {
     box-shadow: $card-box-shadow;
@@ -21,22 +20,58 @@
   .ant-card-bordered {
     border: none;
   }
+
   .ant-card-head {
     background-color: $secondary-color;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     font: $raleway;
   }
 
+  a.ant-typography,
+  .ant-typography a {
+    color: $black;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
   .ant-card-extra {
-    font-size: 20px;
-    padding: 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 
   :hover {
     transition: all 0.2s ease-out;
     top: -3px;
+  }
+}
+
+.snippet-card {
+  font-weight: 600;
+
+  .ant-btn {
+    background: #defeca;
+    color: $black;
+    border: none;
+    margin-right: 8px;
+  }
+
+  .ant-btn:not([disabled]):hover,
+  .ant-btn:focus > span,
+  .ant-btn:active > span {
+    transition: none;
+    top: 0;
+  }
+}
+
+.menu-icon {
+  .ant-dropdown-menu-item-icon {
+    max-width: 12px;
   }
 }

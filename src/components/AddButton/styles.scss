@@ -7,7 +7,7 @@
     position: fixed;
     right: 64px;
     bottom: 60px;
-    background: $white-secondary;
+    // background: $white-secondary;
     color: $secondary-color;
     & span {
       font-size: 3em;
@@ -16,8 +16,8 @@
     height: 3em;
 
     :hover {
-      transition: all 0.2s ease-out;
-      top: -3px;
+      transition: all 0.3s ease-out;
+      color: $secondary-background;
     }
   }
 }
