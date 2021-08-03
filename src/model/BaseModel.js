@@ -1,38 +1,48 @@
-import { db, timestamp } from '/services/FirebaseService';
+import { db, timestamp } from '../services/FirebaseService';
 
-function create({collection, data}){
-    return db.collection(collection).add({
-        ..data, 
-        dateCreated:timestamp(),
-        dateUpdated: timestamp(),
-    });
+function create({ collection, data }) {
+  return db.collection(collection).add({
+    ...data,
+    dateCreated: timestamp(),
+    dateUpdated: timestamp(),
+  });
 }
 
-function createOrUpdate({collection,id,data}){
-    return db.collection(collection).
-
+function createOrUpdate({ collection, id, data }) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .set({ ...data, dateCreated: timestamp(), dateUpdated: timestamp() });
 }
 
-function set({collection, data, id}){
-
+function set({ collection, data, id }) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .set({ ...data, dateUpdated: timestamp() });
 }
 
-function update({collection,data,id}){
-
+function update({ collection, data, id }) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .set({ ...data, dateUpdated: timestamp() });
 }
 
-function getOne({collection, id}){
-
+function getOne({ collection, id }) {
+  return db.collection(collection).doc(id).get();
 }
 
-function getAll({collection}){
-
+function getAll({ collection }) {
+  return db.collection(collection).get();
 }
 
-function remove({collection, id}){
-
+function getSome({ collection, ids }) {
+  return db.collection(collection).whereIn('id', ids).get();
 }
 
-export default {create, createOrUpdate, set, update, getOne, getAll, remove
-    
-  }
+function remove({ collection, id }) {
+  return db.collection(collection).doc(id).set(null);
+}
+
+export default { create, createOrUpdate, set, update, getOne, getAll, getSome, remove };
