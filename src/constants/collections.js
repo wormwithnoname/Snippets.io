@@ -1,5 +1,8 @@
 const collections = {
   USERLIST: 'users',
+  USERS: 'user-test',
+  SNIPPETS: 'snippets-test',
+  USERINFO: 'user-info-test',
 };
 
 export const defaultPhoto =
