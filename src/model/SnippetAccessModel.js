@@ -13,17 +13,17 @@ async function create(data) {
     throw new Error('There was an error creating a new User.');
   }
 }
-async function addEditor(snippetId, userId) {
-  // todo: sets snippetID/editors/userID:true
-}
-async function addViewer(snippetId, userId) {
-  // todo: sets snippetID/viewers/userID:true
-}
-async function removeEditor(snippetId, userId) {
-  // todo: removes snippetID/editors/userID
-}
-async function removeViewer(snippetId, userId) {
-  // todo: removed snippetID/viewers/userID
-}
+
+// todo: sets snippetID/editors/userID:true
+async function addEditor(snippetId, userId) {}
+
+// todo: sets snippetID/viewers/userID:true
+async function addViewer(snippetId, userId) {}
+
+// todo: removes snippetID/editors/userID
+async function removeEditor(snippetId, userId) {}
+
+// todo: removed snippetID/viewers/userID
+async function removeViewer(snippetId, userId) {}
 
 export default { create, addEditor, addViewer, removeEditor, removeViewer };
