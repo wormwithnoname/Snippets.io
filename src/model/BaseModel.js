@@ -29,15 +29,15 @@ function update({ collection, data, id }) {
     .set({ ...data, dateUpdated: timestamp() });
 }
 
-function getOne({ collection, id }) {
+async function getOne({ collection, id }) {
   return db.collection(collection).doc(id).get();
 }
 
-function getAll({ collection }) {
+async function getAll({ collection }) {
   return db.collection(collection).get();
 }
 
-function getSome({ collection, ids }) {
+async function getSome({ collection, ids }) {
   return db.collection(collection).whereIn('id', ids).get();
 }
 
