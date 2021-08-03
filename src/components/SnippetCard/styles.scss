@@ -23,8 +23,10 @@
   }
   .ant-card-head {
     background-color: $secondary-color;
-    border-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     font-size: 14px;
+    font-weight: bold;
     font: $raleway;
   }
 

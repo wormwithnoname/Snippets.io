@@ -4,7 +4,7 @@
 
 .tabs {
   width: 100%;
-
+  
   .tabs-head {
     position: absolute;
     top: 5%;
@@ -12,6 +12,9 @@
   }
 
   .tabs-text {
+    .ant-tabs-nav-wrap{
+      overflow: visible;
+    }
     .ant-tabs-nav-list {
       background-color: $secondary-background;
       height: 50px;
@@ -20,6 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      top: 15px;
       :hover {
         color: $secondary-color;
       }

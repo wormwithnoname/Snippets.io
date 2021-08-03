@@ -16,9 +16,9 @@ function SnippetCard() {
         hoverable="true"
         title="Card Title"
       >
-        <Text>content hereeee</Text>
-        <Text>content hereeee</Text>
-        <Text>content hereeee</Text>
+        <Text level={4}>content hereeee</Text>
+        <Text level={4}>content hereeee</Text>
+        <Text level={4}>content hereeee</Text>
       </Card>
     </div>
   );
