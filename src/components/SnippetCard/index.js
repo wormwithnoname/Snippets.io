@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Button, Card, Typography } from 'antd';
 
@@ -17,12 +19,24 @@ const tags = tagNames.map((tagName) => (
 ));
 
 function SnippetCard() {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const onCopyText = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+  };
+
   return (
     <div className="snippet-container">
+      {isCopied && <small>copied</small>}
       <Card actions={[tags]} className="snippet-card" extra={<CardDropdown />} title="Card Title">
-        <Text level={4}>content hereeee</Text>
-        <Text level={4}>content hereeee</Text>
-        <Text level={4}>content hereeee</Text>
+        <CopyToClipboard text={Text} onCopy={onCopyText}>
+          <div value="input">
+            <Text level={4}>content hereeee</Text>
+          </div>
+        </CopyToClipboard>
       </Card>
     </div>
   );
