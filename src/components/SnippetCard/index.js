@@ -28,14 +28,15 @@ function SnippetCard() {
     }, 1000);
   };
 
+  const textInput = 'hakdog';
+  // replace with the data input by the user
+
   return (
     <div className="snippet-container">
       {isCopied && <small>copied</small>}
       <Card actions={[tags]} className="snippet-card" extra={<CardDropdown />} title="Card Title">
-        <CopyToClipboard text={Text} onCopy={onCopyText}>
-          <div value="input">
-            <Text level={4}>content hereeee</Text>
-          </div>
+        <CopyToClipboard text={textInput} onCopy={onCopyText}>
+          <Text> {textInput} </Text>
         </CopyToClipboard>
       </Card>
     </div>
