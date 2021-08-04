@@ -39,14 +39,14 @@
     line-height: 0;
   }
 
-  .ant-card-actions{
+  .ant-card-actions {
     background-color: transparent;
     border-top: none;
     margin-left: auto;
     width: fit-content;
   }
 
-  .ant-card-actions > li{
+  .ant-card-actions > li {
     border-right: 0;
   }
 
@@ -65,16 +65,17 @@
     border: none;
     margin-right: 8px;
   }
-
-  .tagButton{
-    background: $primary-background;
-    color: white;
-  }
-
   .ant-btn:not([disabled]):hover,
   .ant-btn:focus > span,
   .ant-btn:active > span {
     transition: none;
     top: 0;
+  }
+  .tagButton {
+    background: $primary-background;
+    color: white;
+    .ant-card-actions > li > span {
+      position: static;
+    }
   }
 }
