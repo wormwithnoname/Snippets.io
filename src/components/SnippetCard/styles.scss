@@ -39,13 +39,6 @@
     line-height: 0;
   }
 
-  .ant-card-extra {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
   .ant-card-actions{
     background-color: transparent;
     border-top: none;
@@ -83,11 +76,5 @@
   .ant-btn:active > span {
     transition: none;
     top: 0;
-  }
-}
-
-.menu-icon {
-  .ant-dropdown-menu-item-icon {
-    max-width: 12px;
   }
 }
