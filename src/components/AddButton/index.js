@@ -77,6 +77,7 @@ function AddButton() {
           <Option value="Python">Python</Option>
         </Select>
         <br />
+        <br />
         <TextArea
           placeholder="Type your code snippet here"
           autoSize={{ minRows: 10, maxRows: 10 }}
