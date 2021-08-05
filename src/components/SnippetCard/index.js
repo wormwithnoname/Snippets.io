@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { Button, Card, Typography } from 'antd';
+import { Button, Card, message, Typography } from 'antd';
 
 import CardDropdown from 'components/CardDropdown';
 
 import './styles.scss';
 
 const { Text } = Typography;
-
 const tagNames = ['Frontend', 'Web'];
 
 const tags = tagNames.map((tagName) => (
@@ -19,21 +18,15 @@ const tags = tagNames.map((tagName) => (
 ));
 
 function SnippetCard() {
-  const [isCopied, setIsCopied] = useState(false);
+  function onCopyText() {
+    message.success('Copied!');
+  }
 
-  const onCopyText = () => {
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 1000);
-  };
-
-  const textInput = 'hakdog';
+  const textInput = 'Test Data';
   // replace with the data input by the user
 
   return (
     <div className="snippet-container">
-      {isCopied && <small>copied</small>}
       <Card actions={[tags]} className="snippet-card" extra={<CardDropdown />} title="Card Title">
         <CopyToClipboard text={textInput} onCopy={onCopyText}>
           <Text> {textInput} </Text>
