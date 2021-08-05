@@ -54,6 +54,24 @@ function TestButtons() {
       </Button>
       <Button onClick={() => UserModel.remove('userid1')}>Remove user</Button>
       <Button onClick={() => console.log(UserModel.get('userid1'))}>get user</Button>
+      <Button onClick={() => UserModel.addOwnedSnippetId('userid1', 'snippetid3')}>
+        add owned snippet id
+      </Button>
+      <Button onClick={() => UserModel.addEditableSnippetId('userid1', 'snippetid3')}>
+        aadd editable snippet id
+      </Button>
+      <Button onClick={() => UserModel.addViewableSnippetId('userid1', 'snippetid3')}>
+        add viewable snippet id
+      </Button>
+      <Button onClick={() => UserModel.removeOwnedSnippetId('userid1', 'snippetid3')}>
+        remove owned snippet id
+      </Button>
+      <Button onClick={() => UserModel.removeEditableSnippetId('userid1', 'snippetid3')}>
+        remove editable snippet id
+      </Button>
+      <Button onClick={() => UserModel.removeViewableSnippetId('userid1', 'snippetid3')}>
+        remove viewable snippet id
+      </Button>
     </Grid>
   );
 }
