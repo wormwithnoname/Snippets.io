@@ -1,29 +1,53 @@
 /* eslint-disable no-console */
-import collections from '../constants/collections';
 import BaseModel from './BaseModel';
+import collections from '../constants/collections';
 
 const collection = collections.SNIPPETACCESS;
 
 async function create(data) {
   try {
-    const etc = {};
-    const customizedData = { ...data, ...etc };
-    return BaseModel.create({ collection, data: customizedData });
+    return BaseModel.create({ collection, data });
   } catch (error) {
-    throw new Error('There was an error creating a new User.');
+    throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
 
 // todo: sets snippetID/editors/userID:true
-async function addEditor(snippetId, userId) {}
+async function addEditor(snippetId, userId) {
+  try {
+    const data = ['editors', { [userId]: true }];
+    return await BaseModel.update({ collection, data, id: snippetId });
+  } catch (error) {
+    throw new Error(`There was an error creating a new User. ${error}`);
+  }
+}
 
 // todo: sets snippetID/viewers/userID:true
-async function addViewer(snippetId, userId) {}
+async function addViewer(snippetId, userId) {
+  try {
+    const data = ['viewers', { [userId]: true }];
+    return BaseModel.update({ collection, data, id: snippetId });
+  } catch (error) {
+    throw new Error(`There was an error creating a new User. ${error}`);
+  }
+}
 
 // todo: removes snippetID/editors/userID
-async function removeEditor(snippetId, userId) {}
+async function removeEditor(snippetId, userId) {
+  try {
+    return BaseModel.deleteField({ collection, key: `editors.${userId}`, id: snippetId });
+  } catch (error) {
+    throw new Error(`There was an error creating a new User. ${error}`);
+  }
+}
 
 // todo: removed snippetID/viewers/userID
-async function removeViewer(snippetId, userId) {}
+async function removeViewer(snippetId, userId) {
+  try {
+    return BaseModel.deleteField({ collection, key: `viewers.${userId}`, id: snippetId });
+  } catch (error) {
+    throw new Error(`There was an error creating a new User. ${error}`);
+  }
+}
 
 export default { create, addEditor, addViewer, removeEditor, removeViewer };
