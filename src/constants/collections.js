@@ -2,7 +2,7 @@ const collections = {
   USERLIST: 'users',
   USERS: 'user-test',
   SNIPPETS: 'snippets-test',
-  SNIPPETACCESS: 'snippets-access-test',
+  SNIPPETACCESS: 'snippets-access',
   USERINFO: 'user-info-test',
 };
 
