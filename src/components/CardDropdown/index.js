@@ -1,42 +1,48 @@
 import React from 'react';
 
-import { Button, Dropdown, Menu, message, Typography } from 'antd';
+import { Select, Typography } from 'antd';
 import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
-
-import CIcon from 'assets/img/c_icon.svg';
-import JavaScriptIcon from 'assets/img/javascript_icon.svg';
-import PythonIcon from 'assets/img/python_icon.svg';
 
 import './styles.scss';
 
 const { Link } = Typography;
+const { Option } = Select;
 
-function handleMenuClick() {
-  message.info('Click on menu item.');
+function onChange(value) {
+  console.log(`selected ${value}`);
 }
 
-const menu = (
-  <Menu className="menu-icon" onClick={handleMenuClick}>
-    <Menu.Item key="1" icon={<img alt="Python" src={PythonIcon} />}>
-      Python
-    </Menu.Item>
-    <Menu.Item key="2" icon={<img alt="JavaScript" src={JavaScriptIcon} />}>
-      JavaScript
-    </Menu.Item>
-    <Menu.Item key="3" icon={<img alt="C" src={CIcon} />}>
-      C++
-    </Menu.Item>
-  </Menu>
-);
+function onBlur() {
+  console.log('blur');
+}
+
+function onFocus() {
+  console.log('focus');
+}
+
+function onSearch(val) {
+  console.log('search:', val);
+}
 
 function CardDropdown() {
   return (
     <>
-      <Dropdown overlay={menu}>
-        <Button shape="round" className="extra-button">
-          Language <DownOutlined />
-        </Button>
-      </Dropdown>
+      <Select
+        showSearch
+        style={{ width: 150 }}
+        placeholder="Language"
+        optionFilterProp="children"
+        onChange={onChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onSearch={onSearch}
+        suffixIcon={<DownOutlined />}
+        filterOption={(input, option) => option.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+      >
+        <Option value="C">C</Option>
+        <Option value="C++">C++</Option>
+        <Option value="Python">Python</Option>
+      </Select>
       <Link classname="snippet-ellipsis" href="/">
         <EllipsisOutlined />
       </Link>
