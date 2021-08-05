@@ -5,6 +5,7 @@ import { Button } from 'antd';
 import Grid from 'antd/lib/card/Grid';
 import './styles.scss';
 import SnippetAccessModel from '../../model/SnippetAccessModel';
+import SnippetModel from '../../model/SnippetModel';
 import UserInfoModel from '../../model/UserInfoModel';
 import UserModel from '../../model/UserModel';
 import Templates from '../../model/Objects/templates';
@@ -72,6 +73,30 @@ function TestButtons() {
       <Button onClick={() => UserModel.removeViewableSnippetId('userid1', 'snippetid3')}>
         remove viewable snippet id
       </Button>
+      Snippets
+      <Button onClick={() => SnippetModel.create(['snippetid3', Templates.Snippet])}>
+        create snippet
+      </Button>
+      <Button
+        onClick={() =>
+          SnippetModel.update(
+            ['snippetid3', { ...Templates.Snippet, title: 'snippet lolol' }],
+            'snippetid3',
+          )
+        }
+      >
+        update snippet
+      </Button>
+      <Button onClick={() => SnippetModel.getByIDs(['snippetid1'])}>get snippets by id</Button>
+      <Button onClick={() => SnippetModel.remove('snippetid1')}>remove snippet</Button>
+      <Button onClick={() => SnippetModel.addTag('snippetid3', 'data structures')}>add tags</Button>
+      <Button onClick={() => SnippetModel.removeTag('userid1', 'data structures')}>
+        remove tag
+      </Button>
+      <Button onClick={() => SnippetModel.addCode('snippetid3', 'python', 'list.sort()')}>
+        add code
+      </Button>
+      <Button onClick={() => SnippetModel.removeCode('snippetid3', 'python3')}>remove code</Button>
     </Grid>
   );
 }

@@ -8,6 +8,8 @@ const SnippetAccess = {
     userid1: true,
     userid2: true,
   },
+  dateUpdated: null,
+  dateCreated: null,
 };
 
 const User = {
@@ -24,6 +26,8 @@ const User = {
     snippetid1: true,
     snippetid2: true,
   },
+  dateUpdated: null,
+  dateCreated: null,
 };
 
 const UserInfo = {
@@ -31,6 +35,8 @@ const UserInfo = {
   photoURL: 'https://johndoe.com',
   id: 'userid1',
   userName: 'JohnDoe#1356',
+  dateUpdated: null,
+  dateCreated: null,
 };
 
 const Snippet = {
@@ -43,5 +49,7 @@ const Snippet = {
   content: {
     python: 'list.sort()',
   },
+  dateUpdated: null,
+  dateCreated: null,
 };
 export default { SnippetAccess, User, UserInfo, Snippet };
