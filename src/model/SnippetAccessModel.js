@@ -4,7 +4,7 @@ import collections from '../constants/collections';
 
 const collection = collections.SNIPPETACCESS;
 
-async function create(data) {
+function create(data) {
   try {
     return BaseModel.create({ collection, data });
   } catch (error) {
@@ -13,10 +13,10 @@ async function create(data) {
 }
 
 // todo: sets snippetID/editors/userID:true
-async function addEditor(snippetId, userId) {
+function addEditor(snippetId, userId) {
   try {
     const data = ['editors', { [userId]: true }];
-    return await BaseModel.update({ collection, data, id: snippetId });
+    return BaseModel.update({ collection, data, id: snippetId });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
@@ -33,7 +33,7 @@ async function addViewer(snippetId, userId) {
 }
 
 // todo: removes snippetID/editors/userID
-async function removeEditor(snippetId, userId) {
+function removeEditor(snippetId, userId) {
   try {
     return BaseModel.deleteField({ collection, key: `editors.${userId}`, id: snippetId });
   } catch (error) {
@@ -42,7 +42,7 @@ async function removeEditor(snippetId, userId) {
 }
 
 // todo: removed snippetID/viewers/userID
-async function removeViewer(snippetId, userId) {
+function removeViewer(snippetId, userId) {
   try {
     return BaseModel.deleteField({ collection, key: `viewers.${userId}`, id: snippetId });
   } catch (error) {
