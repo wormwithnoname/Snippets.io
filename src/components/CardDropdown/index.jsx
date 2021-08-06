@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { Select, Typography } from 'antd';
+import { Dropdown, Menu, Select, Space } from 'antd';
 import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
 
 import './styles.scss';
 
-const { Link } = Typography;
 const { Option } = Select;
+
+const menu = (
+  <Menu>
+    <Menu.Item key="1">Edit</Menu.Item>
+    <Menu.Item key="2">Add to Folder</Menu.Item>
+    <Menu.Item key="3">Delete</Menu.Item>
+  </Menu>
+);
 
 function onChange(value) {
   console.log(`selected ${value}`);
@@ -26,7 +33,7 @@ function onSearch(val) {
 
 function CardDropdown() {
   return (
-    <>
+    <Space>
       <Select
         showSearch
         style={{ width: 150 }}
@@ -43,10 +50,10 @@ function CardDropdown() {
         <Option value="C++">C++</Option>
         <Option value="Python">Python</Option>
       </Select>
-      <Link classname="snippet-ellipsis" href="/">
+      <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
-      </Link>
-    </>
+      </Dropdown>
+    </Space>
   );
 }
 export default CardDropdown;

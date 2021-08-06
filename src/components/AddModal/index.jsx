@@ -1,6 +1,10 @@
 import React from 'react';
+import AceEditor from 'react-ace';
 
 import { Button, Divider, Form, Input, Modal, Select } from 'antd';
+
+import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 import './styles.scss';
 
@@ -57,7 +61,22 @@ function AddModal({ handleCancel, isModalVisible }) {
       </Select>
       <br />
       <br />
-      <TextArea autoSize={{ minRows: 10, maxRows: 10 }} placeholder="Type your code snippet here" />
+      <AceEditor
+        placeholder="Type your code snippet here"
+        mode="css"
+        theme="monokai"
+        onChange={onChange}
+        name="code_snippet"
+        fontSize={14}
+        editorProps={{ $blockScrolling: true }}
+        setOptions={{
+          enableBasicAutocompletion: true,
+          enableLiveAutocompletion: true,
+          enableSnippets: true,
+          showLineNumbers: true,
+          tabSize: 2,
+        }}
+      />
       <br />
       <br />
       <TextArea autoSize={{ minRows: 5, maxRows: 5 }} placeholder="Type description" />
