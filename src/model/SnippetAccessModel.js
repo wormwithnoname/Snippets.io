@@ -31,7 +31,13 @@ async function addViewer(snippetId, userId) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
-
+function update(data, id) {
+  try {
+    return BaseModel.set({ collection, data, id });
+  } catch (error) {
+    throw new Error(`There was an error updating Snippet Access. ${error}`);
+  }
+}
 // todo: removes snippetID/editors/userID
 function removeEditor(snippetId, userId) {
   try {
@@ -50,4 +56,12 @@ function removeViewer(snippetId, userId) {
   }
 }
 
-export default { create, addEditor, addViewer, removeEditor, removeViewer };
+function remove(id) {
+  try {
+    return BaseModel.remove({ collection, id });
+  } catch (error) {
+    throw new Error(`There was an error deleting the Snippet. ${error}`);
+  }
+}
+
+export default { create, addEditor, addViewer, update, removeEditor, removeViewer, remove };
