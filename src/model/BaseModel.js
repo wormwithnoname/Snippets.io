@@ -20,7 +20,7 @@ function set({ collection, data, id }) {
   return db
     .collection(collection)
     .doc(id)
-    .set({ ...data, dateUpdated: timestamp() });
+    .set({ ...data, dateUpdated: timestamp() }, { merge: true });
 }
 
 async function update({ collection, data, id }) {
@@ -28,7 +28,7 @@ async function update({ collection, data, id }) {
   return db
     .collection(collection)
     .doc(id)
-    .update({ [key]: value });
+    .set({ [key]: value }, { merge: true });
 }
 
 async function deleteField({ collection, key, id }) {
