@@ -1,0 +1,39 @@
+@import '../../utils/variables.scss';
+
+.modal {
+  color: $black;
+  .ant-modal-content {
+    background-color: $modal-color;
+    height: max-content;
+  }
+
+  .ant-modal-header {
+    background-color: $modal-color;
+  }
+
+  .ant-input-lg {
+    font-size: 22px;
+    color: $black;
+  }
+
+  .ant-btn-primary {
+    color: #fff;
+    background: $secondary-background;
+    border-color: $secondary-background;
+  }
+}
+
+.modal-tags {
+  .ant-select-selection-placeholder {
+    color: $black;
+    font-weight: 600;
+  }
+  .ant-select-selection-item {
+    background: $secondary-color;
+    border: none;
+    color: $black;
+  }
+}
+
+.modal-button {
+}
