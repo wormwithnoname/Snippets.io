@@ -29,6 +29,7 @@ function AddModal({ handleCancel, isModalVisible }) {
   return (
     <Modal
       className="modal"
+      destroyOnClose="true"
       footer={null}
       onCancel={handleCancel}
       visible={isModalVisible}
