@@ -15,7 +15,7 @@ function create(data) {
 
 function update(data, id) {
   try {
-    return BaseModel.update({ collection, data, id });
+    return BaseModel.set({ collection, data, id });
   } catch (error) {
     throw new Error(`There was an error updating Snippet. ${error}`);
   }
@@ -31,7 +31,7 @@ async function getByIDs(ids) {
 
 function remove(id) {
   try {
-    return BaseModel.remove(collection, id);
+    return BaseModel.remove({ collection, id });
   } catch (error) {
     throw new Error(`There was an error deleting the Snippet. ${error}`);
   }
@@ -39,7 +39,8 @@ function remove(id) {
 
 function addTag(id, tag) {
   try {
-    return BaseModel.add(collection, id, ['tags', tag]);
+    const data = { a: 'tags', b: tag };
+    return BaseModel.add({ collection, id, data });
   } catch (error) {
     throw new Error(`There was an error adding the tag. ${error}`);
   }
@@ -47,7 +48,8 @@ function addTag(id, tag) {
 
 function removeTag(id, tag) {
   try {
-    return BaseModel.subtract(collection, id, ['tags', tag]);
+    const data = { a: 'tags', b: tag };
+    return BaseModel.subtract({ collection, id, data });
   } catch (error) {
     throw new Error(`There was an error adding the tag. ${error}`);
   }
