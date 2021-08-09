@@ -1,11 +1,9 @@
 import React from 'react';
 
-import { Dropdown, Menu, Select, Space } from 'antd';
-import { DownOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Dropdown, Menu, Tag, Space } from 'antd';
+import { EllipsisOutlined } from '@ant-design/icons';
 
 import './styles.scss';
-
-const { Option } = Select;
 
 const menu = (
   <Menu>
@@ -15,41 +13,12 @@ const menu = (
   </Menu>
 );
 
-function onChange(value) {
-  console.log(`selected ${value}`);
-}
-
-function onBlur() {
-  console.log('blur');
-}
-
-function onFocus() {
-  console.log('focus');
-}
-
-function onSearch(val) {
-  console.log('search:', val);
-}
-
 function CardDropdown() {
   return (
-    <Space>
-      <Select
-        showSearch
-        style={{ width: 150 }}
-        placeholder="Language"
-        optionFilterProp="children"
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onSearch={onSearch}
-        suffixIcon={<DownOutlined />}
-        filterOption={(input, option) => option.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-      >
-        <Option value="C">C</Option>
-        <Option value="C++">C++</Option>
-        <Option value="Python">Python</Option>
-      </Select>
+    <Space className="dropdown">
+      <Tag className="ant-tag" color="#f50">
+        Language
+      </Tag>
       <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
       </Dropdown>

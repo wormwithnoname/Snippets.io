@@ -12,8 +12,8 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 function AddModal({ handleCancel, isModalVisible }) {
-  function handleChange(value) {
-    console.log(`selected ${value}`);
+  function handleChange(tag) {
+    console.log(`selected ${tag}`);
   }
   function onChange(value) {
     console.log(`selected ${value}`);
@@ -40,12 +40,12 @@ function AddModal({ handleCancel, isModalVisible }) {
       width={800}
     >
       <Form size="large">
-        <Input bordered={false} placeholder="Title" />
+        <Input className="ant-input" bordered={false} placeholder="Title" />
       </Form>
       <Divider />
       <Select
+        className="ant-select"
         bordered={false}
-        filterOption={(input, option) => option.toLowerCase().indexOf(input.toLowerCase()) >= 0}
         onChange={onChange}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -53,11 +53,16 @@ function AddModal({ handleCancel, isModalVisible }) {
         optionFilterProp="children"
         placeholder="Select Language"
         showSearch
-        style={{ width: 200 }}
       >
-        <Option value="C">C</Option>
-        <Option value="C++">C++</Option>
-        <Option value="Python">Python</Option>
+        <Option value="c">C</Option>
+        <Option value="c++">C++</Option>
+        <Option value="c#">C#</Option>
+        <Option value="css">CSS</Option>
+        <Option value="java">Java</Option>
+        <Option value="javascript">Javascript</Option>
+        <Option value="php">PHP</Option>
+        <Option value="python">Python</Option>
+        <Option value="typescript">Typescript</Option>
       </Select>
       <br />
       <br />
@@ -79,7 +84,11 @@ function AddModal({ handleCancel, isModalVisible }) {
       />
       <br />
       <br />
-      <TextArea autoSize={{ minRows: 5, maxRows: 5 }} placeholder="Type description" />
+      <TextArea
+        className="ant-input ant-select-selector"
+        autoSize={{ minRows: 5, maxRows: 5 }}
+        placeholder="Type description"
+      />
       <br />
       <br />
       <Select
@@ -98,7 +107,7 @@ function AddModal({ handleCancel, isModalVisible }) {
       </Select>
       <br />
       <br />
-      <Button className="modal-button" size="large" type="primary">
+      <Button className="ant-btn" size="large" type="primary">
         Submit
       </Button>
     </Modal>

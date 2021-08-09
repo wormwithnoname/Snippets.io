@@ -1,39 +1,63 @@
 @import '../../utils/variables.scss';
 
 .modal {
-  color: $black;
+
   .ant-modal-content {
     background-color: $modal-color;
     height: max-content;
+    border-radius: 16px;
   }
 
   .ant-modal-header {
-    background-color: $modal-color;
+    background-color: $secondary-background;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  textarea.ant-input {
+    background-color: #272822;
+    font-family: $ibm-plex-mono;
+    color: #fff;
   }
 
   .ant-input-lg {
     font-size: 22px;
-    color: $black;
+    background-color: $modal-color;
+  }
+
+  .ant-select {
+    width: 200px;
+    background-color: $secondary-color;
+    border-radius: 15px;
+    align-content: flex-end;
+
+    .ant-select-selection-placeholder {
+      color: $black;
+    }
   }
 
   .ant-btn-primary {
     color: #fff;
     background: $secondary-background;
     border-color: $secondary-background;
+    margin-left: 500px;
+    border-radius: 20px;
   }
-}
 
-.modal-tags {
-  .ant-select-selection-placeholder {
-    color: $black;
-    font-weight: 600;
-  }
-  .ant-select-selection-item {
-    background: $secondary-color;
-    border: none;
-    color: $black;
-  }
-}
+  .modal-tags {
+    margin-left: 500px;
 
-.modal-button {
+    .ant-select-selection-overflow{
+      align-content: flex-end;
+    }
+    .ant-select-selection-placeholder {
+      color: $black;
+      font-weight: 600;
+    }
+    .ant-select-selection-item {
+      background: $secondary-color;
+      border: none;
+      color: $black;
+    }
+  }  
 }

@@ -1,12 +1,23 @@
-.menu-icon {
-  .ant-dropdown-menu-item-icon {
-    max-width: 12px;
-  }
-}
+@import '../../utils/variables.scss';
 
-.ant-card-extra {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.dropdown {
+
+  .ant-tag {
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+  }
+
+  .menu-icon {
+    .ant-dropdown-menu-item-icon {
+      max-width: 12px;
+    }
+  }
+  
+  .ant-card-extra {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
