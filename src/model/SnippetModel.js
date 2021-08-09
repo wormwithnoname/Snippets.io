@@ -23,9 +23,23 @@ function update(data, id) {
 
 async function getByIDs(ids) {
   try {
-    return BaseModel.getSome({ collection, ids });
+    return await BaseModel.getSome({ collection, ids });
   } catch (error) {
     throw new Error(`There was an error getting the Snippets. ${error}`);
+  }
+}
+async function get(id) {
+  try {
+    return await BaseModel.getOne({ collection, id });
+  } catch (error) {
+    throw new Error(`There was an error getting the Snippet. ${error}`);
+  }
+}
+async function getAll() {
+  try {
+    return await BaseModel.getAll({ collection });
+  } catch (error) {
+    throw new Error(`There was an error getting the Snippet. ${error}`);
   }
 }
 
@@ -75,7 +89,9 @@ function removeCode(id, language) {
 export default {
   create,
   update,
+  get,
   getByIDs,
+  getAll,
   remove,
   addTag,
   removeTag,

@@ -11,7 +11,13 @@ function create(data) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
-
+async function get(snippetId) {
+  try {
+    return await BaseModel.getOne({ collection, id: snippetId });
+  } catch (error) {
+    throw new Error(`There was an error getting User. ${error}`);
+  }
+}
 // todo: sets snippetID/editors/userID:true
 function addEditor(snippetId, userId) {
   try {
@@ -64,4 +70,4 @@ function remove(id) {
   }
 }
 
-export default { create, addEditor, addViewer, update, removeEditor, removeViewer, remove };
+export default { create, get, addEditor, addViewer, update, removeEditor, removeViewer, remove };

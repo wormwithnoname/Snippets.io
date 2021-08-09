@@ -55,15 +55,15 @@ function subtract({ collection, id, data }) {
 }
 
 async function getOne({ collection, id }) {
-  return db.collection(collection).doc(id).get();
+  return (await db.collection(collection).doc(id).get()).data();
 }
 
 async function getAll({ collection }) {
-  return db.collection(collection).get();
+  return db.collection(collection).doc().get();
 }
 
 async function getSome({ collection, ids }) {
-  return db.collection(collection).whereIn('id', ids).get();
+  return Promise.all(ids.map((id) => getOne({ collection, id })));
 }
 
 function remove({ collection, id }) {
