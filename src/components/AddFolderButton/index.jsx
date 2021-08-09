@@ -19,9 +19,9 @@ function AddFolderButton() {
       <Button
         className="dashboard-folder-button"
         icon={<FolderAddFilled />}
+        onClick={() => setIsAddFolderModalVisible(true)}
         size="large"
         shape="round"
-        onClick={() => setIsAddFolderModalVisible(true)}
       />
     </>
   );
