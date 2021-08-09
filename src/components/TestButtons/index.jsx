@@ -83,7 +83,7 @@ function TestButtons() {
         get snippet
       </Button>
       <Button onClick={async () => console.log(await SnippetModel.getByIDs(['snippetid3']))}>
-        get by IDss
+        get snippets
       </Button>
       <Button onClick={async () => console.log(await SnippetModel.getAll())}>
         get all snippets

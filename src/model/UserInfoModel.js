@@ -2,7 +2,7 @@
 import collections from '../constants/collections';
 import BaseModel from './BaseModel';
 
-const collection = collections.USERINFO;
+const collection = collections.USER_INFO;
 
 function create(data) {
   try {

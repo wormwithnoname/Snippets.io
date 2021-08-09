@@ -2,7 +2,7 @@
 import BaseModel from './BaseModel';
 import collections from '../constants/collections';
 
-const collection = collections.SNIPPETACCESS;
+const collection = collections.SNIPPET_ACCESS;
 
 function create(data) {
   try {
