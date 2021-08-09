@@ -8,7 +8,6 @@ import 'ace-builds/src-noconflict/theme-monokai';
 
 import './styles.scss';
 
-const { Option } = Select;
 const { TextArea } = Input;
 
 function AddModal({ handleCancel, isModalVisible }) {
@@ -17,18 +16,6 @@ function AddModal({ handleCancel, isModalVisible }) {
   }
   function onChange(value) {
     console.log(`selected ${value}`);
-  }
-
-  function onBlur() {
-    console.log('blur');
-  }
-
-  function onFocus() {
-    console.log('focus');
-  }
-
-  function onSearch(val) {
-    console.log('search:', val);
   }
   return (
     <Modal
@@ -43,37 +30,16 @@ function AddModal({ handleCancel, isModalVisible }) {
         <Input className="ant-input" bordered={false} placeholder="Title" />
       </Form>
       <Divider />
-      <Select
-        className="ant-select"
-        bordered={false}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onSearch={onSearch}
-        optionFilterProp="children"
-        placeholder="Select Language"
-        showSearch
-      >
-        <Option value="c">C</Option>
-        <Option value="c++">C++</Option>
-        <Option value="c#">C#</Option>
-        <Option value="css">CSS</Option>
-        <Option value="java">Java</Option>
-        <Option value="javascript">Javascript</Option>
-        <Option value="php">PHP</Option>
-        <Option value="python">Python</Option>
-        <Option value="typescript">Typescript</Option>
-      </Select>
-      <br />
       <br />
       <AceEditor
-        placeholder="Type your code snippet here"
+        editorProps={{ $blockScrolling: true }}
+        fontSize={14}
         mode="css"
+        name="code_snippet"
+        placeholder="Type your code snippet here"
         theme="monokai"
         onChange={onChange}
-        name="code_snippet"
-        fontSize={14}
-        editorProps={{ $blockScrolling: true }}
+        style={{ width: '100%' }}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
@@ -85,8 +51,8 @@ function AddModal({ handleCancel, isModalVisible }) {
       <br />
       <br />
       <TextArea
-        className="ant-input ant-select-selector"
         autoSize={{ minRows: 5, maxRows: 5 }}
+        className="ant-input ant-select-selector"
         placeholder="Type description"
       />
       <br />
@@ -99,12 +65,7 @@ function AddModal({ handleCancel, isModalVisible }) {
         onChange={handleChange}
         placeholder="Add #TAG"
         size="middle"
-        style={{ width: 200 }}
-      >
-        {/* <Option value="1">Tag 1</Option>
-        <Option value="2">Tag 2</Option>
-        <Option value="3">Tag 3</Option> */}
-      </Select>
+      />
       <br />
       <br />
       <Button className="ant-btn" size="large" type="primary">
