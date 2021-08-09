@@ -1,9 +1,6 @@
 import firebase from 'firebase';
-import { db } from '../services/FirebaseService';
+import { db, timestamp } from '../services/FirebaseService';
 
-function timestamp() {
-  return firebase.firestore.FieldValue.serverTimestamp();
-}
 function create({ collection, data }) {
   const [key, value] = Object.values(data);
   return db
