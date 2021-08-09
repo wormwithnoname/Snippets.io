@@ -27,8 +27,11 @@ function TestButtons() {
       <Button onClick={() => SnippetAccessModel.addViewer('snippetid1', 'user33')}>
         add viewer to Snippet2
       </Button>
-      <Button onClick={() => SnippetAccessModel.removeEditor('snippetid1', 'user32')}>
+      <Button onClick={() => SnippetAccessModel.removeEditor('snippetid', 'user32')}>
         remove editor from Snippet
+      </Button>
+      <Button onClick={async () => console.log(await SnippetAccessModel.get('snippetid1'))}>
+        get snippet
       </Button>
       <Button onClick={() => SnippetAccessModel.removeViewer('snippetid1', 'user32')}>
         remove viewer from Snippet
@@ -43,13 +46,15 @@ function TestButtons() {
       <Button onClick={() => UserInfoModel.update({ displayName: 'Jan Doe' }, 'userid1')}>
         Update user info
       </Button>
-      <Button onClick={() => console.log(UserInfoModel.get('userid1'))}>Get user info</Button>
+      <Button onClick={async () => console.log(await UserInfoModel.get('userid1'))}>
+        Get user info
+      </Button>
       <div>User</div>
       <br />
       <Button onClick={() => UserModel.create(['userid1', Templates.User])}>Create user</Button>
       <Button onClick={() => UserModel.update({ id: 'trolololol' }, 'userid1')}>Update user</Button>
       <Button onClick={() => UserModel.remove('userid1')}>Remove user</Button>
-      <Button onClick={() => console.log(UserModel.get('userid1'))}>get user</Button>
+      <Button onClick={async () => console.log(await UserModel.get('userid1'))}>get user</Button>
       <Button onClick={() => UserModel.addOwnedSnippetId('userid1', 'snippetid3')}>
         add owned snippet id
       </Button>
@@ -74,10 +79,21 @@ function TestButtons() {
       <Button onClick={() => SnippetModel.create(['snippetid3', Templates.Snippet])}>
         create snippet
       </Button>
+      <Button onClick={async () => console.log(await SnippetModel.get('snippetid3'))}>
+        get snippet
+      </Button>
+      <Button onClick={async () => console.log(await SnippetModel.getByIDs(['snippetid3']))}>
+        get by IDss
+      </Button>
+      <Button onClick={async () => console.log(await SnippetModel.getAll())}>
+        get all snippets
+      </Button>
       <Button onClick={() => SnippetModel.update({ title: 'snippet lolol' }, 'snippetid3')}>
         update snippet
       </Button>
-      <Button onClick={() => SnippetModel.getByIDs(['snippetid3'])}>get snippets by id</Button>
+      <Button onClick={async () => SnippetModel.getByIDs(['snippetid3'])}>
+        get snippets by id
+      </Button>
       <Button onClick={() => SnippetModel.remove('snippetid3')}>remove snippet</Button>
       <Button onClick={() => SnippetModel.addTag('snippetid3', 'data structuresasdf')}>
         add tags
