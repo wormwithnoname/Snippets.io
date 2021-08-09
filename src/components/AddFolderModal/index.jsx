@@ -20,7 +20,7 @@ function AddFolderModal({ handleCancel, isModalVisible }) {
       </Form>
       <br />
       <Button className="modal-button" size="large" type="primary">
-        Submit
+        Add
       </Button>
     </Modal>
   );
