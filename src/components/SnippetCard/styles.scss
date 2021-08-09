@@ -79,3 +79,39 @@
     }
   }
 }
+
+.snippet-view {
+  .ant-btn,
+  .ant-btn:active,
+  .ant-btn:focus {
+    background-color: $white-secondary;
+  }
+  .ant-modal-content {
+    background-color: $white;
+    height: max-content;
+    border-radius: 16px;
+  }
+
+  .ant-modal-header {
+    background-color: $secondary-color;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  .ant-input-lg {
+    font-size: 22px;
+    color: $black;
+  }
+}
+
+.modal-tags {
+  .ant-select-selection-placeholder {
+    color: $black;
+    font-weight: 600;
+  }
+  .ant-select-selection-item {
+    background: $secondary-color;
+    border: none;
+    color: $black;
+  }
+}
