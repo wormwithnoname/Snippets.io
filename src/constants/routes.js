@@ -1,4 +1,5 @@
 const routes = {
+  ADDSNIPPET: '/add-snippet',
   LOGIN: '/login',
   SIGNUP: '/signup',
   ROOT: '/',

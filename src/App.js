@@ -9,6 +9,7 @@ import { AuthProvider } from 'contexts/AuthProvider';
 import PrivateRoute from 'components/PrivateRoute';
 import routes from 'constants/routes';
 
+const Addsnippet = lazy(() => import('pages/Add-Snippet'));
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));
 const Dashboard = lazy(() => import('pages/Dashboard'));
@@ -26,6 +27,7 @@ function App() {
         >
           <Switch>
             <PrivateRoute exact path={routes.ROOT} component={Dashboard} />
+            <PrivateRoute exact path={routes.ADDSNIPPET} component={Addsnippet} />
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
             <Redirect to={routes.LOGIN} />

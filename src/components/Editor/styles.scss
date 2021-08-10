@@ -1,13 +1,40 @@
 @import '../../utils/variables.scss';
 
 .editor {
+  border-color: $secondary-background;
   .ant-select {
     width: 30%;
     border-radius: 15px;
-    background-color: $secondary-background;
+    background-color: #272822;
 
     .ant-select-selection-placeholder {
-      color: $black;
+      color: $white-primary;
     }
+
+  }
+
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    background-color: #272822;
+    border-color: $white-primary;
+    color: $white-primary;
+  }
+
+  .ant-select-arrow {
+    color: $white-primary;
   }
 }
+
+.ace-editor-card{
+  margin: 0;
+  padding: 0;
+  border: 1px solid $white-primary;
+
+
+  .ant-card-body{
+    margin: 0;
+    padding: 0;
+    
+  }
+}
+
+

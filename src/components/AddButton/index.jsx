@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Button } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 
-import AddModal from 'components/AddModal';
-
 import './styles.scss';
+import routes from 'constants/routes';
+import { useHistory } from 'react-router-dom';
 
 function AddButton() {
-  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
+  const history = useHistory();
+  async function redirectPage() {
+    history.push(routes.ADDSNIPPET);
+  }
+
   return (
     <>
-      <AddModal
-        isModalVisible={isAddModalVisible}
-        handleCancel={() => setIsAddModalVisible(false)}
-      />
       <div className="add-button">
         <Button
           className="dashboard-add-button"
           icon={<PlusCircleFilled />}
           size="large"
           shape="round"
-          onClick={setIsAddModalVisible}
+          onClick={redirectPage}
         />
       </div>
     </>

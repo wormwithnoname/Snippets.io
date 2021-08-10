@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import collections, { defaultPhoto } from 'constants/collections';
+import collections, { defaultPhoto } from 'constants/firestore';
 import { auth, db, googleProvider } from 'services/FirebaseService';
 
 export const AuthContext = React.createContext();

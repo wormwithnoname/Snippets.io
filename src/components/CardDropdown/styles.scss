@@ -21,3 +21,15 @@
     align-items: center;
   }
 }
+
+.ant-modal-content {
+  background-color: $modal-color;
+  height: max-content;
+  border-radius: 16px;
+}
+
+.ant-modal-header {
+  background-color: $secondary-background;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}

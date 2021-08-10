@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AceEditor from 'react-ace';
 
-import { Select } from 'antd';
+import { Card, Select } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -34,13 +34,12 @@ function Editor() {
     <div className="editor">
       <Select
         className="ant-select"
-        bordered={false}
         onChange={onLanguageChange}
         optionFilterProp="children"
         placeholder="Select Language"
         showSearch
       >
-        <Option value="c">C/C++</Option>
+        <Option value="c_cpp">C/C++</Option>
         <Option value="c#">C#</Option>
         <Option value="css">CSS</Option>
         <Option value="dart">Dart</Option>
@@ -54,23 +53,26 @@ function Editor() {
       </Select>
       <br />
       <br />
-      <AceEditor
-        editorProps={{ $blockScrolling: true }}
-        fontSize={14}
-        mode={isLanguage}
-        name="code_snippet"
-        placeholder="Type your code snippet here"
-        theme="monokai"
-        onChange={onChange}
-        style={{ width: '100%' }}
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: true,
-          enableSnippets: true,
-          showLineNumbers: true,
-          tabSize: 2,
-        }}
-      />
+      <Card className="ace-editor-card">
+        <AceEditor
+          editorProps={{ $blockScrolling: true }}
+          fontSize={18}
+          mode={isLanguage}
+          name="code_snippet"
+          placeholder="Type your code snippet here"
+          theme="monokai"
+          onChange={onChange}
+          showPrintMargin={false}
+          style={{ border: 'none', width: '100%' }}
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true,
+            showLineNumbers: true,
+            tabSize: 2,
+          }}
+        />
+      </Card>
     </div>
   );
 }
