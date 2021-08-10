@@ -4,7 +4,7 @@ import BaseModel from './BaseModel';
 
 const collection = collections.USERS;
 
-function create(key, value) {
+function createUser(key, value) {
   try {
     return BaseModel.create({ collection, key, value });
   } catch (error) {
@@ -12,7 +12,7 @@ function create(key, value) {
   }
 }
 
-function update(data, docId) {
+function updateUser(data, docId) {
   try {
     return BaseModel.set({ collection, docId, data });
   } catch (error) {
@@ -20,7 +20,7 @@ function update(data, docId) {
   }
 }
 
-function remove(docId) {
+function removeUser(docId) {
   try {
     return BaseModel.remove({ collection, docId });
   } catch (error) {
@@ -29,7 +29,7 @@ function remove(docId) {
 }
 
 // returns a user object {uid:'',editableSnippetIds:[], viewableSnippetIds:[], ownedSnippetIds:[]}
-async function get(docId) {
+async function getUser(docId) {
   try {
     return await BaseModel.getOne({ collection, docId });
   } catch (error) {
@@ -101,10 +101,10 @@ function removeEditableSnippetId(docId, snippetId) {
   }
 }
 export default {
-  create,
-  update,
-  remove,
-  get,
+  createUser,
+  updateUser,
+  removeUser,
+  getUser,
   addOwnedSnippetId,
   addViewableSnippetId,
   addEditableSnippetId,

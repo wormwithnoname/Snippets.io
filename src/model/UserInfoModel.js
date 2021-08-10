@@ -4,7 +4,7 @@ import BaseModel from './BaseModel';
 
 const collection = collections.USER_INFO;
 
-function create(key, value) {
+function createUserInfo(key, value) {
   try {
     return BaseModel.create({ collection, key, value });
   } catch (error) {
@@ -12,7 +12,7 @@ function create(key, value) {
   }
 }
 
-function update(data, docId) {
+function updateUserInfo(data, docId) {
   try {
     return BaseModel.set({ collection, docId, data });
   } catch (error) {
@@ -20,7 +20,7 @@ function update(data, docId) {
   }
 }
 
-function remove(docId) {
+function removeUserInfo(docId) {
   try {
     return BaseModel.remove({ collection, docId });
   } catch (error) {
@@ -29,7 +29,7 @@ function remove(docId) {
 }
 
 // returns a UserInfo object {uid:'',displayName:'', userName:'', photoURL:''}
-async function get(docId) {
+async function getUserInfo(docId) {
   try {
     return await BaseModel.getOne({ collection, docId });
   } catch (error) {
@@ -37,4 +37,4 @@ async function get(docId) {
   }
 }
 
-export default { create, update, remove, get };
+export default { createUserInfo, updateUserInfo, removeUserInfo, getUserInfo };

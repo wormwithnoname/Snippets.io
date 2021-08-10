@@ -4,14 +4,14 @@ import collections from '../constants/collections';
 
 const collection = collections.SNIPPET_ACCESS;
 
-function create(key, value) {
+function createSnippetAccess(key, value) {
   try {
     return BaseModel.create({ collection, key, value });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
-async function get(snippetId) {
+async function getSnippetAccess(snippetId) {
   try {
     return await BaseModel.getOne({ collection, docId: snippetId });
   } catch (error) {
@@ -19,7 +19,7 @@ async function get(snippetId) {
   }
 }
 // todo: sets snippetID/editors/userID:true
-function addEditor(snippetId, userId) {
+function addEditorAccess(snippetId, userId) {
   try {
     // const data = ['editors', { [userId]: true }];
     return BaseModel.update({
@@ -34,7 +34,7 @@ function addEditor(snippetId, userId) {
 }
 
 // todo: sets snippetID/viewers/userID:true
-async function addViewer(snippetId, userId) {
+async function addViewerAccess(snippetId, userId) {
   try {
     return BaseModel.update({
       collection,
@@ -46,7 +46,7 @@ async function addViewer(snippetId, userId) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
-function update(data, docId) {
+function updateSnippetAccess(data, docId) {
   try {
     return BaseModel.set({ collection, docId, data });
   } catch (error) {
@@ -54,7 +54,7 @@ function update(data, docId) {
   }
 }
 // todo: removes snippetID/editors/userID
-function removeEditor(snippetId, userId) {
+function removeEditorAccess(snippetId, userId) {
   try {
     return BaseModel.deleteField({ collection, docId: snippetId, key: `editors.${userId}` });
   } catch (error) {
@@ -63,7 +63,7 @@ function removeEditor(snippetId, userId) {
 }
 
 // todo: removed snippetID/viewers/userID
-function removeViewer(snippetId, userId) {
+function removeViewerAccess(snippetId, userId) {
   try {
     return BaseModel.deleteField({ collection, docId: snippetId, key: `viewers.${userId}` });
   } catch (error) {
@@ -71,7 +71,7 @@ function removeViewer(snippetId, userId) {
   }
 }
 
-function remove(docId) {
+function removeSnippetAccess(docId) {
   try {
     return BaseModel.remove({ collection, docId });
   } catch (error) {
@@ -79,4 +79,13 @@ function remove(docId) {
   }
 }
 
-export default { create, get, addEditor, addViewer, update, removeEditor, removeViewer, remove };
+export default {
+  createSnippetAccess,
+  getSnippetAccess,
+  addEditorAccess,
+  addViewerAccess,
+  updateSnippetAccess,
+  removeEditorAccess,
+  removeViewerAccess,
+  removeSnippetAccess,
+};

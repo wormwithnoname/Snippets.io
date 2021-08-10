@@ -4,7 +4,7 @@ import BaseModel from './BaseModel';
 
 const collection = collections.SNIPPETS;
 
-function create(key, value) {
+function createSnippet(key, value) {
   /* todo: call functions to add snippetID to SnippetAccessModel and to UserModel */
   try {
     return BaseModel.create({ collection, key, value });
@@ -13,7 +13,7 @@ function create(key, value) {
   }
 }
 
-function update(data, docId) {
+function updateSnippet(data, docId) {
   try {
     return BaseModel.set({ collection, docId });
   } catch (error) {
@@ -21,7 +21,7 @@ function update(data, docId) {
   }
 }
 
-async function getByIDs(docIds) {
+async function getSnippetsByIds(docIds) {
   try {
     return await BaseModel.getSome({ collection, docIds });
   } catch (error) {
@@ -29,7 +29,7 @@ async function getByIDs(docIds) {
   }
 }
 
-async function get(docId) {
+async function getSnippet(docId) {
   try {
     return await BaseModel.getOne({ collection, docId });
   } catch (error) {
@@ -37,7 +37,7 @@ async function get(docId) {
   }
 }
 
-async function getAll() {
+async function getAllSnippets() {
   try {
     return await BaseModel.getAll({ collection });
   } catch (error) {
@@ -45,7 +45,7 @@ async function getAll() {
   }
 }
 
-function remove(docId) {
+function removeSnippet(docId) {
   try {
     return BaseModel.remove({ collection, docId });
   } catch (error) {
@@ -53,7 +53,7 @@ function remove(docId) {
   }
 }
 
-function addTag(docId, tag) {
+function addSnippetTag(docId, tag) {
   try {
     // const data = { a: 'tags', b: tag };
     return BaseModel.addToArray({ collection, docId, key: 'tags', value: tag });
@@ -62,7 +62,7 @@ function addTag(docId, tag) {
   }
 }
 
-function removeTag(docId, tag) {
+function removeSnippetTag(docId, tag) {
   try {
     // const data = { a: 'tags', b: tag };
     return BaseModel.removeFromArray({ collection, docId, key: 'tags', value: tag });
@@ -71,7 +71,7 @@ function removeTag(docId, tag) {
   }
 }
 
-function addCode(docId, language, body) {
+function addSnippetCode(docId, language, body) {
   try {
     // const data = ['content', ];
     return BaseModel.update({
@@ -85,7 +85,7 @@ function addCode(docId, language, body) {
   }
 }
 
-function removeCode(docId, language) {
+function removeSnippetCode(docId, language) {
   try {
     return BaseModel.deleteField({ collection, docId, key: `content.${language}` });
   } catch (error) {
@@ -94,16 +94,16 @@ function removeCode(docId, language) {
 }
 
 export default {
-  create,
-  update,
-  get,
-  getByIDs,
-  getAll,
-  remove,
-  addTag,
-  removeTag,
-  addCode,
-  removeCode,
+  createSnippet,
+  updateSnippet,
+  getSnippet,
+  getSnippetsByIds,
+  getAllSnippets,
+  removeSnippet,
+  addSnippetTag,
+  removeSnippetTag,
+  addSnippetCode,
+  removeSnippetCode,
 };
 
 /* 
