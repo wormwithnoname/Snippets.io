@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+// eslint-disable-next-line import/named
 import { db, timestamp } from '../services/FirebaseService';
 
 function create({ collection, data }) {
@@ -35,7 +36,7 @@ async function deleteField({ collection, key, id }) {
     .update({ [key]: firebase.firestore.FieldValue.delete() });
 }
 
-function add({ collection, id, data }) {
+function addToArray({ collection, id, data }) {
   const [key, value] = Object.values(data);
   return db
     .collection(collection)
@@ -43,7 +44,7 @@ function add({ collection, id, data }) {
     .update({ [key]: firebase.firestore.FieldValue.arrayUnion(value) });
 }
 
-function subtract({ collection, id, data }) {
+function removeFromArray({ collection, id, data }) {
   const [key, value] = Object.values(data);
   return db
     .collection(collection)
@@ -73,8 +74,8 @@ export default {
   set,
   update,
   deleteField,
-  add,
-  subtract,
+  addToArray,
+  removeFromArray,
   getOne,
   getAll,
   getSome,

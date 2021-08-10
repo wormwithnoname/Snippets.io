@@ -28,6 +28,7 @@ async function getByIDs(ids) {
     throw new Error(`There was an error getting the Snippets. ${error}`);
   }
 }
+
 async function get(id) {
   try {
     return await BaseModel.getOne({ collection, id });
@@ -35,6 +36,7 @@ async function get(id) {
     throw new Error(`There was an error getting the Snippet. ${error}`);
   }
 }
+
 async function getAll() {
   try {
     return await BaseModel.getAll({ collection });
@@ -54,7 +56,7 @@ function remove(id) {
 function addTag(id, tag) {
   try {
     const data = { a: 'tags', b: tag };
-    return BaseModel.add({ collection, id, data });
+    return BaseModel.addToArray({ collection, id, data });
   } catch (error) {
     throw new Error(`There was an error adding the tag. ${error}`);
   }
@@ -63,7 +65,7 @@ function addTag(id, tag) {
 function removeTag(id, tag) {
   try {
     const data = { a: 'tags', b: tag };
-    return BaseModel.subtract({ collection, id, data });
+    return BaseModel.removeFromArray({ collection, id, data });
   } catch (error) {
     throw new Error(`There was an error adding the tag. ${error}`);
   }
