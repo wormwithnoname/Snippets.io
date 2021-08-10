@@ -4,34 +4,34 @@ import BaseModel from './BaseModel';
 
 const collection = collections.USER_INFO;
 
-function create(data) {
+function create(key, value) {
   try {
-    return BaseModel.create({ collection, data });
+    return BaseModel.create({ collection, key, value });
   } catch (error) {
     throw new Error('There was an error creating a new UserInfo.');
   }
 }
 
-function update(data, id) {
+function update(data, docId) {
   try {
-    return BaseModel.set({ collection, data, id });
+    return BaseModel.set({ collection, docId, data });
   } catch (error) {
     throw new Error('There was an error updating UserInfo.');
   }
 }
 
-function remove(id) {
+function remove(docId) {
   try {
-    return BaseModel.remove({ collection, id });
+    return BaseModel.remove({ collection, docId });
   } catch (error) {
     throw new Error('There was an error removing UserInfo.');
   }
 }
 
 // returns a UserInfo object {uid:'',displayName:'', userName:'', photoURL:''}
-async function get(id) {
+async function get(docId) {
   try {
-    return await BaseModel.getOne({ collection, id });
+    return await BaseModel.getOne({ collection, docId });
   } catch (error) {
     throw new Error('There was an error getting UserInfo.');
   }

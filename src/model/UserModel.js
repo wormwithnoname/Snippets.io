@@ -4,83 +4,98 @@ import BaseModel from './BaseModel';
 
 const collection = collections.USERS;
 
-function create(data) {
+function create(key, value) {
   try {
-    return BaseModel.create({ collection, data });
+    return BaseModel.create({ collection, key, value });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
 
-function update(data, id) {
+function update(data, docId) {
   try {
-    return BaseModel.set({ collection, data, id });
+    return BaseModel.set({ collection, docId, data });
   } catch (error) {
     throw new Error(`There was an error updating User. ${error}`);
   }
 }
 
-function remove(id) {
+function remove(docId) {
   try {
-    return BaseModel.remove({ collection, id });
+    return BaseModel.remove({ collection, docId });
   } catch (error) {
     throw new Error(`There was an error removing User. ${error}`);
   }
 }
 
 // returns a user object {uid:'',editableSnippetIds:[], viewableSnippetIds:[], ownedSnippetIds:[]}
-async function get(id) {
+async function get(docId) {
   try {
-    return await BaseModel.getOne({ collection, id });
+    return await BaseModel.getOne({ collection, docId });
   } catch (error) {
     throw new Error(`There was an error getting User. ${error}`);
   }
 }
 // todo: add items to viewable snippets
 
-function addOwnedSnippetId(id, snippetId) {
+function addOwnedSnippetId(docId, snippetId) {
   try {
-    const data = ['ownedSnippets', { [snippetId]: true }];
-    return BaseModel.update({ collection, data, id });
+    // const dasta = ['ownedSnippets', { [snippetId]: true }];
+    return BaseModel.update({
+      collection,
+      docId,
+      key: 'ownedSnippets',
+      value: { [snippetId]: true },
+    });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }
 }
-function addViewableSnippetId(id, snippetId) {
+function addViewableSnippetId(docId, snippetId) {
   try {
-    const data = ['viewableSnippets', { [snippetId]: true }];
-    return BaseModel.update({ collection, data, id });
+    // const data = ['viewableSnippets', { [snippetId]: true }];
+    return BaseModel.update({
+      collection,
+      docId,
+      key: 'viewableSnippets',
+      value: { [snippetId]: true },
+    });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }
 }
-function addEditableSnippetId(id, snippetId) {
+function addEditableSnippetId(docId, snippetId) {
   try {
-    const data = ['editableSnippets', { [snippetId]: true }];
-    return BaseModel.update({ collection, data, id });
+    // const data = ['editableSnippets', { [snippetId]: true }];
+    return BaseModel.update({
+      collection,
+      docId,
+      key: 'editableSnippets',
+      value: { [snippetId]: true },
+    });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }
 }
 
-function removeOwnedSnippetId(id, snippetId) {
+function removeOwnedSnippetId(docId, snippetId) {
   try {
-    return BaseModel.deleteField({ collection, id, key: `ownedSnippets.${snippetId}` });
+    return BaseModel.deleteField({ collection, docId, key: `ownedSnippets.${snippetId}` });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }
 }
 
-function removeViewableSnippetId(id, snippetId) {
+function removeViewableSnippetId(docId, snippetId) {
   try {
-    return BaseModel.deleteField({ collection, id, key: `viewableSnippets.${snippetId}` });
+    return BaseModel.deleteField({ collection, docId, key: `viewableSnippets.${snippetId}` });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }
 }
-function removeEditableSnippetId(id, snippetId) {
+function removeEditableSnippetId(docId, snippetId) {
   try {
-    return BaseModel.deleteField({ collection, id, key: `editableSnippets.${snippetId}` });
+    return BaseModel.deleteField({ collection, docId, key: `editableSnippets.${snippetId}` });
   } catch (error) {
     throw new Error(`There was an error getting adding snippet ID. ${error}`);
   }

@@ -15,7 +15,7 @@ function TestButtons() {
     <Grid>
       <div>Snippet Access</div>
       <br />
-      <Button onClick={() => SnippetAccessModel.create(['snippetid1', Templates.SnippetAccess])}>
+      <Button onClick={() => SnippetAccessModel.create('snippetid1', Templates.SnippetAccess)}>
         create Snippet
       </Button>
       <Button onClick={() => SnippetAccessModel.addEditor('snippetid1', 'user32')}>
@@ -27,7 +27,7 @@ function TestButtons() {
       <Button onClick={() => SnippetAccessModel.addViewer('snippetid1', 'user33')}>
         add viewer to Snippet2
       </Button>
-      <Button onClick={() => SnippetAccessModel.removeEditor('snippetid', 'user32')}>
+      <Button onClick={() => SnippetAccessModel.removeEditor('snippetid1', 'user32')}>
         remove editor from Snippet
       </Button>
       <Button onClick={async () => console.log(await SnippetAccessModel.get('snippetid1'))}>
@@ -39,7 +39,7 @@ function TestButtons() {
       <Button onClick={() => SnippetAccessModel.remove('snippetid1')}>remove Snippet</Button>
       <div>User Info</div>
       <br />
-      <Button onClick={() => UserInfoModel.create(['userid1', Templates.UserInfo])}>
+      <Button onClick={() => UserInfoModel.create('userid1', Templates.UserInfo)}>
         Create user info
       </Button>
       <Button onClick={() => UserInfoModel.remove('userid1')}>Remove user info</Button>
@@ -51,7 +51,7 @@ function TestButtons() {
       </Button>
       <div>User</div>
       <br />
-      <Button onClick={() => UserModel.create(['userid1', Templates.User])}>Create user</Button>
+      <Button onClick={() => UserModel.create('userid1', Templates.User)}>Create user</Button>
       <Button onClick={() => UserModel.update({ id: 'trolololol' }, 'userid1')}>Update user</Button>
       <Button onClick={() => UserModel.remove('userid1')}>Remove user</Button>
       <Button onClick={async () => console.log(await UserModel.get('userid1'))}>get user</Button>
@@ -76,7 +76,7 @@ function TestButtons() {
 
       <div>Snippets</div>
       <br />
-      <Button onClick={() => SnippetModel.create(['snippetid3', Templates.Snippet])}>
+      <Button onClick={() => SnippetModel.create('snippetid3', Templates.Snippet)}>
         create snippet
       </Button>
       <Button onClick={async () => console.log(await SnippetModel.get('snippetid3'))}>
@@ -90,9 +90,6 @@ function TestButtons() {
       </Button>
       <Button onClick={() => SnippetModel.update({ title: 'snippet lolol' }, 'snippetid3')}>
         update snippet
-      </Button>
-      <Button onClick={async () => SnippetModel.getByIDs(['snippetid3'])}>
-        get snippets by id
       </Button>
       <Button onClick={() => SnippetModel.remove('snippetid3')}>remove snippet</Button>
       <Button onClick={() => SnippetModel.addTag('snippetid3', 'data structuresasdf')}>

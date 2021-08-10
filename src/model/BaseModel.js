@@ -2,70 +2,70 @@ import firebase from 'firebase';
 // eslint-disable-next-line import/named
 import { db, timestamp } from '../services/FirebaseService';
 
-function create({ collection, data }) {
-  const [key, value] = Object.values(data);
+function create({ collection, key, value }) {
+  // const [key, value] = Object.values(data);
   return db
     .collection(collection)
     .doc(key)
     .set({ ...value, dateUpdated: timestamp(), dateCreated: timestamp() });
 }
 
-function createOrUpdate({ collection, id, data }) {
-  return db.collection(collection).doc(id).set({ data });
+function createOrUpdate({ collection, docId, data }) {
+  return db.collection(collection).doc(docId).set({ data });
 }
 
-function set({ collection, data, id }) {
+function set({ collection, docId, data }) {
   return db
     .collection(collection)
-    .doc(id)
+    .doc(docId)
     .set({ ...data, dateUpdated: timestamp() }, { merge: true });
 }
 
-async function update({ collection, data, id }) {
-  const [key, value] = Object.values(data);
+async function update({ collection, docId, key, value }) {
+  // const [key, value] = Object.values(data);
   return db
     .collection(collection)
-    .doc(id)
+    .doc(docId)
     .set({ [key]: value }, { merge: true });
 }
 
-async function deleteField({ collection, key, id }) {
+async function deleteField({ collection, docId, key }) {
   return db
     .collection(collection)
-    .doc(id)
+    .doc(docId)
     .update({ [key]: firebase.firestore.FieldValue.delete() });
 }
 
-function addToArray({ collection, id, data }) {
-  const [key, value] = Object.values(data);
+function addToArray({ collection, docId, key, value }) {
+  // const [key, value] = Object.values(data);
   return db
     .collection(collection)
-    .doc(id)
+    .doc(docId)
     .update({ [key]: firebase.firestore.FieldValue.arrayUnion(value) });
 }
 
-function removeFromArray({ collection, id, data }) {
-  const [key, value] = Object.values(data);
+function removeFromArray({ collection, docId, key, value }) {
+  // const [key, value] = Object.values(data);
   return db
     .collection(collection)
-    .doc(id)
+    .doc(docId)
     .update({ [key]: firebase.firestore.FieldValue.arrayRemove(value) });
 }
 
-async function getOne({ collection, id }) {
-  return (await db.collection(collection).doc(id).get()).data();
+async function getOne({ collection, docId }) {
+  return (await db.collection(collection).doc(docId).get()).data();
 }
 
 async function getAll({ collection }) {
   return db.collection(collection).doc().get();
 }
 
-async function getSome({ collection, ids }) {
-  return Promise.all(ids.map((id) => getOne({ collection, id })));
+async function getSome({ collection, docIds }) {
+  return Promise.all(docIds.map((docId) => getOne({ collection, docId })));
 }
 
-function remove({ collection, id }) {
-  return db.collection(collection).doc(id).delete();
+function remove({ collection, docId }) {
+  return db.collection(collection).doc(docId).delete();
 }
 
 export default {
