@@ -1,16 +1,4 @@
 @import '../../utils/variables.scss';
-.snippet-description {
-  .div.ant-typography,
-  .ant-typography p {
-    color: $white;
-    background-color: $black;
-  }
-  .snippet-view .ant-btn,
-  .snippet-view .ant-btn:active,
-  .snippet-view .ant-btn:focus {
-    background-color: $secondary-background;
-  }
-}
 
 .snippet-container {
   top: auto;
@@ -83,8 +71,8 @@
     transition: none;
     top: 0;
   }
-  .tagButton {
-    background: $primary-background;
+  .tag-button {
+    background: $secondary-background;
     color: white;
     .ant-card-actions > li > span {
       position: static;
@@ -100,11 +88,20 @@
   .snippet-tag {
     font-weight: bold;
   }
-  .ant-btn,
-  .ant-btn:active,
-  .ant-btn:focus {
-    background-color: $white-secondary;
+
+  .tag-button {
+    background: $secondary-background;
+    color: white;
+    .ant-card-actions > li > span {
+      position: static;
+    }
   }
+
+  .ant-btn:hover,
+  .ant-btn:focus {
+    border-color: $secondary-background;
+  }
+
   .ant-modal-content {
     background-color: $white;
     height: max-content;
@@ -120,6 +117,11 @@
   .ant-input-lg {
     font-size: 22px;
     color: $black;
+  }
+
+  .ant-typography pre {
+    color: $white;
+    background-color: $black;
   }
 }
 

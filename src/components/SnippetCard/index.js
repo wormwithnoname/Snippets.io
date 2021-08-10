@@ -26,7 +26,7 @@ const { Paragraph, Text } = Typography;
 const tagNames = ['Frontend', 'Web'];
 
 const tags = tagNames.map((tagName) => (
-  <Button className="tagButton" shape="round">
+  <Button className="tag-button" shape="round">
     {tagName}
   </Button>
 ));
@@ -80,12 +80,12 @@ function SnippetCard() {
           }}
         />
         <br />
-        <Paragraph className="snippet-description">
+        <Paragraph>
           <pre>This is the description</pre>
         </Paragraph>
         <br />
         <Text className="snippet-tag"> Tags: </Text>
-        <span className="snippet-description"> {[tags]}</span>
+        <span clasName="tagButton"> {[tags]}</span>
       </Modal>
     </div>
   );
