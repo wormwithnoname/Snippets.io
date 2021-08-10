@@ -1,10 +1,8 @@
 import React from 'react';
-import AceEditor from 'react-ace';
 
 import { Button, Divider, Form, Input, Modal, Select } from 'antd';
 
-import 'ace-builds/src-noconflict/mode-css';
-import 'ace-builds/src-noconflict/theme-monokai';
+import Editor from 'components/Editor';
 
 import './styles.scss';
 
@@ -13,9 +11,6 @@ const { TextArea } = Input;
 function AddModal({ handleCancel, isModalVisible }) {
   function handleChange(tag) {
     console.log(`selected ${tag}`);
-  }
-  function onChange(value) {
-    console.log(`selected ${value}`);
   }
   return (
     <Modal
@@ -30,24 +25,7 @@ function AddModal({ handleCancel, isModalVisible }) {
         <Input className="ant-input" bordered={false} placeholder="Title" />
       </Form>
       <Divider />
-      <br />
-      <AceEditor
-        editorProps={{ $blockScrolling: true }}
-        fontSize={14}
-        mode="css"
-        name="code_snippet"
-        placeholder="Type your code snippet here"
-        theme="monokai"
-        onChange={onChange}
-        style={{ width: '100%' }}
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: true,
-          enableSnippets: true,
-          showLineNumbers: true,
-          tabSize: 2,
-        }}
-      />
+      <Editor />
       <br />
       <br />
       <TextArea

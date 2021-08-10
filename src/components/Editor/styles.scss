@@ -1,0 +1,13 @@
+@import '../../utils/variables.scss';
+
+.editor {
+  .ant-select {
+    width: 30%;
+    border-radius: 15px;
+    background-color: $secondary-background;
+
+    .ant-select-selection-placeholder {
+      color: $black;
+    }
+  }
+}
