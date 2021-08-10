@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 
 import { Button, Card, Typography } from 'antd';
 
+import CardDropdown from 'components/CardDropdown';
+
 import './styles.scss';
-import { EllipsisOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
 
@@ -25,20 +25,11 @@ function SnippetCard({ snippet }) {
       <Card
         actions={[tags]}
         className="snippet-card"
-        extra={
-          <>
-            <Button shape="round" className="extra-button">
-              {snippet.language}
-            </Button>
-            <Link classname="snippet-ellipsis" href="/">
-              <EllipsisOutlined />
-            </Link>
-          </>
-        }
+        extra={<CardDropdown Language={snippet.language} />}
         title={snippet.title}
       >
         <div value="input">
-          <Text level={4}>{snippet.body}</Text>
+          <Text level={4}>{snippet.description}</Text>
         </div>
       </Card>
     </div>

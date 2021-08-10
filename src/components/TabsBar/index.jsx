@@ -46,9 +46,7 @@ function TabsBar() {
         </TabPane>
         <TabPane className="tabs-text" tab="Folder" key="2">
           <Row>
-            <Col Span={8}>
-              <SnippetCard />
-            </Col>
+            <Col Span={8} />
           </Row>
         </TabPane>
         <TabPane className="tabs-text" tab="Tags" key="3" />

@@ -3,12 +3,11 @@
 .dashboard {
   height: 100vh;
   display: flex;
-  background-color: $primary-background;
   h4.ant-typography {
     font-family: $roboto;
     color: $white-primary;
   }
   .ant-layout {
-    background: transparent;
+    background: $primary-background;
   }
 }

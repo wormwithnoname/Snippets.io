@@ -5,7 +5,7 @@ import { EllipsisOutlined } from '@ant-design/icons';
 
 import './styles.scss';
 
-function CardDropdown() {
+function CardDropdown({ Language }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   function onDelete() {
@@ -33,7 +33,7 @@ function CardDropdown() {
   return (
     <Space className="dropdown">
       <Tag className="ant-tag" color="#f50">
-        Language
+        {Language}
       </Tag>
       <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
