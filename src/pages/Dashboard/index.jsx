@@ -6,6 +6,7 @@ import { PlusCircleFilled } from '@ant-design/icons';
 import AddFolderButton from 'components/AddFolderButton';
 import NavBar from 'components/NavBar';
 import TabsBar from 'components/TabsBar';
+import TestButtons from 'components/TestButtons';
 
 import './styles.scss';
 
@@ -15,6 +16,7 @@ function DashboardPage() {
       <Layout>
         <NavBar />
         <TabsBar />
+        <TestButtons />
       </Layout>
       <div className="dashboard-buttons">
         <Button
