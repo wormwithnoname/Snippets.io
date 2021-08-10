@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Button, Card, Typography } from 'antd';
 
@@ -16,16 +16,12 @@ function SnippetCard({ snippet }) {
     </Button>
   ));
 
-  useEffect(async () => {
-    console.log(snippet.body);
-  }, []);
-
   return (
     <div className="snippet-container">
       <Card
         actions={[tags]}
         className="snippet-card"
-        extra={<CardDropdown Language={snippet.language} />}
+        extra={<CardDropdown snippet={snippet} />}
         title={snippet.title}
       >
         <div value="input">

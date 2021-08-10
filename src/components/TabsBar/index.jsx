@@ -15,14 +15,18 @@ function TabsBar() {
   const [snippetsArr, setSnippetArr] = useState();
 
   async function fetchData() {
-    const data = await getByRecent(currentUser.uid);
-    data.onSnapshot((querySnapshot) => {
-      const snippets = [];
-      querySnapshot.forEach((doc) => {
-        snippets.push(doc.data());
+    try {
+      const data = await getByRecent(currentUser.uid);
+      data.onSnapshot((querySnapshot) => {
+        const snippets = [];
+        querySnapshot.forEach((doc) => {
+          snippets.push(doc.data());
+        });
+        setSnippetArr(snippets);
       });
-      setSnippetArr(snippets);
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
   useEffect(async () => {

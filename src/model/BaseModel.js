@@ -1,25 +1,47 @@
 import { db, timestamp } from 'services/FirebaseService';
 
-function create(collection, data) {
-  return db.collection(collection).add({
-    ...data,
-    dateCreated: timestamp(),
-    dateUpdated: timestamp(),
-  });
+function addEditorAccess(collection, snippetID, userID) {
+  return db
+    .collection(collection)
+    .doc(snippetID)
+    .set({
+      editors: { [userID]: 'true' },
+    });
 }
 
-function createOrUpdate({ collection, id, data }) {
+async function checkEditorAccess(collection, snippetID, userID) {
+  const snippetAccessRef = await db.collection(collection).doc(snippetID).get();
+  const editorsList = await snippetAccessRef.get('editors');
+  if (editorsList[userID]) return true;
+  return false;
+}
+
+function create(collection, data) {
+  return db
+    .collection(collection)
+    .add({
+      ...data,
+      dateCreated: timestamp(),
+      dateUpdated: timestamp(),
+    })
+    .then((docRef) => {
+      docRef.update({ snippetID: docRef.id });
+      addEditorAccess('snippets-access', docRef.id, data.ownerID);
+    });
+}
+
+function createOrUpdate(collection, id, data) {
   return db
     .collection(collection)
     .doc(id)
     .set({ ...data, dateCreated: timestamp(), dateUpdated: timestamp() });
 }
 
-function update({ collection, data, id }) {
+function update(collection, data, id) {
   return db
     .collection(collection)
     .doc(id)
-    .set({ ...data, dateUpdated: timestamp() });
+    .update({ ...data, dateUpdated: timestamp() });
 }
 
 async function getByRecent(collection, ownerID) {
@@ -30,8 +52,10 @@ async function getByRecent(collection, ownerID) {
     .limit(10);
 }
 
-async function getOne({ collection, id }) {
-  return db.collection(collection).doc(id).get();
+async function getOne(collection, id) {
+  const docRef = db.collection(collection).doc(id);
+  const snippetObj = (await docRef.get()).data();
+  return snippetObj;
 }
 
 async function getAll({ collection }) {
@@ -42,11 +66,13 @@ async function getSome({ collection, ids }) {
   return db.collection(collection).whereIn('id', ids).get();
 }
 
-function remove({ collection, id }) {
-  return db.collection(collection).doc(id).set(null);
+function remove(collection, id) {
+  return db.collection(collection).doc(id).delete();
 }
 
 export default {
+  addEditorAccess,
+  checkEditorAccess,
   create,
   createOrUpdate,
   update,

@@ -9,7 +9,7 @@ import { useAuth } from 'hooks/useAuth';
 
 import './styles.scss';
 
-import snippetslogo from 'assets/img/logoblack.svg';
+import snippetslogo from 'assets/img/logowhite.svg';
 import Modal from 'antd/lib/modal/Modal';
 
 const { Header } = Layout;

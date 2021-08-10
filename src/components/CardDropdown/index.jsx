@@ -2,18 +2,21 @@ import React, { useState } from 'react';
 
 import { Button, Dropdown, Menu, Modal, Tag, Space } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+
+import { remove } from 'model/SnippetModel';
 
 import './styles.scss';
 
-function CardDropdown({ Language }) {
+function CardDropdown({ snippet }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   function onDelete() {
     setIsModalVisible(true);
   }
 
-  function handleOk() {
-    setIsModalVisible(false);
+  async function handleOk() {
+    await remove(snippet.snippetID);
   }
 
   function handleCancel() {
@@ -22,7 +25,9 @@ function CardDropdown({ Language }) {
 
   const menu = (
     <Menu>
-      <Menu.Item key="1">Edit</Menu.Item>
+      <Menu.Item key="1">
+        <Link to={`/snippet/${snippet.snippetID}`}>Edit</Link>
+      </Menu.Item>
       <Menu.Item key="2">Add to Folder</Menu.Item>
       <Menu.Item onClick={onDelete} key="3">
         Delete
@@ -32,9 +37,7 @@ function CardDropdown({ Language }) {
 
   return (
     <Space className="dropdown">
-      <Tag className="ant-tag" color="#f50">
-        {Language}
-      </Tag>
+      <Tag className="ant-tag">{snippet.language}</Tag>
       <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
       </Dropdown>

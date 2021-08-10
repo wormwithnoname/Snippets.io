@@ -8,22 +8,27 @@ async function create(data) {
   try {
     const etc = {};
     const customizedData = { ...data, ...etc };
-    return BaseModel.create({ collection, data: customizedData });
+    return BaseModel.create(collection, customizedData);
   } catch (error) {
     throw new Error('There was an error creating a new User.');
   }
 }
 
 // todo: sets snippetID/editors/userID:true
-async function addEditor(snippetId, userId) {}
+async function addEditorAccess(snippetId, userId) {
+  try {
+    return BaseModel.updateEditorAccess('snippets-access', snippetId, userId);
+  } catch (error) {
+    throw new Error('There was an error in adding permission to user.');
+  }
+}
 
-// todo: sets snippetID/viewers/userID:true
-async function addViewer(snippetId, userId) {}
+async function checkEditorAccess(snippetId, userId) {
+  try {
+    return BaseModel.checkEditorAccess('snippets-access', snippetId, userId);
+  } catch (error) {
+    throw new Error('There was an error in adding permission to user.');
+  }
+}
 
-// todo: removes snippetID/editors/userID
-async function removeEditor(snippetId, userId) {}
-
-// todo: removed snippetID/viewers/userID
-async function removeViewer(snippetId, userId) {}
-
-export default { create, addEditor, addViewer, removeEditor, removeViewer };
+export { checkEditorAccess, create, addEditorAccess };
