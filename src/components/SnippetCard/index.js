@@ -50,7 +50,9 @@ function SnippetCard() {
   return (
     <div className="snippet-container">
       <Card onClick={showModal} actions={[tags]} className="snippet-card" title="Card Title">
-        <Text>{textInput}</Text>
+        <CopyToClipboard text={textInput} onCopy={onCopyText}>
+          <Text>{textInput}</Text>
+        </CopyToClipboard>
       </Card>
       <Modal
         className="snippet-view"
@@ -60,36 +62,30 @@ function SnippetCard() {
         onCancel={handleCancel}
         footer={null}
       >
-        <CopyToClipboard text={textInput} onCopy={onCopyText}>
-          <AceEditor
-            editorProps={{ $blockScrolling: true }}
-            fontSize={14}
-            mode="css"
-            name="code_snippet"
-            theme="monokai"
-            style={{ width: '100%' }}
-            value={textInput}
-            setOptions={{
-              enableBasicAutocompletion: true,
-              enableLiveAutocompletion: true,
-              enableSnippets: true,
-              showLineNumbers: true,
-              tabSize: 2,
-              readOnly: true,
-            }}
-          />
-        </CopyToClipboard>
+        <AceEditor
+          editorProps={{ $blockScrolling: true }}
+          fontSize={14}
+          mode="css"
+          name="code_snippet"
+          theme="monokai"
+          style={{ width: '100%' }}
+          value={textInput}
+          setOptions={{
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true,
+            enableSnippets: true,
+            showLineNumbers: true,
+            tabSize: 2,
+            readOnly: true,
+          }}
+        />
         <br />
-        <br />
-        <Paragraph>
-          <pre className="ant-typography pre">This is the description</pre>
+        <Paragraph className="snippet-description">
+          <pre>This is the description</pre>
         </Paragraph>
         <br />
-        <br />
-        <Text className="snippet-tag"> Tags </Text>
-        <br />
-        <br />
-        {[tags]}
+        <Text className="snippet-tag"> Tags: </Text>
+        <span className="snippet-description"> {[tags]}</span>
       </Modal>
     </div>
   );

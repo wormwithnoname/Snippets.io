@@ -1,4 +1,16 @@
 @import '../../utils/variables.scss';
+.snippet-description {
+  .div.ant-typography,
+  .ant-typography p {
+    color: $white;
+    background-color: $black;
+  }
+  .snippet-view .ant-btn,
+  .snippet-view .ant-btn:active,
+  .snippet-view .ant-btn:focus {
+    background-color: $secondary-background;
+  }
+}
 
 .snippet-container {
   top: auto;
@@ -37,11 +49,6 @@
     margin: 0;
     padding: 0;
     line-height: 0;
-  }
-
-  .ant-typography pre {
-    background-color: black;
-    color: $white;
   }
 
   .ant-card-actions {
