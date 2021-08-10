@@ -1,0 +1,18 @@
+@import '../../utils/variables.scss';
+
+.ant-btn.dashboard-folder-button {
+  padding: 0;
+  border: none;
+
+  color: $white;
+  & span {
+    font-size: 2em;
+  }
+  width: 3em;
+  height: 3em;
+  background-color: $secondary-color;
+
+  :hover {
+    color: $secondary-background;
+  }
+}

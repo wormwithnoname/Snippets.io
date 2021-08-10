@@ -8,12 +8,21 @@
     font-family: $roboto;
     color: $white;
   }
+
+  .dashboard-buttons {
+    position: fixed;
+    right: 80px;
+    bottom: 60px;
+    width: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
   .ant-btn.dashboard-add-button {
     padding: 0;
     border: none;
-    position: fixed;
-    right: 64px;
-    bottom: 60px;
     color: $secondary-color;
     & span {
       font-size: 3em;
@@ -26,6 +35,7 @@
       color: $secondary-background;
     }
   }
+
   .dashboard-button {
     width: 250px;
     height: 35px;
