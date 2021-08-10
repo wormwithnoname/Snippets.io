@@ -8,18 +8,23 @@ import AddFolderModal from 'components/AddFolderModal';
 import './styles.scss';
 
 function AddFolderButton() {
-  const [isAddFolderModalVisible, setIsAddFolderModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  function handleOpenModal() {
+    setIsModalVisible(true);
+  }
+
+  function handleCancel() {
+    setIsModalVisible(false);
+  }
 
   return (
     <>
-      <AddFolderModal
-        handleCancel={() => setIsAddFolderModalVisible(false)}
-        isModalVisible={isAddFolderModalVisible}
-      />
+      <AddFolderModal onCancel={handleCancel} isModalVisible={isModalVisible} />
       <Button
         className="dashboard-folder-button"
         icon={<FolderAddFilled />}
-        onClick={() => setIsAddFolderModalVisible(true)}
+        onClick={handleOpenModal}
         size="large"
         shape="round"
       />

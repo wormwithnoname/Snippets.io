@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { Button, Form, Input, Modal } from 'antd';
+import { Form, Input, Modal } from 'antd';
 
 import './styles.scss';
 
-function AddFolderModal({ handleCancel, isModalVisible }) {
+function AddFolderModal({ onCancel, isModalVisible }) {
   return (
     <Modal
       className="modal"
-      destroyOnClose="true"
-      footer={null}
-      onCancel={handleCancel}
+      destroyOnClose
+      okText="Add"
+      onCancel={onCancel}
       title="Add Folder"
       visible={isModalVisible}
       width={500}
@@ -18,10 +18,6 @@ function AddFolderModal({ handleCancel, isModalVisible }) {
       <Form size="large">
         <Input bordered={false} placeholder="Folder Name" />
       </Form>
-      <br />
-      <Button className="modal-button" size="large" type="primary">
-        Add
-      </Button>
     </Modal>
   );
 }

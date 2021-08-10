@@ -21,9 +21,15 @@
     color: $black;
   }
 
-  .ant-btn-primary {
-    color: #fff;
+  .ant-btn.ant-btn-primary {
+    color: $white;
     background: $secondary-background;
+    border-color: $secondary-background;
+  }
+
+  .ant-btn {
+    color: $black;
+    background: $white;
     border-color: $secondary-background;
   }
 }
