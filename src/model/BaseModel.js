@@ -16,6 +16,15 @@ async function checkEditorAccess(collection, snippetID, userID) {
   return false;
 }
 
+function updateEditorAccess(collection, snippetID, userID) {
+  return db
+    .collection(collection)
+    .doc(snippetID)
+    .update({
+      editors: { [userID]: 'true' },
+    });
+}
+
 function create(collection, data) {
   return db
     .collection(collection)
@@ -81,4 +90,5 @@ export default {
   getAll,
   getSome,
   remove,
+  updateEditorAccess,
 };

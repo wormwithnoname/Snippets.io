@@ -15,7 +15,7 @@ async function create(data) {
 }
 
 // todo: sets snippetID/editors/userID:true
-async function addEditorAccess(snippetId, userId) {
+async function updateEditorAccess(snippetId, userId) {
   try {
     return BaseModel.updateEditorAccess('snippets-access', snippetId, userId);
   } catch (error) {
@@ -31,4 +31,4 @@ async function checkEditorAccess(snippetId, userId) {
   }
 }
 
-export { checkEditorAccess, create, addEditorAccess };
+export { checkEditorAccess, create, updateEditorAccess };
