@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { Card, message, Modal, Typography } from 'antd';
+import { Button, Card, message, Modal, Typography } from 'antd';
 
 // import CardDropdown from 'components/CardDropdown';
 
@@ -12,9 +12,9 @@ const { Text } = Typography;
 const tagNames = ['Frontend', 'Web'];
 
 const tags = tagNames.map((tagName) => (
-  <div>
-    <Text> #{tagName}</Text>
-  </div>
+  <Button className="tagButton" shape="round">
+    {tagName}
+  </Button>
 ));
 
 function SnippetCard() {
@@ -40,16 +40,21 @@ function SnippetCard() {
       </Card>
       <Modal
         className="snippet-view"
+        centered
         title="This Snippet"
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
       >
-        <div className="snippet-container">
-          <CopyToClipboard text={textInput} onCopy={onCopyText}>
-            <Text> {textInput} </Text>
-          </CopyToClipboard>
-          <Text keyboard> Tags </Text>
+        <div className="snippet-view">
+          <div>
+            <CopyToClipboard text={textInput} onCopy={onCopyText}>
+              <Text> {textInput} </Text>
+            </CopyToClipboard>
+          </div>
+          <br />
+          <Text className="snippet-tag"> Tags </Text>
+          <br />
           {[tags]}
         </div>
       </Modal>

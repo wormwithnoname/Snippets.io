@@ -81,6 +81,13 @@
 }
 
 .snippet-view {
+  flex-wrap: wrap;
+  align-content: center;
+  display: flex;
+
+  .snippet-tag {
+    font-weight: bold;
+  }
   .ant-btn,
   .ant-btn:active,
   .ant-btn:focus {
