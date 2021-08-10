@@ -39,6 +39,11 @@
     line-height: 0;
   }
 
+  .ant-typography pre {
+    background-color: black;
+    color: $white;
+  }
+
   .ant-card-actions {
     background-color: transparent;
     border-top: none;

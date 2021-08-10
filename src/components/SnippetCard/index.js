@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
+import AceEditor from 'react-ace';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Button, Card, message, Modal, Typography } from 'antd';
 
+import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/mode-csharp';
+import 'ace-builds/src-noconflict/mode-css';
+import 'ace-builds/src-noconflict/mode-dart';
+import 'ace-builds/src-noconflict/mode-html';
+import 'ace-builds/src-noconflict/mode-java';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/mode-php';
+import 'ace-builds/src-noconflict/mode-python';
+import 'ace-builds/src-noconflict/mode-typescript';
+import 'ace-builds/src-noconflict/theme-monokai';
+
 // import CardDropdown from 'components/CardDropdown';
 
 import './styles.scss';
 
-const { Text } = Typography;
+const { Paragraph, Text } = Typography;
 const tagNames = ['Frontend', 'Web'];
 
 const tags = tagNames.map((tagName) => (
@@ -18,20 +32,20 @@ const tags = tagNames.map((tagName) => (
 ));
 
 function SnippetCard() {
-  function onCopyText() {
-    message.success('Copied!');
-  }
   const [isModalVisible, setIsModalVisible] = useState(false);
   const textInput = 'Test Data';
   // replace with the data input by the user
 
-  const showModal = () => {
+  function onCopyText() {
+    message.success('Copied!');
+  }
+  function showModal() {
     setIsModalVisible(true);
-  };
+  }
 
-  const handleCancel = () => {
+  function handleCancel() {
     setIsModalVisible(false);
-  };
+  }
 
   return (
     <div className="snippet-container">
@@ -46,17 +60,36 @@ function SnippetCard() {
         onCancel={handleCancel}
         footer={null}
       >
-        <div className="snippet-view">
-          <div>
-            <CopyToClipboard text={textInput} onCopy={onCopyText}>
-              <Text> {textInput} </Text>
-            </CopyToClipboard>
-          </div>
-          <br />
-          <Text className="snippet-tag"> Tags </Text>
-          <br />
-          {[tags]}
-        </div>
+        <CopyToClipboard text={textInput} onCopy={onCopyText}>
+          <AceEditor
+            editorProps={{ $blockScrolling: true }}
+            fontSize={14}
+            mode="css"
+            name="code_snippet"
+            theme="monokai"
+            style={{ width: '100%' }}
+            value={textInput}
+            setOptions={{
+              enableBasicAutocompletion: true,
+              enableLiveAutocompletion: true,
+              enableSnippets: true,
+              showLineNumbers: true,
+              tabSize: 2,
+              readOnly: true,
+            }}
+          />
+        </CopyToClipboard>
+        <br />
+        <br />
+        <Paragraph>
+          <pre className="ant-typography pre">This is the description</pre>
+        </Paragraph>
+        <br />
+        <br />
+        <Text className="snippet-tag"> Tags </Text>
+        <br />
+        <br />
+        {[tags]}
       </Modal>
     </div>
   );
