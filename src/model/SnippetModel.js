@@ -1,12 +1,16 @@
 import collections from '../constants/firestore';
 import BaseModel from './BaseModel';
+import { createOwnerAccess, deleteSnippetAccess } from './SnippetAccessModel';
 
 const collection = collections.SNIPPET;
 
-function create(data) {
+async function create(data) {
   /* todo: call functions to add snippetID to SnippetAccessModel and to UserModel */
   try {
-    return BaseModel.create('code snippets', data);
+    await BaseModel.create('code snippets', data).then((docRef) => {
+      BaseModel.update('code snippets', { snippetID: docRef.id }, docRef.id);
+      createOwnerAccess(docRef.id, data.ownerID);
+    });
   } catch (error) {
     console.log(error.message);
     throw new Error('There was an error creating a new Snippet.');
@@ -48,7 +52,8 @@ async function getByIDs(ids) {
 
 function remove(id) {
   try {
-    return BaseModel.remove('code snippets', id);
+    BaseModel.remove('code snippets', id);
+    deleteSnippetAccess(id);
   } catch (error) {
     console.log(error.message);
     throw new Error('There was an error removing the Snippet');

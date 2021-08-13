@@ -6,8 +6,9 @@ import { Spin } from 'antd';
 import './App.css';
 
 import { AuthProvider } from 'contexts/AuthProvider';
-import PrivateSnippetRoute from 'components/PrivateSnippetRoute';
-import PrivateRoute from 'components/PrivateRoute';
+import PrivateSnippetRouteEdit from 'routes/PrivateSnippetRoute-EDIT';
+import PrivateSnippetRouteView from 'routes/PrivateSnippetRoute-VIEW';
+import PrivateRoute from 'routes/PrivateRoute';
 import routes from 'constants/routes';
 
 const Addsnippet = lazy(() => import('pages/Add-Snippet'));
@@ -30,7 +31,8 @@ function App() {
           <Switch>
             <PrivateRoute exact path={routes.ROOT} component={Dashboard} />
             <PrivateRoute exact path={routes.ADDSNIPPET} component={Addsnippet} />
-            <PrivateSnippetRoute exact path={routes.SNIPPET} component={Snippet} />
+            <PrivateSnippetRouteEdit exact path={routes.SNIPPET_EDIT} component={Snippet} />
+            <PrivateSnippetRouteView exact path={routes.SNIPPET_VIEW} component={Snippet} />
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
             <Redirect to={routes.LOGIN} />

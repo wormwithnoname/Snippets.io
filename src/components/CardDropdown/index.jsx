@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { Button, Dropdown, Menu, Modal, Tag, Space } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { ArrowsAltOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Link, useHistory } from 'react-router-dom';
 
 import { remove } from 'model/SnippetModel';
 
@@ -10,6 +10,7 @@ import './styles.scss';
 
 function CardDropdown({ snippet }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const history = useHistory();
 
   function onDelete() {
     setIsModalVisible(true);
@@ -17,16 +18,21 @@ function CardDropdown({ snippet }) {
 
   async function handleOk() {
     await remove(snippet.snippetID);
+    setIsModalVisible(false);
   }
 
   function handleCancel() {
     setIsModalVisible(false);
   }
 
+  function redirectPage() {
+    history.push(`/snippet/view/${snippet.snippetID}`);
+  }
+
   const menu = (
     <Menu>
       <Menu.Item key="1">
-        <Link to={`/snippet/${snippet.snippetID}`}>Edit</Link>
+        <Link to={`/snippet/edit/${snippet.snippetID}`}>Edit</Link>
       </Menu.Item>
       <Menu.Item key="2">Add to Folder</Menu.Item>
       <Menu.Item onClick={onDelete} key="3">
@@ -41,6 +47,7 @@ function CardDropdown({ snippet }) {
       <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
       </Dropdown>
+      <ArrowsAltOutlined onClick={redirectPage} />
       <Modal
         title="Delete code snippet"
         onCancel={handleCancel}

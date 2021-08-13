@@ -2,8 +2,8 @@ const routes = {
   ADDSNIPPET: '/add-snippet',
   LOGIN: '/login',
   SIGNUP: '/signup',
-  SNIPPET: '/snippet/:id',
+  SNIPPET_EDIT: '/snippet/edit/:id',
+  SNIPPET_VIEW: '/snippet/view/:id',
   ROOT: '/',
-  DASHBOARD: '/dashboard',
 };
 export default routes;

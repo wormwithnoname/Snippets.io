@@ -2,20 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Route, Redirect, useLocation } from 'react-router-dom';
 
 import routes from 'constants/routes';
-import { checkEditorAccess } from 'model/SnippetAccessModel';
+import { checkViewerAccess } from 'model/SnippetAccessModel';
 import { useAuth } from 'hooks/useAuth';
 import { Spin } from 'antd';
 
-function PrivateSnippetRoute({ component: Component, ...rest }) {
+function PrivateSnippetRouteView({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
-  const { location } = useLocation();
+  const location = useLocation();
+
+  function parseURL(URL) {
+    return URL.substring(URL.lastIndexOf('/') + 1);
+  }
 
   useEffect(async () => {
-    console.log('id is', location);
+    const snippetID = await parseURL(location.pathname);
     if (currentUser) {
-      const accessStatus = await checkEditorAccess('oVQDK7GSVJLibzifkcH1', currentUser.uid);
+      const accessStatus = await checkViewerAccess(snippetID, currentUser.uid);
       setAuthenticated(accessStatus);
     }
     setisLoading(false);
@@ -40,4 +44,4 @@ function PrivateSnippetRoute({ component: Component, ...rest }) {
   );
 }
 
-export default PrivateSnippetRoute;
+export default PrivateSnippetRouteView;

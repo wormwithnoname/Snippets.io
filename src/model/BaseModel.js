@@ -1,42 +1,37 @@
 import { db, timestamp } from 'services/FirebaseService';
 
-function addEditorAccess(collection, snippetID, userID) {
+function createAccess(collection, snippetID, userID) {
   return db
     .collection(collection)
     .doc(snippetID)
     .set({
       editors: { [userID]: 'true' },
+      viewers: { [userID]: 'true' },
     });
 }
 
-async function checkEditorAccess(collection, snippetID, userID) {
+async function checkAccess(collection, snippetID, userID, accessType) {
   const snippetAccessRef = await db.collection(collection).doc(snippetID).get();
-  const editorsList = await snippetAccessRef.get('editors');
-  if (editorsList[userID]) return true;
+  const accessorsList = await snippetAccessRef.get(accessType);
+  if (accessorsList[userID]) return true;
   return false;
 }
 
-function updateEditorAccess(collection, snippetID, userID) {
+function updateAccess(collection, snippetID, userID, accessType) {
   return db
     .collection(collection)
     .doc(snippetID)
     .update({
-      editors: { [userID]: 'true' },
+      [accessType]: { [userID]: 'true' },
     });
 }
 
 function create(collection, data) {
-  return db
-    .collection(collection)
-    .add({
-      ...data,
-      dateCreated: timestamp(),
-      dateUpdated: timestamp(),
-    })
-    .then((docRef) => {
-      docRef.update({ snippetID: docRef.id });
-      addEditorAccess('snippets-access', docRef.id, data.ownerID);
-    });
+  return db.collection(collection).add({
+    ...data,
+    dateCreated: timestamp(),
+    dateUpdated: timestamp(),
+  });
 }
 
 function createOrUpdate(collection, id, data) {
@@ -53,12 +48,12 @@ function update(collection, data, id) {
     .update({ ...data, dateUpdated: timestamp() });
 }
 
-async function getByRecent(collection, ownerID) {
+async function getByRecent(collection, ownerID, limit) {
   return db
     .collection(collection)
     .where('ownerID', '==', ownerID)
     .orderBy('dateUpdated', 'desc')
-    .limit(10);
+    .limit(limit);
 }
 
 async function getOne(collection, id) {
@@ -80,9 +75,9 @@ function remove(collection, id) {
 }
 
 export default {
-  addEditorAccess,
-  checkEditorAccess,
+  checkAccess,
   create,
+  createAccess,
   createOrUpdate,
   update,
   getByRecent,
@@ -90,5 +85,5 @@ export default {
   getAll,
   getSome,
   remove,
-  updateEditorAccess,
+  updateAccess,
 };

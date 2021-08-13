@@ -51,6 +51,7 @@ function Snippet() {
   }, []);
 
   async function addSnippet() {
+    console.log(language.toUpperCase());
     try {
       const newSnippet = {
         title: titleText,

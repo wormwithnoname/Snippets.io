@@ -33,6 +33,10 @@ function NavBar() {
     }
   }
 
+  function redirectHome() {
+    history.push(routes.ROOT);
+  }
+
   const menu = (
     <Menu>
       <Menu.ItemGroup title={currentUser.displayName}>
@@ -50,7 +54,12 @@ function NavBar() {
   return (
     <Layout>
       <Header className="NavBar">
-        <img className="App-logo" src={snippetslogo} alt="snippetslogo" />
+        <img
+          className="App-logo"
+          onClickCapture={redirectHome}
+          src={snippetslogo}
+          alt="snippetslogo"
+        />
         <div className="rightOfNav">
           <Space size={25}>
             <Form className="ant-input-affix-wrapper">
