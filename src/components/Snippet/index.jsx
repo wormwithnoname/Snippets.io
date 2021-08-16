@@ -199,7 +199,7 @@ function Snippet() {
             maxTagCount="responsive"
             mode="tags"
             onChange={onChangeViewers}
-            placeholder="Enter viewer's user ID"
+            placeholder="Enter viewer's email address"
             size="middle"
             value={viewers}
           />
@@ -213,7 +213,7 @@ function Snippet() {
             maxTagCount="responsive"
             mode="tags"
             onChange={onChangeEditors}
-            placeholder="Enter editor's user ID"
+            placeholder="Enter editor's email address"
             size="middle"
             value={editors}
           />

@@ -45,7 +45,7 @@ function NavBar() {
           <div>
             <Text>{currentUser.displayName}</Text>
             <br />
-            <Text type="secondary">{currentUser.uid}</Text>
+            <Text type="secondary">{currentUser.email}</Text>
           </div>
         }
       >
