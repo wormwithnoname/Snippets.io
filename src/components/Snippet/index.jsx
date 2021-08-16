@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import AceEditor from 'react-ace';
-import { Button, Card, Divider, Form, Input, Select, Typography } from 'antd';
+import { Button, Card, Divider, Form, Input, Select, Space, Typography } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -104,6 +104,10 @@ function Snippet() {
 
   function onChangeViewers() {
     // setViewers(fieldvalue);
+  }
+
+  function onCancel() {
+    history.push(routes.ROOT);
   }
 
   return (
@@ -216,9 +220,14 @@ function Snippet() {
           />
           <br />
           <br />
-          <Button className="ant-btn" onClick={addSnippet} size="large" type="primary">
-            Save Changes
-          </Button>
+          <Space>
+            <Button className="ant-btn" onClick={addSnippet} size="large" type="primary">
+              Save Changes
+            </Button>
+            <Button className="ant-btn" onClick={onCancel} size="large" type="primary">
+              Cancel
+            </Button>
+          </Space>
         </div>
       </Card>
     </div>
