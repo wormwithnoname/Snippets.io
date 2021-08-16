@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import AceEditor from 'react-ace';
-import { Button, Card, Divider, Form, Input, Select } from 'antd';
+import { Button, Card, Divider, Form, Input, Select, Space } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -76,6 +76,10 @@ function AddSnippet() {
     setLanguage(fieldValue);
   }
 
+  function onCancel() {
+    history.push(routes.ROOT);
+  }
+
   return (
     <div className="form-page">
       <Card className="add-snippet-card">
@@ -148,9 +152,14 @@ function AddSnippet() {
           />
           <br />
           <br />
-          <Button className="ant-btn" onClick={addSnippet} size="large" type="primary">
-            Submit
-          </Button>
+          <Space>
+            <Button className="ant-btn" onClick={addSnippet} size="large" type="primary">
+              Submit
+            </Button>
+            <Button className="ant-btn" onClick={onCancel} size="large" type="primary">
+              Cancel
+            </Button>
+          </Space>
         </div>
       </Card>
     </div>
