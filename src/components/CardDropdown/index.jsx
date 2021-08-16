@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Dropdown, Menu, Modal, Tag, Space } from 'antd';
+import { Dropdown, Menu, Modal, Tag, Space } from 'antd';
 import { ArrowsAltOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -78,17 +78,13 @@ function CardDropdown({ snippet }) {
       </Dropdown>
       <ArrowsAltOutlined onClick={redirectPage} />
       <Modal
+        okText="Delete"
+        onOk={handleOk}
         title="Delete code snippet"
         onCancel={handleCancel}
         visible={isModalVisible}
-        footer={null}
       >
         <p>Are you sure you want to delete this code snippet card?</p>
-        <br />
-        <Space>
-          <Button onClick={handleOk}>Delete</Button>
-          <Button onClick={handleCancel}>Cancel</Button>
-        </Space>
       </Modal>
     </Space>
   );
