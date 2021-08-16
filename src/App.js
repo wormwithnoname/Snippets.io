@@ -15,6 +15,7 @@ const Addsnippet = lazy(() => import('pages/Add-Snippet'));
 const Login = lazy(() => import('pages/Login'));
 const Signup = lazy(() => import('pages/Signup'));
 const Snippet = lazy(() => import('pages/Snippet'));
+const SnippetView = lazy(() => import('pages/SnippetView'));
 const Dashboard = lazy(() => import('pages/Dashboard'));
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
             <PrivateRoute exact path={routes.ROOT} component={Dashboard} />
             <PrivateRoute exact path={routes.ADDSNIPPET} component={Addsnippet} />
             <PrivateSnippetRouteEdit exact path={routes.SNIPPET_EDIT} component={Snippet} />
-            <PrivateSnippetRouteView exact path={routes.SNIPPET_VIEW} component={Snippet} />
+            <PrivateSnippetRouteView exact path={routes.SNIPPET_VIEW} component={SnippetView} />
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
             <Redirect to={routes.LOGIN} />

@@ -4,21 +4,21 @@ import { Layout } from 'antd';
 
 import './styles.scss';
 import NavBar from 'components/NavBar';
-import Snippet from 'components/Snippet';
+import SnippetView from 'components/SnippetView';
 
 const { Content } = Layout;
 
-function SnippetViewPage() {
+function SnippetPage() {
   return (
     <div className="dashboard">
       <Layout>
         <NavBar />
         <Content>
-          <Snippet />
+          <SnippetView />
         </Content>
       </Layout>
     </div>
   );
 }
 
-export default SnippetViewPage;
+export default SnippetPage;

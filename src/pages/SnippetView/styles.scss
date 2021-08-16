@@ -1,0 +1,14 @@
+@import '../../utils/variables.scss';
+
+.dashboard {
+  height: 100vh;
+  display: flex;
+  background-color: white;
+  h4.ant-typography {
+    font-family: $roboto;
+    color: $white-primary;
+  }
+  .ant-layout {
+    background:$darkmode_black;
+  }
+}
