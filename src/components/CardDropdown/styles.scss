@@ -35,6 +35,27 @@
   border-top-right-radius: 16px;
 }
 
+.ant-modal-body {
+  .form-tags {
+    background: #272822;
+    margin-left: auto;
+    margin-right: 0;
+    .ant-select-selection-overflow {
+      align-content: flex-end;
+    }
+    .ant-select-selection-placeholder {
+      color: $white-secondary;
+      font-weight: 600;
+    }
+    .ant-select-selection-item {
+      background: $secondary-color;
+      cursor: default;
+      border: none;
+      color: $black;
+    }
+  }
+}
+
 .ant-btn.ant-btn-primary {
   color: $white;
   background: $secondary-background;

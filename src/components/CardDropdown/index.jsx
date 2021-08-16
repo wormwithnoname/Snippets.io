@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Dropdown, Menu, Modal, Tag, Space } from 'antd';
+import { Dropdown, Menu, Modal, Select, Space, Tag, Typography } from 'antd';
 import { ArrowsAltOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -8,12 +8,20 @@ import { remove } from 'model/SnippetModel';
 
 import './styles.scss';
 
+const { Text } = Typography;
+
 function CardDropdown({ snippet }) {
+  const [editors, setEditors] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [viewers, setViewers] = useState();
   const history = useHistory();
 
-  function onDelete() {
+  function onClick() {
     setIsModalVisible(true);
+  }
+
+  function handleAdd() {
+    setIsModalVisible(false);
   }
 
   async function handleOk() {
@@ -29,13 +37,24 @@ function CardDropdown({ snippet }) {
     history.push(`/snippet/view/${snippet.snippetID}`);
   }
 
+  function onChangeEditors() {
+    setEditors();
+  }
+
+  function onChangeViewers() {
+    setViewers();
+  }
+
   const menu = (
     <Menu>
       <Menu.Item key="1">
         <Link to={`/snippet/edit/${snippet.snippetID}`}>Edit</Link>
       </Menu.Item>
       <Menu.Item key="2">Add to Folder</Menu.Item>
-      <Menu.Item onClick={onDelete} key="3">
+      <Menu.Item onClick={onClick} key="3">
+        Add Viewers/Editors
+      </Menu.Item>
+      <Menu.Item onClick={onClick} key="4">
         Delete
       </Menu.Item>
     </Menu>
@@ -85,6 +104,40 @@ function CardDropdown({ snippet }) {
         visible={isModalVisible}
       >
         <p>Are you sure you want to delete this code snippet card?</p>
+      </Modal>
+      <Modal
+        okText="Add"
+        onOk={handleAdd}
+        title="Add viewers/editors"
+        onCancel={handleCancel}
+        visible={isModalVisible}
+      >
+        <Text>Viewers:</Text>
+        <br />
+        <Select
+          autoFocus="true"
+          className="form-tags"
+          maxTagCount="responsive"
+          mode="tags"
+          onChange={onChangeViewers}
+          placeholder="Enter viewer's email address"
+          size="middle"
+          value={viewers}
+        />
+        <br />
+        <br />
+        <Text>Editors:</Text>
+        <br />
+        <Select
+          autoFocus="true"
+          className="form-tags"
+          maxTagCount="responsive"
+          mode="tags"
+          onChange={onChangeEditors}
+          placeholder="Enter editor's email address"
+          size="middle"
+          value={editors}
+        />
       </Modal>
     </Space>
   );
