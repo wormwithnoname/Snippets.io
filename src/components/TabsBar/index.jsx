@@ -7,6 +7,8 @@ import SnippetCard from 'components/SnippetCard';
 import './styles.scss';
 import { getByRecent } from 'model/SnippetModel';
 import { useAuth } from 'hooks/useAuth';
+import { FolderOutlined } from '@ant-design/icons';
+import Text from 'antd/lib/typography/Text';
 
 const { TabPane } = Tabs;
 
@@ -50,7 +52,21 @@ function TabsBar() {
         </TabPane>
         <TabPane className="tabs-text" tab="Folder" key="2">
           <Row>
-            <Col Span={8} />
+            <Col Span={8}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <FolderOutlined style={{ color: 'white', fontSize: '100px' }} />
+                <Text style={{ color: 'white', fontSize: '25px', textAlign: 'center' }}>
+                  Folder Name
+                </Text>
+              </div>
+            </Col>
           </Row>
         </TabPane>
         <TabPane className="tabs-text" tab="Tags" key="3" />

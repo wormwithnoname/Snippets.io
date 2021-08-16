@@ -1,25 +1,27 @@
 import React from 'react';
 
-import { Layout } from 'antd';
-
+import AddFolderButton from 'components/AddFolderButton';
 import NavBar from 'components/NavBar';
 import TabsBar from 'components/TabsBar';
-import AddButton from 'components/AddButton';
 
 import './styles.scss';
-
-const { Content } = Layout;
+import Layout from 'antd/lib/layout/layout';
+import AddButton from 'components/AddButton';
+import { Space } from 'antd';
 
 function DashboardPage() {
   return (
     <div className="dashboard">
       <Layout>
         <NavBar />
-        <Content>
-          <TabsBar />
-        </Content>
+        <TabsBar />
       </Layout>
-      <AddButton />
+      <div className="dashboard-buttons">
+        <Space>
+          <AddButton />
+          <AddFolderButton />
+        </Space>
+      </div>
     </div>
   );
 }

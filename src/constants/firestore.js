@@ -1,8 +1,9 @@
 const collections = {
+  FOLDERS: 'folders',
   USERLIST: 'users',
   USERS: 'user-test',
-  SNIPPETS: 'code snippets',
-  SNIPPETACCESS: 'snippets-access-test',
+  SNIPPETS: 'snippets',
+  SNIPPETACCESS: 'snippets-access',
   USERINFO: 'user-info-test',
 };
 

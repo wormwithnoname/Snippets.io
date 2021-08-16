@@ -29,7 +29,7 @@ function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
   if (isLoading) {
     return (
       <div>
-        <Spin />
+        <Spin className="spinner-div" />
       </div>
     );
   }

@@ -53,7 +53,6 @@ function AddSnippet() {
   }
 
   function onChangeText(fieldValue) {
-    console.log(titleText, descriptionText, tags);
     switch (fieldValue.target.name) {
       case 'title':
         setTitleText(fieldValue.target.value);
@@ -89,7 +88,6 @@ function AddSnippet() {
             <Select
               className="ant-select"
               onChange={onChangeLanguage}
-              optionFilterProp="children"
               placeholder="Select Language"
               showSearch
             >

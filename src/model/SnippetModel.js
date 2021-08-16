@@ -2,13 +2,13 @@ import collections from '../constants/firestore';
 import BaseModel from './BaseModel';
 import { createOwnerAccess, deleteSnippetAccess } from './SnippetAccessModel';
 
-const collection = collections.SNIPPET;
+const collection = collections.SNIPPETS;
 
 async function create(data) {
   /* todo: call functions to add snippetID to SnippetAccessModel and to UserModel */
   try {
-    await BaseModel.create('code snippets', data).then((docRef) => {
-      BaseModel.update('code snippets', { snippetID: docRef.id }, docRef.id);
+    await BaseModel.create(collection, data).then((docRef) => {
+      BaseModel.update(collection, { snippetID: docRef.id }, docRef.id);
       createOwnerAccess(docRef.id, data.ownerID);
     });
   } catch (error) {
@@ -19,7 +19,7 @@ async function create(data) {
 
 function update(data, id) {
   try {
-    return BaseModel.update('code snippets', data, id);
+    return BaseModel.update(collection, data, id);
   } catch (error) {
     console.log(error.message);
     throw new Error('There was an error updating the Snippet');
@@ -28,7 +28,7 @@ function update(data, id) {
 
 async function getByRecent(ownerID) {
   try {
-    return BaseModel.getByRecent('code snippets', ownerID);
+    return BaseModel.getByRecent(collection, ownerID);
   } catch (error) {
     throw new Error('There was an error getting the Snippets');
   }
@@ -36,7 +36,7 @@ async function getByRecent(ownerID) {
 
 async function getByID(snippetID) {
   try {
-    return BaseModel.getOne('code snippets', snippetID);
+    return BaseModel.getOne(collection, snippetID);
   } catch (error) {
     throw new Error('There was an error getting the Snippets');
   }
@@ -52,7 +52,7 @@ async function getByIDs(ids) {
 
 function remove(id) {
   try {
-    BaseModel.remove('code snippets', id);
+    BaseModel.remove(collection, id);
     deleteSnippetAccess(id);
   } catch (error) {
     console.log(error.message);

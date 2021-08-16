@@ -5,8 +5,8 @@ function createAccess(collection, snippetID, userID) {
     .collection(collection)
     .doc(snippetID)
     .set({
-      editors: { [userID]: 'true' },
-      viewers: { [userID]: 'true' },
+      editors: { [userID]: true },
+      viewers: { [userID]: true },
     });
 }
 
@@ -22,7 +22,7 @@ function updateAccess(collection, snippetID, userID, accessType) {
     .collection(collection)
     .doc(snippetID)
     .update({
-      [accessType]: { [userID]: 'true' },
+      [accessType]: { [userID]: true },
     });
 }
 

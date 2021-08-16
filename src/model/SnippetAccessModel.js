@@ -16,7 +16,7 @@ async function create(data) {
 
 async function createOwnerAccess(snippetId, userId) {
   try {
-    return BaseModel.createAccess('snippets-access', snippetId, userId);
+    return BaseModel.createAccess(collection, snippetId, userId);
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
@@ -25,7 +25,7 @@ async function createOwnerAccess(snippetId, userId) {
 // todo: sets snippetID/editors/userID:true
 async function updateEditorAccess(snippetId, userId) {
   try {
-    return BaseModel.updateAccess('snippets-access', snippetId, userId, 'editors');
+    return BaseModel.updateAccess(collection, snippetId, userId, 'editors');
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
@@ -33,7 +33,7 @@ async function updateEditorAccess(snippetId, userId) {
 
 async function checkEditorAccess(snippetId, userId) {
   try {
-    return BaseModel.checkAccess('snippets-access', snippetId, userId, 'editors');
+    return BaseModel.checkAccess(collection, snippetId, userId, 'editors');
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
   }
@@ -41,7 +41,7 @@ async function checkEditorAccess(snippetId, userId) {
 
 async function updateViewerAccess(snippetId, userId) {
   try {
-    return BaseModel.updateAccess('snippets-access', snippetId, userId, 'viewers');
+    return BaseModel.updateAccess(collection, snippetId, userId, 'viewers');
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
@@ -49,7 +49,7 @@ async function updateViewerAccess(snippetId, userId) {
 
 async function checkViewerAccess(snippetId, userId) {
   try {
-    return BaseModel.checkAccess('snippets-access', snippetId, userId, 'viewers');
+    return BaseModel.checkAccess(collection, snippetId, userId, 'viewers');
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
   }
@@ -57,7 +57,7 @@ async function checkViewerAccess(snippetId, userId) {
 
 async function deleteSnippetAccess(snippetId) {
   try {
-    return BaseModel.remove('snippets-access', snippetId);
+    return BaseModel.remove(collection, snippetId);
   } catch (error) {
     throw new Error('There was an error in granting permission to user.');
   }

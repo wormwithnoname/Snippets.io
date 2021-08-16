@@ -1,22 +1,19 @@
 @import '../../utils/variables.scss';
+@import 'pages/Dashboard/styles.scss';
 
 .add-button {
   .ant-btn.dashboard-add-button {
     padding: 0;
     border: none;
-    position: fixed;
-    right: 64px;
-    bottom: 60px;
-    // background: $white-secondary;
     color: $secondary-color;
     & span {
       font-size: 3em;
     }
     width: 3em;
     height: 3em;
+    background-color: $dark-green;
 
     :hover {
-      transition: all 0.3s ease-out;
       color: $secondary-background;
     }
   }

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import AceEditor from 'react-ace';
-import { Button, Card, Divider, Form, Input, Select, Typography } from 'antd';
+import { Button, Card, Divider, Form, Input, Select } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -23,20 +23,20 @@ import { useAuth } from 'hooks/useAuth';
 import { useHistory, useParams } from 'react-router-dom';
 
 import './styles.scss';
+import Text from 'antd/lib/typography/Text';
 
 const { Option } = Select;
 const { TextArea } = Input;
-const { Text } = Typography;
 
 function Snippet() {
   const { currentUser } = useAuth();
-  const [titleText, setTitleText] = useState('');
   const [descriptionText, setDescriptionText] = useState('');
+  const [editors, setEditors] = useState();
   const [language, setLanguage] = useState('');
   const [snippetText, setSnippetText] = useState('');
   const [tags, setTags] = useState();
-  // const [editors, setEditors] = useState('');
-  // const [viewers, setViewers] = useState('');
+  const [titleText, setTitleText] = useState('');
+  const [viewers, setViewers] = useState();
   const history = useHistory();
   const { id } = useParams();
 
@@ -54,7 +54,6 @@ function Snippet() {
   }, []);
 
   async function addSnippet() {
-    console.log(language.toUpperCase());
     try {
       const newSnippet = {
         title: titleText,
@@ -64,14 +63,28 @@ function Snippet() {
         tags,
         body: snippetText,
         language,
-        // editors,
-        // viewers,
       };
       await update({ ...newSnippet }, id);
       history.push(routes.ROOT);
     } catch (error) {
       console.log(error.message);
     }
+  }
+
+  function onChangeEditors(fieldValue) {
+    setEditors(fieldValue);
+  }
+
+  function onChangeLanguage(fieldValue) {
+    setLanguage(fieldValue);
+  }
+
+  function onChangeSnippet(fieldValue) {
+    setSnippetText(fieldValue);
+  }
+
+  function onChangeTags(fieldValue) {
+    setTags(fieldValue);
   }
 
   function onChangeText(fieldValue) {
@@ -86,24 +99,8 @@ function Snippet() {
     }
   }
 
-  function onChangeSnippet(fieldValue) {
-    setSnippetText(fieldValue);
-  }
-
-  function onChangeTags(fieldValue) {
-    setTags(fieldValue);
-  }
-
-  function onChangeLanguage(fieldValue) {
-    setLanguage(fieldValue);
-  }
-
-  function onChangeEditors() {
-    // setEditors(fieldvalue);
-  }
-
-  function onChangeViewers() {
-    // setViewers(fieldvalue);
+  function onChangeViewers(fieldValue) {
+    setViewers(fieldValue);
   }
 
   return (
@@ -124,7 +121,6 @@ function Snippet() {
             <Select
               className="ant-select"
               onChange={onChangeLanguage}
-              optionFilterProp="children"
               placeholder="Select Language"
               showSearch
               value={language}
@@ -200,6 +196,7 @@ function Snippet() {
             onChange={onChangeViewers}
             placeholder="Enter viewer's user ID"
             size="middle"
+            value={viewers}
           />
           <br />
           <br />
@@ -213,6 +210,7 @@ function Snippet() {
             onChange={onChangeEditors}
             placeholder="Enter editor's user ID"
             size="middle"
+            value={editors}
           />
           <br />
           <br />

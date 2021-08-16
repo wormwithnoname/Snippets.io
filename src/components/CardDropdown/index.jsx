@@ -41,9 +41,38 @@ function CardDropdown({ snippet }) {
     </Menu>
   );
 
+  function getLabel(language) {
+    switch (language) {
+      case 'c_cpp':
+        return 'C/C++';
+      case 'c#':
+        return 'C#';
+      case 'css':
+        return 'CSS';
+      case 'dart':
+        return 'Dart';
+      case 'html':
+        return 'HTML';
+      case 'java':
+        return 'Java';
+      case 'javascript':
+        return 'Javascript';
+      case 'json':
+        return 'JSON';
+      case 'php':
+        return 'PHP';
+      case 'python':
+        return 'Python';
+      case 'typescript':
+        return 'Typescript';
+      default:
+        return 'Unknown';
+    }
+  }
+
   return (
     <Space className="dropdown">
-      <Tag className="ant-tag">{snippet.language}</Tag>
+      <Tag className="ant-tag">{getLabel(snippet.language)}</Tag>
       <Dropdown overlay={menu} placement="bottomCenter">
         <EllipsisOutlined />
       </Dropdown>
