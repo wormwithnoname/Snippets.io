@@ -3,29 +3,39 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Tabs } from 'antd';
 
 import SnippetCard from 'components/SnippetCard';
+import Folder from 'components/Folder';
 
 import './styles.scss';
+import { getByName } from 'model/FolderModel';
 import { getByRecent } from 'model/SnippetModel';
 import { useAuth } from 'hooks/useAuth';
-import { FolderOutlined } from '@ant-design/icons';
-import Text from 'antd/lib/typography/Text';
 
 const { TabPane } = Tabs;
 
 function TabsBar() {
   const { currentUser } = useAuth();
   const [snippetsArr, setSnippetArr] = useState();
+  const [foldersArr, setFoldersArr] = useState();
 
   async function fetchData() {
     try {
-      const data = await getByRecent(currentUser.uid);
-      data.onSnapshot((querySnapshot) => {
+      const snippetsData = await getByRecent(currentUser.uid);
+      const foldersData = await getByName(currentUser.uid);
+      snippetsData.onSnapshot((querySnapshot) => {
         const snippets = [];
         querySnapshot.forEach((doc) => {
           snippets.push(doc.data());
         });
         setSnippetArr(snippets);
       });
+      foldersData.onSnapshot((querySnapshot) => {
+        const folders = [];
+        querySnapshot.forEach((doc) => {
+          folders.push(doc.data());
+        });
+        setFoldersArr(folders);
+      });
+      console.log(foldersArr);
     } catch (error) {
       console.log(error.message);
     }
@@ -51,22 +61,13 @@ function TabsBar() {
           </div>
         </TabPane>
         <TabPane className="tabs-text" tab="Folder" key="2">
-          <Row>
-            <Col Span={8}>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <FolderOutlined style={{ color: 'white', fontSize: '100px' }} />
-                <Text style={{ color: 'white', fontSize: '25px', textAlign: 'center' }}>
-                  Folder Name
-                </Text>
-              </div>
-            </Col>
+          <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} className="tabs-row">
+            {foldersArr &&
+              foldersArr.map((folder) => (
+                <Col Span={8}>
+                  <Folder folderObj={folder} />
+                </Col>
+              ))}
           </Row>
         </TabPane>
         <TabPane className="tabs-text" tab="Tags" key="3" />

@@ -1,12 +1,12 @@
 import { db, timestamp } from 'services/FirebaseService';
 
-function createAccess(collection, snippetID, userID) {
+function createAccess(collection, docID, fieldID) {
   return db
     .collection(collection)
-    .doc(snippetID)
+    .doc(docID)
     .set({
-      editors: { [userID]: true },
-      viewers: { [userID]: true },
+      editors: { [fieldID]: true },
+      viewers: { [fieldID]: true },
     });
 }
 
@@ -48,7 +48,11 @@ function update(collection, data, id) {
     .update({ ...data, dateUpdated: timestamp() });
 }
 
-async function getByRecent(collection, ownerID, limit) {
+function getByName(collection, ownerID) {
+  return db.collection(collection).where('ownerID', '==', ownerID).orderBy('folderName', 'asc');
+}
+
+function getByRecent(collection, ownerID, limit) {
   return db
     .collection(collection)
     .where('ownerID', '==', ownerID)
@@ -80,6 +84,7 @@ export default {
   createAccess,
   createOrUpdate,
   update,
+  getByName,
   getByRecent,
   getOne,
   getAll,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import AceEditor from 'react-ace';
-import { Button, Card, Divider, Form, Input, Select, Space } from 'antd';
+import { Button, Card, Divider, Form, Input, message, Select, Space } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -45,7 +45,9 @@ function AddSnippet() {
         body: snippetText,
         language,
       };
-      await create({ ...Snippet });
+      await create({ ...Snippet }).then(() => {
+        message.success('Snippet created successfully');
+      });
       history.push(routes.ROOT);
     } catch (error) {
       console.log(error.message);

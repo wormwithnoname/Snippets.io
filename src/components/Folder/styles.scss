@@ -1,0 +1,19 @@
+@import '../../utils/variables.scss';
+
+.folder {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .folderIcon {
+    color: $white;
+    font-size: 100px;
+  }
+  .folderName{
+    color: $white;
+    font-size: 25px;
+    text-align: center;
+  }
+}
