@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 
 import AceEditor from 'react-ace';
-import { Button, Card, Divider, Form, Input, Select } from 'antd';
+import { Button, Card, Divider, Form, Input, Select, Typography } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -26,6 +26,7 @@ import './styles.scss';
 
 const { Option } = Select;
 const { TextArea } = Input;
+const { Text } = Typography;
 
 function Snippet() {
   const { currentUser } = useAuth();
@@ -34,6 +35,8 @@ function Snippet() {
   const [language, setLanguage] = useState('');
   const [snippetText, setSnippetText] = useState('');
   const [tags, setTags] = useState();
+  // const [editors, setEditors] = useState('');
+  // const [viewers, setViewers] = useState('');
   const history = useHistory();
   const { id } = useParams();
 
@@ -61,6 +64,8 @@ function Snippet() {
         tags,
         body: snippetText,
         language,
+        // editors,
+        // viewers,
       };
       await update({ ...newSnippet }, id);
       history.push(routes.ROOT);
@@ -91,6 +96,14 @@ function Snippet() {
 
   function onChangeLanguage(fieldValue) {
     setLanguage(fieldValue);
+  }
+
+  function onChangeEditors() {
+    // setEditors(fieldvalue);
+  }
+
+  function onChangeViewers() {
+    // setViewers(fieldvalue);
   }
 
   return (
@@ -174,6 +187,32 @@ function Snippet() {
             placeholder="Add #TAG"
             size="middle"
             value={tags}
+          />
+          <br />
+          <br />
+          <Text style={{ color: 'white' }}>Viewers:</Text>
+          <br />
+          <Select
+            autoFocus="true"
+            className="form-tags"
+            maxTagCount="responsive"
+            mode="tags"
+            onChange={onChangeViewers}
+            placeholder="Enter viewer's user ID"
+            size="middle"
+          />
+          <br />
+          <br />
+          <Text style={{ color: 'white' }}>Editors:</Text>
+          <br />
+          <Select
+            autoFocus="true"
+            className="form-tags"
+            maxTagCount="responsive"
+            mode="tags"
+            onChange={onChangeEditors}
+            placeholder="Enter editor's user ID"
+            size="middle"
           />
           <br />
           <br />

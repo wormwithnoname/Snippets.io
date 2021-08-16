@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Avatar, Button, Dropdown, Form, Input, Layout, Menu, Space } from 'antd';
+import { Avatar, Button, Dropdown, Form, Input, Layout, Menu, Space, Typography } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import routes from 'constants/routes';
@@ -13,6 +13,7 @@ import snippetslogo from 'assets/img/logowhite.svg';
 import Modal from 'antd/lib/modal/Modal';
 
 const { Header } = Layout;
+const { Text } = Typography;
 
 function NavBar() {
   const { logout, currentUser } = useAuth();
@@ -39,7 +40,15 @@ function NavBar() {
 
   const menu = (
     <Menu>
-      <Menu.ItemGroup title={currentUser.displayName}>
+      <Menu.ItemGroup
+        title={
+          <div>
+            <Text>{currentUser.displayName}</Text>
+            <br />
+            <Text type="secondary">{currentUser.uid}</Text>
+          </div>
+        }
+      >
         <Menu.Item onClick={handleLogout} key="1">
           Logout
         </Menu.Item>
