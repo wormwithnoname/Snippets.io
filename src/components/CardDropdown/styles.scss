@@ -34,3 +34,15 @@
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
+
+.ant-btn.ant-btn-primary {
+  color: $white;
+  background: $secondary-background;
+  border-color: $secondary-background;
+}
+
+.ant-btn {
+  color: $black;
+  background: $white;
+  border-color: $secondary-background;
+}
