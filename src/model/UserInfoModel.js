@@ -4,6 +4,14 @@ import BaseModel from './BaseModel';
 
 const collection = collections.USERINFO;
 
+async function checkUserExistence(data) {
+  try {
+    return BaseModel.checkUser(data);
+  } catch (error) {
+    throw new Error('There was an error creating a new UserInfo.');
+  }
+}
+
 function create(data) {
   try {
     return BaseModel.create({ collection, data });
@@ -37,4 +45,4 @@ async function get(id) {
   }
 }
 
-export default { create, update, remove, get };
+export default { checkUserExistence, create, update, remove, get };

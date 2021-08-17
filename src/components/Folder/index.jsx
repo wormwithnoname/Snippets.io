@@ -13,7 +13,7 @@ function Folder({ folderObj }) {
   const history = useHistory();
 
   async function redirectPage() {
-    history.push(routes.FOLDER);
+    history.push(routes.FOLDER, folderObj);
   }
   return (
     <div className="folder">

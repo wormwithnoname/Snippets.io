@@ -45,7 +45,7 @@ function AddSnippet() {
         body: snippetText,
         language,
       };
-      await create({ ...Snippet }).then(() => {
+      await create({ ...Snippet }, currentUser.email).then(() => {
         message.success('Snippet created successfully');
       });
       history.push(routes.ROOT);

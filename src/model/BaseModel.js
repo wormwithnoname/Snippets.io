@@ -1,4 +1,5 @@
 import { db, timestamp } from 'services/FirebaseService';
+import firebase from 'firebase';
 
 function createAccess(collection, docID, fieldID) {
   return db
@@ -10,20 +11,23 @@ function createAccess(collection, docID, fieldID) {
     });
 }
 
-async function checkAccess(collection, snippetID, userID, accessType) {
+async function checkAccess(collection, snippetID, userEmail, accessType) {
   const snippetAccessRef = await db.collection(collection).doc(snippetID).get();
   const accessorsList = await snippetAccessRef.get(accessType);
-  if (accessorsList[userID]) return true;
+  if (accessorsList[userEmail]) return true;
   return false;
 }
 
-function updateAccess(collection, snippetID, userID, accessType) {
+function updateAccess(collection, snippetID, userEmail, accessType) {
   return db
     .collection(collection)
     .doc(snippetID)
-    .update({
-      [accessType]: { [userID]: true },
-    });
+    .set(
+      {
+        [accessType]: { [userEmail]: true },
+      },
+      { merge: true },
+    );
 }
 
 function create(collection, data) {
@@ -48,6 +52,13 @@ function update(collection, data, id) {
     .update({ ...data, dateUpdated: timestamp() });
 }
 
+function updateArray(collection, data, id) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .update({ snippetIDs: firebase.firestore.FieldValue.arrayUnion(data) });
+}
+
 function getByName(collection, ownerID) {
   return db.collection(collection).where('ownerID', '==', ownerID).orderBy('folderName', 'asc');
 }
@@ -70,8 +81,12 @@ async function getAll({ collection }) {
   return db.collection(collection).get();
 }
 
-async function getSome({ collection, ids }) {
-  return db.collection(collection).whereIn('id', ids).get();
+async function getSome(collection, ids, limit) {
+  return db
+    .collection(collection)
+    .where('snippetID', 'in', ids)
+    .orderBy('dateUpdated', 'desc')
+    .limit(limit);
 }
 
 function remove(collection, id) {
@@ -91,4 +106,5 @@ export default {
   getSome,
   remove,
   updateAccess,
+  updateArray,
 };

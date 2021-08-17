@@ -14,42 +14,43 @@ async function create(data) {
   }
 }
 
-async function createOwnerAccess(snippetId, userId) {
+async function createOwnerAccess(snippetId, userEmail) {
   try {
-    return BaseModel.createAccess(collection, snippetId, userId);
+    return BaseModel.createAccess(collection, snippetId, userEmail);
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
 }
 
 // todo: sets snippetID/editors/userID:true
-async function updateEditorAccess(snippetId, userId) {
+async function updateEditorAccess(snippetId, userEmail) {
   try {
-    return BaseModel.updateAccess(collection, snippetId, userId, 'editors');
+    return BaseModel.updateAccess(collection, snippetId, userEmail, 'editors');
   } catch (error) {
+    console.log(error.message);
     throw new Error('There was an error in adding permission to user.');
   }
 }
 
-async function checkEditorAccess(snippetId, userId) {
+async function checkEditorAccess(snippetId, userEmail) {
   try {
-    return BaseModel.checkAccess(collection, snippetId, userId, 'editors');
+    return BaseModel.checkAccess(collection, snippetId, userEmail, 'editors');
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
   }
 }
 
-async function updateViewerAccess(snippetId, userId) {
+async function updateViewerAccess(snippetId, userEmail) {
   try {
-    return BaseModel.updateAccess(collection, snippetId, userId, 'viewers');
+    return BaseModel.updateAccess(collection, snippetId, userEmail, 'viewers');
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
 }
 
-async function checkViewerAccess(snippetId, userId) {
+async function checkViewerAccess(snippetId, userEmail) {
   try {
-    return BaseModel.checkAccess(collection, snippetId, userId, 'viewers');
+    return BaseModel.checkAccess(collection, snippetId, userEmail, 'viewers');
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
   }

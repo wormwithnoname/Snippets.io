@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { Col, Row, Typography } from 'antd';
 import { CloseCircleOutlined, FolderFilled } from '@ant-design/icons';
@@ -8,26 +8,27 @@ import './styles.scss';
 import NavBar from 'components/NavBar';
 import SnippetCard from 'components/SnippetCard';
 import routes from 'constants/routes';
-import { getByRecent } from 'model/SnippetModel';
-import { useAuth } from 'hooks/useAuth';
+import { getByIDs } from 'model/SnippetModel';
 
 const { Text } = Typography;
 
 function OpenFolder() {
-  const history = useHistory();
-  const { currentUser } = useAuth();
   const [snippetsArr, setSnippetArr] = useState();
+  const history = useHistory();
+  const location = useLocation();
 
   async function fetchData() {
     try {
-      const snippetsData = await getByRecent(currentUser.uid);
-      snippetsData.onSnapshot((querySnapshot) => {
-        const snippets = [];
-        querySnapshot.forEach((doc) => {
-          snippets.push(doc.data());
+      if (location.state.snippetIDs) {
+        const snippetsData = await getByIDs(location.state.snippetIDs);
+        snippetsData.onSnapshot((querySnapshot) => {
+          const snippets = [];
+          querySnapshot.forEach((doc) => {
+            snippets.push(doc.data());
+          });
+          setSnippetArr(snippets);
         });
-        setSnippetArr(snippets);
-      });
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -49,7 +50,7 @@ function OpenFolder() {
           <div className="folder-content">
             <div className="folder-header">
               <FolderFilled className="folder-icon" />
-              <Text className="folder-name">Folder Name</Text>
+              <Text className="folder-name">{location.state.folderName}</Text>
             </div>
             <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
               {snippetsArr &&

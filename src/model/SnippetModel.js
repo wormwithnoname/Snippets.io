@@ -4,12 +4,12 @@ import { createOwnerAccess, deleteSnippetAccess } from './SnippetAccessModel';
 
 const collection = collections.SNIPPETS;
 
-async function create(data) {
+async function create(data, ownerEmail) {
   /* todo: call functions to add snippetID to SnippetAccessModel and to UserModel */
   try {
     await BaseModel.create(collection, data).then((docRef) => {
       BaseModel.update(collection, { snippetID: docRef.id }, docRef.id);
-      createOwnerAccess(docRef.id, data.ownerID);
+      createOwnerAccess(docRef.id, ownerEmail);
     });
   } catch (error) {
     console.log(error.message);
@@ -44,13 +44,14 @@ async function getByID(snippetID) {
 
 async function getByIDs(ids) {
   try {
+    console.log(collection);
     return BaseModel.getSome(collection, ids);
   } catch (error) {
     throw new Error('There was an error getting the Snippets');
   }
 }
 
-function remove(id) {
+async function remove(id) {
   try {
     BaseModel.remove(collection, id);
     deleteSnippetAccess(id);

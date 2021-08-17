@@ -35,7 +35,6 @@ function TabsBar() {
         });
         setFoldersArr(folders);
       });
-      console.log(foldersArr);
     } catch (error) {
       console.log(error.message);
     }

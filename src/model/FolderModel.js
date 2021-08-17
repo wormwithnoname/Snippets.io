@@ -13,9 +13,9 @@ async function createFolder(data) {
   }
 }
 
-function update(data, id) {
+async function updateFolder(data, id) {
   try {
-    return BaseModel.update(collection, data, id);
+    return BaseModel.updateArray(collection, data, id);
   } catch (error) {
     console.log(error.message);
     throw new Error('There was an error updating the Snippet');
@@ -63,7 +63,7 @@ function remove(id) {
   }
 }
 
-export { createFolder, getByName, getByRecent, getByID, getByIDs, remove, update };
+export { createFolder, getByName, getByRecent, getByID, getByIDs, remove, updateFolder };
 
 /* 
 todo:
