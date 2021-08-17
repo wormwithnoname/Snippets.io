@@ -18,8 +18,13 @@ function DisplayError() {
   }
   return (
     <div className="layout">
-      <img src={errorlogo} alt="errorlogo" />
-      <Text className="text">You don&apos;t have access to this snippet.</Text>
+      <div className="image-container">
+        <img alt="errorlogo" className="error-pic" src={errorlogo} />
+      </div>
+      <Text className="text">
+        Oops! Sorry, you don&apos;t have <br />
+        access to this snippet.
+      </Text>
       <Button className="link" onClick={redirectHome}>
         Back
       </Button>
