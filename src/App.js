@@ -37,7 +37,7 @@ function App() {
             <PrivateSnippetRouteView exact path={routes.SNIPPET_VIEW} component={SnippetView} />
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
-            <Route path={routes.ERROR} component={ErrorPage} />
+            <Route exact path={routes.ERROR} component={ErrorPage} />
             <Redirect to={routes.LOGIN} />
           </Switch>
         </Suspense>

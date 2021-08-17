@@ -38,7 +38,7 @@ function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        !isLoading && authenticated ? <Component {...props} /> : <Redirect to={routes.ROOT} />
+        !isLoading && authenticated ? <Component {...props} /> : <Redirect to={routes.ERROR} />
       }
     />
   );
