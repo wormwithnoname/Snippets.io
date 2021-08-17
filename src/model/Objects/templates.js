@@ -3,31 +3,26 @@ const SnippetAccess = {
     userid1: true,
     userid2: true,
   },
-
   viewers: {
     userid1: true,
     userid2: true,
   },
-  dateUpdated: null,
-  dateCreated: null,
 };
 
 const User = {
   id: 'userid1',
   editableSnippets: {
-    snippetid1: true,
-    snippetid2: true,
+    // snippetid1: true,
+    // snippetid2: true,
   },
   viewableSnippets: {
-    snippetid1: true,
-    snippetid2: true,
+    // snippetid1: true,
+    // snippetid2: true,
   },
   ownedSnippets: {
-    snippetid1: true,
-    snippetid2: true,
+    // snippetid1: true,
+    // snippetid2: true,
   },
-  dateUpdated: null,
-  dateCreated: null,
 };
 
 const UserInfo = {
@@ -35,8 +30,6 @@ const UserInfo = {
   photoURL: 'https://johndoe.com',
   id: 'userid1',
   userName: 'JohnDoe#1356',
-  dateUpdated: null,
-  dateCreated: null,
 };
 
 const Snippet = {
@@ -45,11 +38,11 @@ const Snippet = {
   folder: 'python data structures',
   owner: 'userid1',
   id: 'snippetid1',
-  tags: ['data structures', 'algorithms'],
+  tags: [
+    // 'data structures', 'algorithms'
+  ],
   content: {
-    python: 'list.sort()',
+    // python: 'list.sort()',
   },
-  dateUpdated: null,
-  dateCreated: null,
 };
 export default { SnippetAccess, User, UserInfo, Snippet };
