@@ -63,7 +63,11 @@ async function getAll({ collection }) {
 async function getSome({ collection, docIds }) {
   return Promise.all(docIds.map((docId) => getOne({ collection, docId })));
 }
-
+async function getSomeByTime({ collection, docIds }) {
+  return (await Promise.all(docIds.map((docId) => getOne({ collection, docId })))).sort(
+    (date1, date2) => date2 - date1,
+  );
+}
 function remove({ collection, docId }) {
   return db.collection(collection).doc(docId).delete();
 }
@@ -77,6 +81,7 @@ export default {
   addToArray,
   removeFromArray,
   getOne,
+  getSomeByTime,
   getAll,
   getSome,
   remove,

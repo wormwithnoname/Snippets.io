@@ -12,9 +12,9 @@ function createUserInfo(key, value) {
   }
 }
 
-function updateUserInfo(data, docId) {
+export function updateUserInfo(userId, userInfoObject) {
   try {
-    return BaseModel.set({ collection, docId, data });
+    return BaseModel.set({ collection, data: userInfoObject, docId: userId });
   } catch (error) {
     throw new Error('There was an error updating UserInfo.');
   }
@@ -29,7 +29,7 @@ function removeUserInfo(docId) {
 }
 
 // returns a UserInfo object {uid:'',displayName:'', userName:'', photoURL:''}
-async function getUserInfo(docId) {
+export async function getUserInfo(docId) {
   try {
     return await BaseModel.getOne({ collection, docId });
   } catch (error) {

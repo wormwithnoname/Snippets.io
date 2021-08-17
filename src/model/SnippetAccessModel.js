@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import BaseModel from './BaseModel';
 import collections from '../constants/collections';
+import UserModel from './UserModel';
 
 const collection = collections.SNIPPET_ACCESS;
 
@@ -19,9 +20,9 @@ async function getSnippetAccess(snippetId) {
   }
 }
 // todo: sets snippetID/editors/userID:true
-function addEditorAccess(snippetId, userId) {
+export function addEditorAccess(snippetId, userId) {
   try {
-    // const data = ['editors', { [userId]: true }];
+    UserModel.addEditableSnippetId(userId, snippetId);
     return BaseModel.update({
       collection,
       docId: snippetId,
@@ -29,13 +30,14 @@ function addEditorAccess(snippetId, userId) {
       value: { [userId]: true },
     });
   } catch (error) {
-    throw new Error(`There was an error creating a new User. ${error}`);
+    throw new Error(`There was an error adding Editor access. ${error}`);
   }
 }
 
 // todo: sets snippetID/viewers/userID:true
-async function addViewerAccess(snippetId, userId) {
+export async function addViewerAccess(snippetId, userId) {
   try {
+    UserModel.addViewableSnippetId(userId, snippetId);
     return BaseModel.update({
       collection,
       docId: snippetId,
@@ -46,7 +48,7 @@ async function addViewerAccess(snippetId, userId) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
-function updateSnippetAccess(data, docId) {
+export function updateSnippetAccess(data, docId) {
   try {
     return BaseModel.set({ collection, docId, data });
   } catch (error) {
@@ -54,8 +56,9 @@ function updateSnippetAccess(data, docId) {
   }
 }
 // todo: removes snippetID/editors/userID
-function removeEditorAccess(snippetId, userId) {
+export function removeEditorAccess(snippetId, userId) {
   try {
+    UserModel.removeEditableSnippetId(userId, snippetId);
     return BaseModel.deleteField({ collection, docId: snippetId, key: `editors.${userId}` });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);
@@ -63,8 +66,9 @@ function removeEditorAccess(snippetId, userId) {
 }
 
 // todo: removed snippetID/viewers/userID
-function removeViewerAccess(snippetId, userId) {
+export function removeViewerAccess(snippetId, userId) {
   try {
+    UserModel.removeViewableSnippetId(userId, snippetId);
     return BaseModel.deleteField({ collection, docId: snippetId, key: `viewers.${userId}` });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);

@@ -1,18 +1,20 @@
 /* eslint-disable no-console */
 import collections from '../constants/collections';
 import BaseModel from './BaseModel';
+import UserInfoModel from './UserInfoModel';
 
 const collection = collections.USERS;
 
-function createUser(key, value) {
+export function createUser(userId, userObject, userInfoObject) {
   try {
-    return BaseModel.create({ collection, key, value });
+    UserInfoModel.createUserInfo(userId, userInfoObject);
+    return BaseModel.create({ collection, key: userId, value: userObject });
   } catch (error) {
     throw new Error(`There was an error creating a new User. ${error}`);
   }
 }
 
-function updateUser(data, docId) {
+export function updateUser(data, docId) {
   try {
     return BaseModel.set({ collection, docId, data });
   } catch (error) {
@@ -20,8 +22,9 @@ function updateUser(data, docId) {
   }
 }
 
-function removeUser(docId) {
+export function removeUser(docId) {
   try {
+    UserInfoModel.removeUserInfo(docId);
     return BaseModel.remove({ collection, docId });
   } catch (error) {
     throw new Error(`There was an error removing User. ${error}`);
@@ -29,7 +32,7 @@ function removeUser(docId) {
 }
 
 // returns a user object {uid:'',editableSnippetIds:[], viewableSnippetIds:[], ownedSnippetIds:[]}
-async function getUser(docId) {
+export async function getUser(docId) {
   try {
     return await BaseModel.getOne({ collection, docId });
   } catch (error) {
