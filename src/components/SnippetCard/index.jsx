@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Button, Card, Typography } from 'antd';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+
+import { Button, Card, message, Typography } from 'antd';
 
 import CardDropdown from 'components/CardDropdown';
 
@@ -16,6 +18,10 @@ function SnippetCard({ snippet }) {
     </Button>
   ));
 
+  function onCopyText() {
+    message.success('Copied!');
+  }
+
   return (
     <div className="snippet-container">
       <Card
@@ -25,7 +31,9 @@ function SnippetCard({ snippet }) {
         title={snippet.title}
       >
         <div value="input">
-          <Text level={4}>{snippet.description}</Text>
+          <CopyToClipboard text={snippet.body} onCopy={onCopyText}>
+            <Text level={4}>{snippet.description}</Text>
+          </CopyToClipboard>
         </div>
       </Card>
     </div>
