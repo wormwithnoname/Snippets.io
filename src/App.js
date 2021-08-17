@@ -12,12 +12,13 @@ import PrivateRoute from 'routes/PrivateRoute';
 import routes from 'constants/routes';
 
 const Addsnippet = lazy(() => import('pages/Add-Snippet'));
+const Dashboard = lazy(() => import('pages/Dashboard'));
+const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const Login = lazy(() => import('pages/Login'));
+const OpenFolder = lazy(() => import('pages/OpenFolder'));
 const Signup = lazy(() => import('pages/Signup'));
 const Snippet = lazy(() => import('pages/Snippet'));
 const SnippetView = lazy(() => import('pages/SnippetView'));
-const Dashboard = lazy(() => import('pages/Dashboard'));
-const ErrorPage = lazy(() => import('pages/ErrorPage'));
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
             <Route path={routes.ERROR} component={ErrorPage} />
+            <Route path={routes.FOLDER} component={OpenFolder} />
             <Redirect to={routes.LOGIN} />
           </Switch>
         </Suspense>

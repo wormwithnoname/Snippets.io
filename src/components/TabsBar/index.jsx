@@ -70,7 +70,6 @@ function TabsBar() {
               ))}
           </Row>
         </TabPane>
-        <TabPane className="tabs-text" tab="Tags" key="3" />
       </Tabs>
     </div>
   );
