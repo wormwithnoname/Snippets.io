@@ -22,8 +22,9 @@ function DisplayError() {
         <img alt="errorlogo" className="error-pic" src={errorlogo} />
       </div>
       <Text className="text">
-        Oops! Sorry, you don&apos;t have <br />
-        access to this snippet.
+        Oops! Sorry, this doesn&apos;t exist
+        <br />
+        or you don&apos;t have access.
       </Text>
       <Button className="link" onClick={redirectHome}>
         Back

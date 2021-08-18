@@ -40,7 +40,7 @@ function App() {
             <Route path={routes.SIGNUP} component={Signup} />
             <Route exact path={routes.ERROR} component={ErrorPage} />
             <Route exact path={routes.SEARCH} component={SearchPage} />
-            <Redirect to={routes.LOGIN} />
+            <Redirect to={routes.ERROR} />
           </Switch>
         </Suspense>
       </AuthProvider>
