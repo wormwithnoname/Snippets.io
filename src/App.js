@@ -18,6 +18,7 @@ const Snippet = lazy(() => import('pages/Snippet'));
 const SnippetView = lazy(() => import('pages/SnippetView'));
 const Dashboard = lazy(() => import('pages/Dashboard'));
 const ErrorPage = lazy(() => import('pages/ErrorPage'));
+const SearchPage = lazy(() => import('pages/SearchResult'));
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
             <Route exact path={routes.ERROR} component={ErrorPage} />
+            <Route exact path={routes.SEARCH} component={SearchPage} />
             <Redirect to={routes.LOGIN} />
           </Switch>
         </Suspense>

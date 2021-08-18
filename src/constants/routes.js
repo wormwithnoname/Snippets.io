@@ -5,6 +5,7 @@ const routes = {
   SNIPPET_EDIT: '/snippet/edit/:id',
   SNIPPET_VIEW: '/snippet/view/:id',
   ERROR: '/error',
+  SEARCH: '/search',
   ROOT: '/',
 };
 export default routes;
