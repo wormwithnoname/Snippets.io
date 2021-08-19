@@ -20,6 +20,7 @@ function CardDropdown({ snippet, removeMessage }) {
   const [addFolderModal, setAddFolderModal] = useState(false);
   const [addAccessModal, setAddAccessModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+  const [removeModal, setRemoveModal] = useState(false);
 
   const [isLoadingOptions, setIsLoadingOptions] = useState(true);
   const [foldersArr, setFoldersArr] = useState('');
@@ -101,6 +102,11 @@ function CardDropdown({ snippet, removeMessage }) {
     else setDeleteModal(false);
   }
 
+  function onEventRemove() {
+    if (removeModal === false) setRemoveModal(true);
+    else setRemoveModal(false);
+  }
+
   function onEventAddAccess() {
     if (addAccessModal === false) setAddAccessModal(true);
     else setAddAccessModal(false);
@@ -125,11 +131,15 @@ function CardDropdown({ snippet, removeMessage }) {
 
   const menu = (
     <Menu>
-      {(
+      {removeMessage ? (
+        <Menu.Item key="1" onClick={onEventRemove}>
+          {removeMessage}
+        </Menu.Item>
+      ) : (
         <Menu.Item key="1" onClick={onEventAddFolder}>
           Add to Folder
         </Menu.Item>
-      ) && <Menu.Item key="1">{removeMessage}</Menu.Item>}
+      )}
       <Menu.Item key="2" onClick={onEventAddAccess}>
         Add Viewers/Editors
       </Menu.Item>
@@ -246,6 +256,14 @@ function CardDropdown({ snippet, removeMessage }) {
         visible={deleteModal}
       >
         <p>Are you sure you want to delete this code snippet card?</p>
+      </Modal>
+      <Modal
+        okText="Remove"
+        title="Remove from Folder"
+        onCancel={onEventRemove}
+        visible={removeModal}
+      >
+        <p>Are you sure you want to remove this code snippet card from the folder?</p>
       </Modal>
     </Space>
   );
