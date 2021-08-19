@@ -81,12 +81,36 @@ async function getAll({ collection }) {
   return db.collection(collection).get();
 }
 
-async function getSome(collection, ids, limit) {
+async function getSome(collection, ids, ownerID, limit) {
   return db
     .collection(collection)
     .where('snippetID', 'in', ids)
+    .where('ownerID', '==', ownerID)
     .orderBy('dateUpdated', 'desc')
     .limit(limit);
+}
+
+async function findFromArrayField(collection, field, keyword) {
+  try {
+    const result = [];
+    const docsRef = await db.collection(collection).where(field, 'array-contains', keyword).get();
+    if (!docsRef.empty) docsRef.docs.map((doc) => result.push(doc.id));
+    return result;
+  } catch (error) {
+    return console.log(error.message);
+  }
+}
+
+async function findFromField(collection, field, keyword) {
+  const result = [];
+  const lowkey = keyword.toLocaleLowerCase();
+  const docsRef = await db
+    .collection(collection)
+    .where(field, '>=', lowkey)
+    .where(field, '<=', `${lowkey}~`)
+    .get();
+  if (!docsRef.empty) docsRef.docs.map((doc) => result.push(doc.id));
+  return result;
 }
 
 async function remove(collection, id) {
@@ -106,5 +130,7 @@ export default {
   getOne,
   getSome,
   getAll,
+  findFromArrayField,
+  findFromField,
   remove,
 };

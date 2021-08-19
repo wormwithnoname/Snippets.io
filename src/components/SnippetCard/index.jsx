@@ -19,7 +19,7 @@ function SnippetCard({ snippet }) {
   ));
 
   function onCopyText() {
-    message.success('Copied!');
+    message.success('Copied code snippet!');
   }
 
   return (

@@ -24,7 +24,6 @@ import { useAuth } from 'hooks/useAuth';
 import { useHistory, useParams } from 'react-router-dom';
 
 import './styles.scss';
-import Text from 'antd/lib/typography/Text';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -32,12 +31,10 @@ const { TextArea } = Input;
 function Snippet() {
   const { currentUser } = useAuth();
   const [descriptionText, setDescriptionText] = useState('');
-  const [editors, setEditors] = useState();
   const [language, setLanguage] = useState('');
   const [snippetText, setSnippetText] = useState('');
   const [tags, setTags] = useState();
   const [titleText, setTitleText] = useState('');
-  const [viewers, setViewers] = useState();
   const history = useHistory();
   const { id } = useParams();
 
@@ -56,8 +53,13 @@ function Snippet() {
 
   async function addSnippet() {
     try {
+      const storeTags = [];
+      await tags.forEach((tag) => {
+        storeTags.push(tag.toLocaleUpperCase());
+      });
       const newSnippet = {
         title: titleText,
+        searchTitle: titleText.toLowerCase(),
         description: descriptionText,
         ownerID: currentUser.uid,
         tags,
@@ -69,10 +71,6 @@ function Snippet() {
     } catch (error) {
       console.log(error.message);
     }
-  }
-
-  function onChangeEditors(fieldValue) {
-    setEditors(fieldValue);
   }
 
   function onChangeLanguage(fieldValue) {
@@ -97,10 +95,6 @@ function Snippet() {
         break;
       default:
     }
-  }
-
-  function onChangeViewers(fieldValue) {
-    setViewers(fieldValue);
   }
 
   function onCancel() {
@@ -187,34 +181,6 @@ function Snippet() {
             placeholder="Add #TAG"
             size="middle"
             value={tags}
-          />
-          <br />
-          <br />
-          <Text style={{ color: 'white' }}>Viewers:</Text>
-          <br />
-          <Select
-            autoFocus="true"
-            className="form-tags"
-            maxTagCount="responsive"
-            mode="tags"
-            onChange={onChangeViewers}
-            placeholder="Enter viewer's email address"
-            size="middle"
-            value={viewers}
-          />
-          <br />
-          <br />
-          <Text style={{ color: 'white' }}>Editors:</Text>
-          <br />
-          <Select
-            autoFocus="true"
-            className="form-tags"
-            maxTagCount="responsive"
-            mode="tags"
-            onChange={onChangeEditors}
-            placeholder="Enter editor's email address"
-            size="middle"
-            value={editors}
           />
           <br />
           <br />

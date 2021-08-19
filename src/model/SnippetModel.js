@@ -3,6 +3,10 @@ import BaseModel from './BaseModel';
 import { createOwnerAccess, deleteSnippetAccess } from './SnippetAccessModel';
 
 const collection = collections.SNIPPETS;
+const searchFields = {
+  tags: 'tags',
+  title: 'searchTitle',
+};
 
 async function createSnippet(data, ownerEmail) {
   try {
@@ -17,7 +21,7 @@ async function createSnippet(data, ownerEmail) {
 
 async function updateSnippet(data, id) {
   try {
-    return BaseModel.update(collection, data, id);
+    return BaseModel.update(collection, id, data);
   } catch (error) {
     throw new Error('There was an error updating the Snippet');
   }
@@ -39,11 +43,27 @@ async function getByID(snippetID) {
   }
 }
 
-async function getByIDs(ids) {
+async function getByIDs(ids, ownerID) {
   try {
-    console.log(collection);
-    return BaseModel.getSome(collection, ids);
+    return BaseModel.getSome(collection, ids, ownerID);
   } catch (error) {
+    throw new Error('There was an error getting the Snippets');
+  }
+}
+
+async function findSnippets(keyword, ownerID) {
+  try {
+    const results = await BaseModel.findFromField(collection, searchFields.title, keyword);
+    const results2 = await BaseModel.findFromArrayField(collection, searchFields.tags, keyword);
+    if (results.length > 0 || results2.length > 0) {
+      const results3 = results.concat(results2);
+      const nonDuplicateResults = [...new Set(results3)];
+      const objResults = await getByIDs(nonDuplicateResults, ownerID);
+      return objResults;
+    }
+    return [];
+  } catch (error) {
+    console.log(error.message);
     throw new Error('There was an error getting the Snippets');
   }
 }
@@ -57,4 +77,12 @@ async function deleteSnippet(id) {
   }
 }
 
-export { createSnippet, updateSnippet, getByRecent, getByID, getByIDs, deleteSnippet };
+export {
+  createSnippet,
+  updateSnippet,
+  getByRecent,
+  getByID,
+  getByIDs,
+  findSnippets,
+  deleteSnippet,
+};

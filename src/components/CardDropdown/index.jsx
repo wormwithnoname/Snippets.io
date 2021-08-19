@@ -22,8 +22,8 @@ function CardDropdown({ snippet }) {
   const { currentUser } = useAuth();
   const history = useHistory();
 
-  const viewerLink = `${history.location.pathname}snippet/view/${snippet.snippetID}`;
-  const editorLink = `${history.location.pathname}snippet/edit/${snippet.snippetID}`;
+  const viewerLink = `/snippet/view/${snippet.snippetID}`;
+  const editorLink = `/snippet/edit/${snippet.snippetID}`;
 
   const [addFolderModal, setAddFolderModal] = useState(false);
   const [addAccessModal, setAddAccessModal] = useState(false);

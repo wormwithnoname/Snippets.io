@@ -1,6 +1,5 @@
 const collections = {
   FOLDERS: 'folders',
-  USERLIST: 'users',
   USERS: 'users',
   SNIPPETS: 'snippets',
   SNIPPETACCESS: 'snippets-access',

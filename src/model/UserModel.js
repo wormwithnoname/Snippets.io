@@ -1,7 +1,7 @@
 import collections from '../constants/firestore';
 import BaseModel from './BaseModel';
 
-const collection = collections.USER;
+const collection = collections.USERS;
 
 async function createUser(data) {
   try {
@@ -35,4 +35,4 @@ async function getUser(id) {
   }
 }
 
-export default { createUser, getUser, updateUser, removeUser };
+export { createUser, getUser, updateUser, removeUser };

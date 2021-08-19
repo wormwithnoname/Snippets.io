@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { Avatar, Button, Dropdown, Form, Input, Layout, Menu, Space, Typography } from 'antd';
@@ -17,6 +17,7 @@ const { Text } = Typography;
 
 function NavBar() {
   const { logout, currentUser } = useAuth();
+  const [searchText, setSearchText] = useState();
   const history = useHistory();
 
   async function handleLogout() {
@@ -38,6 +39,12 @@ function NavBar() {
     history.push(routes.ROOT);
   }
 
+  async function redirectSearchPage() {
+    if (searchText) {
+      history.push(`/search/${searchText}`, searchText);
+    }
+  }
+
   const menu = (
     <Menu>
       <Menu.ItemGroup
@@ -56,10 +63,6 @@ function NavBar() {
     </Menu>
   );
 
-  // eslint-disable-next-line no-console
-  function onSearch(value) {
-    console.log(value);
-  }
   return (
     <Layout>
       <Header className="NavBar">
@@ -74,15 +77,23 @@ function NavBar() {
             <Form className="ant-input-affix-wrapper">
               <Input
                 bordered={false}
-                id="searchID"
+                onChange={(searchValue) => {
+                  setSearchText(searchValue.target.value);
+                }}
                 placeholder="Search code snippet"
                 suffix={
-                  <Button className="ant-btn" icon={<SearchOutlined />} onClick={onSearch} ghost />
+                  <Button
+                    className="ant-btn"
+                    icon={<SearchOutlined />}
+                    onClick={redirectSearchPage}
+                    ghost
+                  />
                 }
+                value={searchText}
               />
             </Form>
             <Dropdown overlay={menu} placement="bottomCenter">
-              <Avatar className="Nav-avatar" src={currentUser.photoURL} />
+              <Avatar className="Nav-avatar" src={currentUser?.photoURL} />
             </Dropdown>
           </Space>
         </div>

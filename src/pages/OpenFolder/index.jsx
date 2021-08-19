@@ -20,7 +20,7 @@ function OpenFolder() {
   async function fetchData() {
     try {
       if (location.state.snippetIDs) {
-        const snippetsData = await getByIDs(location.state.snippetIDs);
+        const snippetsData = await getByIDs(location.state.snippetIDs, location.state.ownerID);
         snippetsData.onSnapshot((querySnapshot) => {
           const snippets = [];
           querySnapshot.forEach((doc) => {

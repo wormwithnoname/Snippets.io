@@ -36,11 +36,16 @@ function AddSnippet() {
 
   async function addSnippet() {
     try {
+      const storeTags = [];
+      await tags.forEach((tag) => {
+        storeTags.push(tag.toLocaleUpperCase());
+      });
       const Snippet = {
         title: titleText,
+        searchTitle: titleText.toLowerCase(),
         description: descriptionText,
         ownerID: currentUser.uid,
-        tags,
+        tags: storeTags,
         body: snippetText,
         language,
       };
