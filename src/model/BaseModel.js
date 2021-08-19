@@ -113,6 +113,15 @@ async function findFromField(collection, field, keyword) {
   return result;
 }
 
+async function removeFieldValue(collection, field, docID, fieldValue) {
+  return db
+    .collection(collection)
+    .doc(docID)
+    .update({
+      [field]: firebase.firestore.FieldValue.arrayRemove(fieldValue),
+    });
+}
+
 async function remove(collection, id) {
   return db.collection(collection).doc(id).delete();
 }
@@ -132,5 +141,6 @@ export default {
   getAll,
   findFromArrayField,
   findFromField,
+  removeFieldValue,
   remove,
 };

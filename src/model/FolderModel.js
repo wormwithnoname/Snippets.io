@@ -55,13 +55,30 @@ async function getByIDs(ids) {
   }
 }
 
-function deleteFolder(id) {
+async function deleteSnippetFromFolder(snippetID, folderID) {
   try {
-    BaseModel.remove(collection, id);
+    BaseModel.removeFieldValue(collection, fields.contents, folderID, snippetID);
   } catch (error) {
     console.log(error.message);
-    throw new Error('There was an error removing the Folder');
+    throw new Error('There was an error deleting the Folder');
   }
 }
 
-export { createFolder, updateFolder, getByName, getByRecent, getByID, getByIDs, deleteFolder };
+async function deleteFolder(id) {
+  try {
+    BaseModel.remove(collection, id);
+  } catch (error) {
+    throw new Error('There was an error deleting the Folder');
+  }
+}
+
+export {
+  createFolder,
+  updateFolder,
+  getByName,
+  getByRecent,
+  getByID,
+  getByIDs,
+  deleteSnippetFromFolder,
+  deleteFolder,
+};

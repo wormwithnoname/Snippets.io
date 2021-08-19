@@ -45,23 +45,19 @@
       border-radius: 20px;
     }
   
-    .form-tags {
-      background: #272822;
-      margin-left: auto;
-      margin-right: 0;
-      .ant-select-selection-overflow {
-        align-content: flex-end;
-      }
-      .ant-select-selection-placeholder {
-        color: $white-secondary;
-        font-weight: 600;
-      }
-      .ant-select-selection-item {
-        background: $secondary-color;
-        cursor: default;
-        border: none;
-        color: $black;
-      }
+    .tagText{
+      color: #fff;
+      font-weight: 400;
+      font-size: 25px;
+    }
+    
+    .tagNames{
+      background-color: $secondary_background;
+      padding: 5px;
+      display: inline-flex;
+      font-size: 15px;
+      margin-left: 10px;
+      margin-bottom: 10px;
     }
   }
   

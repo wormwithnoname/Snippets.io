@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Card, Divider, Modal, Row, Typography } from 'antd';
+import { Card, Divider, message, Modal, Row, Typography } from 'antd';
 import { DeleteOutlined, FolderOutlined } from '@ant-design/icons';
 
 import './styles.scss';
 import routes from 'constants/routes';
+import { deleteFolder } from 'model/FolderModel';
 
 const { Text } = Typography;
 
@@ -21,7 +22,18 @@ function Folder({ folderObj }) {
     setIsModalVisible(true);
   }
 
-  function hideModal() {
+  async function handleDelete() {
+    try {
+      await deleteFolder(folderObj.folderID).then(() => {
+        message.success('Folder deleted successfully');
+      });
+      setIsModalVisible(false);
+    } catch (error) {
+      message.info('Failed to delete the folder');
+    }
+  }
+
+  function handleCancel() {
     setIsModalVisible(false);
   }
 
@@ -39,9 +51,9 @@ function Folder({ folderObj }) {
       </Card>
       <Modal
         okText="Delete"
-        onOk={hideModal}
+        onOk={handleDelete}
         title="Delete folder"
-        onCancel={hideModal}
+        onCancel={handleCancel}
         visible={isModalVisible}
       >
         <p>Are you sure you want to delete this folder?</p>

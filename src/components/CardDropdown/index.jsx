@@ -5,7 +5,7 @@ import { ArrowsAltOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
 
 import { useAuth } from 'hooks/useAuth';
-import { getByName, updateFolder } from 'model/FolderModel';
+import { deleteSnippetFromFolder, getByName, updateFolder } from 'model/FolderModel';
 import {
   getEditors,
   getViewers,
@@ -15,6 +15,7 @@ import {
 import { deleteSnippet } from 'model/SnippetModel';
 
 import './styles.scss';
+import routes from 'constants/routes';
 
 const { Text } = Typography;
 
@@ -104,6 +105,18 @@ function CardDropdown({ snippet, removeMessage }) {
     }
   }
 
+  async function removeFromFolder() {
+    try {
+      await deleteSnippetFromFolder(snippet.snippetID, removeMessage).then(() => {
+        message.success('Snippet removed from folder successfully');
+      });
+      setRemoveModal(false);
+      history.push(routes.ROOT);
+    } catch (error) {
+      message.error('Failed to remove snippet from folder');
+    }
+  }
+
   async function deleteSnippetCard() {
     try {
       await deleteSnippet(snippet.snippetID).then(() => {
@@ -127,7 +140,6 @@ function CardDropdown({ snippet, removeMessage }) {
     if (deleteModal === false) setDeleteModal(true);
     else setDeleteModal(false);
   }
-
 
   function onEventRemove() {
     if (removeModal === false) setRemoveModal(true);
@@ -162,7 +174,7 @@ function CardDropdown({ snippet, removeMessage }) {
     <Menu>
       {removeMessage ? (
         <Menu.Item key="1" onClick={onEventRemove}>
-          {removeMessage}
+          Remove from Folder
         </Menu.Item>
       ) : (
         <Menu.Item key="1" onClick={onEventAddFolder}>
@@ -289,6 +301,7 @@ function CardDropdown({ snippet, removeMessage }) {
       <Modal
         okText="Remove"
         title="Remove from Folder"
+        onOk={removeFromFolder}
         onCancel={onEventRemove}
         visible={removeModal}
       >

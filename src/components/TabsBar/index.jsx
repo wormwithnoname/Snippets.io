@@ -31,7 +31,11 @@ function TabsBar() {
       foldersData.onSnapshot((querySnapshot) => {
         const folders = [];
         querySnapshot.forEach((doc) => {
-          folders.push(doc.data());
+          const docObj = {
+            ...doc.data(),
+            folderID: doc.id,
+          };
+          folders.push(docObj);
         });
         setFoldersArr(folders);
       });

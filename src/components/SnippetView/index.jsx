@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import AceEditor from 'react-ace';
 
-import { Card, Divider, Form, Input, Select } from 'antd';
+import { Card, Divider, Form, Input, Select, Tag } from 'antd';
 
 import 'ace-builds/src-noconflict/mode-c_cpp';
 import 'ace-builds/src-noconflict/mode-csharp';
@@ -22,6 +22,7 @@ import { getByID } from 'model/SnippetModel';
 import { useParams } from 'react-router-dom';
 
 import './styles.scss';
+import Text from 'antd/lib/typography/Text';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -117,17 +118,8 @@ function SnippetView() {
           />
           <br />
           <br />
-          <Select
-            autoFocus="true"
-            className="form-tags"
-            disabled
-            maxTagCount="responsive"
-            mode="tags"
-            placeholder="Add #TAG"
-            readOnly
-            size="middle"
-            value={tags}
-          />
+          <Text className="tagText">Tags:</Text>
+          {tags && tags.map((tag) => <Tag className="tagNames">{tag}</Tag>)}
         </div>
       </Card>
     </div>
