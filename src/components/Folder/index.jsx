@@ -21,11 +21,7 @@ function Folder({ folderObj }) {
     setIsModalVisible(true);
   }
 
-  function handleOk() {
-    setIsModalVisible(false);
-  }
-
-  function handleCancel() {
+  function hideModal() {
     setIsModalVisible(false);
   }
 
@@ -43,9 +39,9 @@ function Folder({ folderObj }) {
       </Card>
       <Modal
         okText="Delete"
-        onOk={handleOk}
+        onOk={hideModal}
         title="Delete folder"
-        onCancel={handleCancel}
+        onCancel={hideModal}
         visible={isModalVisible}
       >
         <p>Are you sure you want to delete this folder?</p>
