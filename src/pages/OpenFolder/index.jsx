@@ -56,7 +56,7 @@ function OpenFolder() {
               {snippetsArr &&
                 snippetsArr.map((snippet) => (
                   <Col Span={8}>
-                    <SnippetCard snippet={snippet} />
+                    <SnippetCard snippet={snippet} removeMessage="Remove from Folder" />
                   </Col>
                 ))}
             </Row>

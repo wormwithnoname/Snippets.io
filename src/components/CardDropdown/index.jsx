@@ -13,7 +13,7 @@ import { updateEditorAccess, updateViewerAccess } from 'model/SnippetAccessModel
 
 const { Text } = Typography;
 
-function CardDropdown({ snippet }) {
+function CardDropdown({ snippet, removeMessage }) {
   const { currentUser } = useAuth();
   const history = useHistory();
 
@@ -125,9 +125,11 @@ function CardDropdown({ snippet }) {
 
   const menu = (
     <Menu>
-      <Menu.Item key="1" onClick={onEventAddFolder}>
-        Add to Folder
-      </Menu.Item>
+      {(
+        <Menu.Item key="1" onClick={onEventAddFolder}>
+          Add to Folder
+        </Menu.Item>
+      ) && <Menu.Item key="1">{removeMessage}</Menu.Item>}
       <Menu.Item key="2" onClick={onEventAddAccess}>
         Add Viewers/Editors
       </Menu.Item>
