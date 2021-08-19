@@ -10,7 +10,7 @@ import './styles.scss';
 
 const { Text } = Typography;
 
-function SnippetCard({ snippet }) {
+function SnippetCard({ snippet, removeMessage }) {
   // eslint-disable-next-line dot-notation
   const tags = snippet['tags'].map((tagName) => (
     <Button className="tagButton" shape="round">
@@ -27,7 +27,7 @@ function SnippetCard({ snippet }) {
       <Card
         actions={[tags]}
         className="snippet-card"
-        extra={<CardDropdown snippet={snippet} />}
+        extra={<CardDropdown snippet={snippet} removeMessage={removeMessage} />}
         title={snippet.title}
       >
         <div value="input">
