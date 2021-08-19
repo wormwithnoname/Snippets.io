@@ -7,7 +7,7 @@ const collection = collections.SNIPPETS;
 async function createSnippet(data, ownerEmail) {
   try {
     await BaseModel.create(collection, data).then((docRef) => {
-      BaseModel.update(collection, { snippetID: docRef.id }, docRef.id);
+      BaseModel.update(collection, docRef.id, { snippetID: docRef.id });
       createOwnerAccess(docRef.id, ownerEmail);
     });
   } catch (error) {

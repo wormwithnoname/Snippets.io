@@ -22,9 +22,9 @@ function DisplayError() {
         <img alt="errorlogo" className="error-pic" src={errorlogo} />
       </div>
       <Text className="text">
-        Oops! Sorry, this doesn&apos;t exist
+        Oops! Sorry, this page doesn&apos;t exist
         <br />
-        or you don&apos;t have access.
+        or you don&apos;t have access to this page.
       </Text>
       <Button className="link" onClick={redirectHome}>
         Back

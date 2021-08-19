@@ -19,8 +19,6 @@ const OpenFolder = lazy(() => import('pages/OpenFolder'));
 const Signup = lazy(() => import('pages/Signup'));
 const Snippet = lazy(() => import('pages/Snippet'));
 const SnippetView = lazy(() => import('pages/SnippetView'));
-const Dashboard = lazy(() => import('pages/Dashboard'));
-const ErrorPage = lazy(() => import('pages/ErrorPage'));
 const SearchPage = lazy(() => import('pages/SearchResult'));
 
 function App() {
@@ -43,7 +41,8 @@ function App() {
             <Route path={routes.SIGNUP} component={Signup} />
             <Route exact path={routes.SEARCH} component={SearchPage} />
             <Route path={routes.FOLDER} component={OpenFolder} />
-            <Redirect to={routes.ERROR} />
+            <Route exact path={routes.ERROR} component={ErrorPage} />
+            <Redirect to={routes.ROOT} />
           </Switch>
         </Suspense>
       </AuthProvider>
