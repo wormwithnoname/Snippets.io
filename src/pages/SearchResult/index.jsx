@@ -3,22 +3,23 @@ import React from 'react';
 import { Layout } from 'antd';
 
 import './styles.scss';
+
 import NavBar from 'components/NavBar';
-import ErrorDisplay from 'components/ErrorDisplay';
+import DisplaySearch from 'components/SearchDisplay';
 
 const { Content } = Layout;
 
-function ErrorPage() {
+function SearchResultsPage() {
   return (
-    <div className="error">
+    <div className="search">
       <Layout>
         <NavBar />
-        <Content className="error-bg">
-          <ErrorDisplay />
+        <Content className="search-bg">
+          <DisplaySearch />
         </Content>
       </Layout>
     </div>
   );
 }
 
-export default ErrorPage;
+export default SearchResultsPage;

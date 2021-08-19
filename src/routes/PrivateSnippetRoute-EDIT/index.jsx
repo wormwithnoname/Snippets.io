@@ -6,6 +6,8 @@ import { checkEditorAccess } from 'model/SnippetAccessModel';
 import { useAuth } from 'hooks/useAuth';
 import { Spin } from 'antd';
 
+import './styles.scss';
+
 function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(true);
@@ -38,7 +40,7 @@ function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        !isLoading && authenticated ? <Component {...props} /> : <Redirect to={routes.ROOT} />
+        !isLoading && authenticated ? <Component {...props} /> : <Redirect to={routes.ERROR} />
       }
     />
   );
