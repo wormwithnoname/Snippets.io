@@ -4,54 +4,74 @@ import BaseModel from './BaseModel';
 
 const collection = collections.SNIPPETACCESS;
 
-async function create(data) {
-  try {
-    const etc = {};
-    const customizedData = { ...data, ...etc };
-    return BaseModel.create(collection, customizedData);
-  } catch (error) {
-    throw new Error('There was an error creating a new User.');
-  }
-}
+const accessType = {
+  viewer: 'viewers',
+  editor: 'editors',
+};
 
-async function createOwnerAccess(snippetId, userId) {
+async function createOwnerAccess(snippetId, userEmail) {
   try {
-    return BaseModel.createAccess(collection, snippetId, userId);
-  } catch (error) {
-    throw new Error('There was an error in adding permission to user.');
-  }
-}
-
-// todo: sets snippetID/editors/userID:true
-async function updateEditorAccess(snippetId, userId) {
-  try {
-    return BaseModel.updateAccess(collection, snippetId, userId, 'editors');
+    const accessObj = {
+      viewers: { [userEmail]: true },
+      editors: { [userEmail]: true },
+    };
+    return BaseModel.createOrUpdate(collection, snippetId, accessObj);
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
 }
 
-async function checkEditorAccess(snippetId, userId) {
+async function updateEditorAccess(snippetId, userEmail) {
   try {
-    return BaseModel.checkAccess(collection, snippetId, userId, 'editors');
+    const accessObj = {
+      editors: { [userEmail]: true },
+    };
+    return BaseModel.updateMerge(collection, snippetId, accessObj);
+  } catch (error) {
+    throw new Error('There was an error in adding permission to user.');
+  }
+}
+
+async function checkEditorAccess(snippetId, userEmail) {
+  try {
+    return BaseModel.checkAccess(collection, snippetId, userEmail, accessType.editor);
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
   }
 }
 
-async function updateViewerAccess(snippetId, userId) {
+async function getEditors(snippetId) {
   try {
-    return BaseModel.updateAccess(collection, snippetId, userId, 'viewers');
+    return BaseModel.getByField(collection, snippetId, accessType.editor);
+  } catch (error) {
+    throw new Error('There was an error in getting viewers of snippet');
+  }
+}
+
+async function updateViewerAccess(snippetId, userEmail) {
+  try {
+    const accessObj = {
+      viewers: { [userEmail]: true },
+    };
+    return BaseModel.updateMerge(collection, snippetId, accessObj);
   } catch (error) {
     throw new Error('There was an error in adding permission to user.');
   }
 }
 
-async function checkViewerAccess(snippetId, userId) {
+async function checkViewerAccess(snippetId, userEmail) {
   try {
-    return BaseModel.checkAccess(collection, snippetId, userId, 'viewers');
+    return BaseModel.checkAccess(collection, snippetId, userEmail, accessType.viewer);
   } catch (error) {
     throw new Error('There was an error in checking permission of user.');
+  }
+}
+
+async function getViewers(snippetId) {
+  try {
+    return BaseModel.getByField(collection, snippetId, accessType.viewer);
+  } catch (error) {
+    throw new Error('There was an error in getting viewers of snippet');
   }
 }
 
@@ -59,16 +79,17 @@ async function deleteSnippetAccess(snippetId) {
   try {
     return BaseModel.remove(collection, snippetId);
   } catch (error) {
-    throw new Error('There was an error in granting permission to user.');
+    throw new Error('There was an error in deleting permission object');
   }
 }
 
 export {
   checkEditorAccess,
   checkViewerAccess,
-  create,
   createOwnerAccess,
-  deleteSnippetAccess,
   updateEditorAccess,
   updateViewerAccess,
+  getEditors,
+  getViewers,
+  deleteSnippetAccess,
 };

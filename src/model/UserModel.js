@@ -1,40 +1,38 @@
-/* eslint-disable no-console */
 import collections from '../constants/firestore';
 import BaseModel from './BaseModel';
 
 const collection = collections.USER;
 
-function create(data) {
+async function createUser(data) {
   try {
-    return BaseModel.create({ collection, data });
+    return BaseModel.createOrUpdate(collection, data.uid, data);
   } catch (error) {
-    throw new Error('There was an error creating a new User.');
+    throw new Error('There was an error updating a User');
   }
 }
 
-function update(data, id) {
+async function updateUser(data, id) {
   try {
     return BaseModel.set({ collection, data, id });
   } catch (error) {
-    throw new Error('There was an error updating a new User.');
+    throw new Error('There was an error updating a User');
   }
 }
 
-function remove(id) {
+async function removeUser(id) {
   try {
     return BaseModel.remove({ collection, id });
   } catch (error) {
-    throw new Error('There was an error removing a new User.');
+    throw new Error('There was an error removing a User');
   }
 }
 
-// returns a user object {uid:'',editableSnippetIds:[], viewableSnippetIds:[], ownedSnippetIds:[]}
-async function get(id) {
+async function getUser(id) {
   try {
     return await BaseModel.getOne({ collection, id });
   } catch (error) {
-    throw new Error('There was an error getting  new User.');
+    throw new Error('There was an error getting a User.');
   }
 }
 
-export default { create, update, remove, get };
+export default { createUser, getUser, updateUser, removeUser };

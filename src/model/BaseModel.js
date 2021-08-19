@@ -1,32 +1,18 @@
 import { db, timestamp } from 'services/FirebaseService';
+import firebase from 'firebase';
 
-function createAccess(collection, docID, fieldID) {
-  return db
-    .collection(collection)
-    .doc(docID)
-    .set({
-      editors: { [fieldID]: true },
-      viewers: { [fieldID]: true },
-    });
+async function checkAccess(collection, snippetID, userEmail, accessType) {
+  try {
+    const snippetAccessRef = await db.collection(collection).doc(snippetID).get();
+    const accessorsList = await snippetAccessRef.get(accessType);
+    if (accessorsList[userEmail]) return true;
+    return false;
+  } catch (error) {
+    throw new Error('There was an error updating access.');
+  }
 }
 
-async function checkAccess(collection, snippetID, userID, accessType) {
-  const snippetAccessRef = await db.collection(collection).doc(snippetID).get();
-  const accessorsList = await snippetAccessRef.get(accessType);
-  if (accessorsList[userID]) return true;
-  return false;
-}
-
-function updateAccess(collection, snippetID, userID, accessType) {
-  return db
-    .collection(collection)
-    .doc(snippetID)
-    .update({
-      [accessType]: { [userID]: true },
-    });
-}
-
-function create(collection, data) {
+async function create(collection, data) {
   return db.collection(collection).add({
     ...data,
     dateCreated: timestamp(),
@@ -34,25 +20,50 @@ function create(collection, data) {
   });
 }
 
-function createOrUpdate(collection, id, data) {
+async function createOrUpdate(collection, id, data) {
   return db
     .collection(collection)
     .doc(id)
     .set({ ...data, dateCreated: timestamp(), dateUpdated: timestamp() });
 }
 
-function update(collection, data, id) {
+async function update(collection, id, data) {
   return db
     .collection(collection)
     .doc(id)
     .update({ ...data, dateUpdated: timestamp() });
 }
 
-function getByName(collection, ownerID) {
-  return db.collection(collection).where('ownerID', '==', ownerID).orderBy('folderName', 'asc');
+async function updateArray(collection, data, id, field) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .update({ [field]: firebase.firestore.FieldValue.arrayUnion(data) });
 }
 
-function getByRecent(collection, ownerID, limit) {
+async function updateMerge(collection, id, data) {
+  return db
+    .collection(collection)
+    .doc(id)
+    .set(
+      {
+        ...data,
+        dateUpdated: timestamp(),
+      },
+      { merge: true },
+    );
+}
+
+async function getByField(collection, id, field) {
+  const docRef = await db.collection(collection).doc(id).get();
+  return docRef.get(field);
+}
+
+async function getByName(collection, id) {
+  return db.collection(collection).where('ownerID', '==', id).orderBy('folderName', 'asc');
+}
+
+async function getByRecent(collection, ownerID, limit) {
   return db
     .collection(collection)
     .where('ownerID', '==', ownerID)
@@ -70,25 +81,30 @@ async function getAll({ collection }) {
   return db.collection(collection).get();
 }
 
-async function getSome({ collection, ids }) {
-  return db.collection(collection).whereIn('id', ids).get();
+async function getSome(collection, ids, limit) {
+  return db
+    .collection(collection)
+    .where('snippetID', 'in', ids)
+    .orderBy('dateUpdated', 'desc')
+    .limit(limit);
 }
 
-function remove(collection, id) {
+async function remove(collection, id) {
   return db.collection(collection).doc(id).delete();
 }
 
 export default {
   checkAccess,
   create,
-  createAccess,
   createOrUpdate,
   update,
+  updateArray,
+  updateMerge,
+  getByField,
   getByName,
   getByRecent,
   getOne,
-  getAll,
   getSome,
+  getAll,
   remove,
-  updateAccess,
 };

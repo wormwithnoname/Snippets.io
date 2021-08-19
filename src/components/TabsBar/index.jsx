@@ -35,7 +35,6 @@ function TabsBar() {
         });
         setFoldersArr(folders);
       });
-      console.log(foldersArr);
     } catch (error) {
       console.log(error.message);
     }
@@ -70,7 +69,6 @@ function TabsBar() {
               ))}
           </Row>
         </TabPane>
-        <TabPane className="tabs-text" tab="Tags" key="3" />
       </Tabs>
     </div>
   );

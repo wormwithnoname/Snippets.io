@@ -21,7 +21,7 @@ function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
   useEffect(async () => {
     const snippetID = await parseURL(location.pathname);
     if (currentUser) {
-      const accessStatus = await checkEditorAccess(snippetID, currentUser.uid);
+      const accessStatus = await checkEditorAccess(snippetID, currentUser.email);
       setAuthenticated(accessStatus);
     }
     setisLoading(false);

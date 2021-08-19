@@ -21,7 +21,7 @@ function PrivateSnippetRouteView({ component: Component, ...rest }) {
   useEffect(async () => {
     const snippetID = await parseURL(location.pathname);
     if (currentUser) {
-      const accessStatus = await checkViewerAccess(snippetID, currentUser.uid);
+      const accessStatus = await checkViewerAccess(snippetID, currentUser.email);
       setAuthenticated(accessStatus);
     }
     setisLoading(false);
