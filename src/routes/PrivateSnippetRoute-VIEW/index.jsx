@@ -6,6 +6,8 @@ import { checkViewerAccess } from 'model/SnippetAccessModel';
 import { useAuth } from 'hooks/useAuth';
 import { Spin } from 'antd';
 
+import './styles.scss';
+
 function PrivateSnippetRouteView({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(true);
@@ -29,7 +31,7 @@ function PrivateSnippetRouteView({ component: Component, ...rest }) {
   if (isLoading) {
     return (
       <div>
-        <Spin />
+        <Spin className="spinner-div" />
       </div>
     );
   }

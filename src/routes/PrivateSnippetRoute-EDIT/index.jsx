@@ -6,6 +6,8 @@ import { checkEditorAccess } from 'model/SnippetAccessModel';
 import { useAuth } from 'hooks/useAuth';
 import { Spin } from 'antd';
 
+import './styles.scss';
+
 function PrivateSnippetRouteEdit({ component: Component, ...rest }) {
   const { currentUser } = useAuth();
   const [isLoading, setisLoading] = useState(true);
