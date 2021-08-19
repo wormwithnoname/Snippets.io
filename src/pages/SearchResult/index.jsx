@@ -6,7 +6,6 @@ import './styles.scss';
 
 import NavBar from 'components/NavBar';
 import DisplaySearch from 'components/SearchDisplay';
-// import SnippetCard from 'components/SnippetCard';
 
 const { Content } = Layout;
 
@@ -18,7 +17,6 @@ function SearchResultsPage() {
         <Content className="search-bg">
           <DisplaySearch />
         </Content>
-        {/* <SnippetCard /> */}
       </Layout>
     </div>
   );
