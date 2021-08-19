@@ -18,7 +18,7 @@ import 'ace-builds/src-noconflict/mode-python';
 import 'ace-builds/src-noconflict/mode-typescript';
 import 'ace-builds/src-noconflict/theme-monokai';
 
-import { getByID, update } from 'model/SnippetModel';
+import { getByID, updateSnippet } from 'model/SnippetModel';
 import routes from 'constants/routes';
 import { useAuth } from 'hooks/useAuth';
 import { useHistory, useParams } from 'react-router-dom';
@@ -59,13 +59,12 @@ function Snippet() {
       const newSnippet = {
         title: titleText,
         description: descriptionText,
-        path: 'root',
         ownerID: currentUser.uid,
         tags,
         body: snippetText,
         language,
       };
-      await update({ ...newSnippet }, id);
+      await updateSnippet({ ...newSnippet }, id);
       history.push(routes.ROOT);
     } catch (error) {
       console.log(error.message);

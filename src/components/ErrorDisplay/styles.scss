@@ -1,0 +1,40 @@
+@import '../../utils/variables.scss';
+
+.layout {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  .text {
+    font: $raleway;
+    font-size: 2em;
+    background: transparent;
+    font-weight: 700;
+    color: $white;
+    text-align: center;
+  }
+
+  .link {
+    margin-top: 20px;
+    background: transparent;
+    font-weight: 500;
+    color: $white;
+  }
+}
+
+.image-container {
+  width: 100px;
+  height: 100%;
+  padding: 10px;
+}
+.error-pic {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}

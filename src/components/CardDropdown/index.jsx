@@ -1,21 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Dropdown, Menu, message, Modal, Select, Space, Tag, Typography } from 'antd';
 import { ArrowsAltOutlined, EllipsisOutlined } from '@ant-design/icons';
 import { Link, useHistory } from 'react-router-dom';
 
-import { remove } from 'model/SnippetModel';
-import { getByName, updateFolder } from 'model/FolderModel';
 import { useAuth } from 'hooks/useAuth';
+import { getByName, updateFolder } from 'model/FolderModel';
+import {
+  getEditors,
+  getViewers,
+  updateEditorAccess,
+  updateViewerAccess,
+} from 'model/SnippetAccessModel';
+import { deleteSnippet } from 'model/SnippetModel';
 
 import './styles.scss';
-import { updateEditorAccess, updateViewerAccess } from 'model/SnippetAccessModel';
 
 const { Text } = Typography;
 
 function CardDropdown({ snippet, removeMessage }) {
   const { currentUser } = useAuth();
   const history = useHistory();
+
+  const viewerLink = `${history.location.pathname}snippet/view/${snippet.snippetID}`;
+  const editorLink = `${history.location.pathname}snippet/edit/${snippet.snippetID}`;
 
   const [addFolderModal, setAddFolderModal] = useState(false);
   const [addAccessModal, setAddAccessModal] = useState(false);
@@ -30,7 +38,7 @@ function CardDropdown({ snippet, removeMessage }) {
   const [selectedKey, setSelectedKey] = useState('');
   const [viewersText, setViewersText] = useState();
 
-  async function fetchData() {
+  async function fetchFolders() {
     try {
       const foldersData = await getByName(currentUser.uid);
       foldersData.onSnapshot((querySnapshot) => {
@@ -44,13 +52,21 @@ function CardDropdown({ snippet, removeMessage }) {
       });
       setIsLoadingOptions(false);
     } catch (error) {
-      console.log(error.message);
+      message.error('Failed to retrieve folders');
     }
   }
 
-  useEffect(async () => {
-    fetchData();
-  }, []);
+  async function fetchAccess() {
+    try {
+      const viewers = await getViewers(snippet.snippetID);
+      const editors = await getEditors(snippet.snippetID);
+      console.log(viewers, editors);
+      // eslint-disable-next-line prefer-template
+      console.log();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
   async function addSnippetToFolder() {
     try {
@@ -60,6 +76,7 @@ function CardDropdown({ snippet, removeMessage }) {
         });
       setSelectedFolder();
       setSelectedKey();
+      setAddFolderModal(false);
     } catch (error) {
       message.error('Failed to add snippet to folder');
     }
@@ -68,14 +85,20 @@ function CardDropdown({ snippet, removeMessage }) {
   async function addUserAccess() {
     try {
       if (editorsText) {
-        await updateEditorAccess(snippet.snippetID, editorsText);
-        await updateViewerAccess(snippet.snippetID, editorsText);
+        editorsText.forEach(async (email) => {
+          await updateEditorAccess(snippet.snippetID, email);
+          await updateViewerAccess(snippet.snippetID, email);
+        });
       }
-      if (viewersText) await updateViewerAccess(snippet.snippetID, viewersText);
+      if (viewersText) {
+        viewersText.forEach(async (email) => {
+          await updateViewerAccess(snippet.snippetID, email);
+        });
+      }
       setEditorsText();
       setViewersText();
-      message.success('Access to snippet was added successfully');
       setAddAccessModal(false);
+      message.success('Access to snippet was added successfully');
     } catch (error) {
       message.error('Failed to add access to user/s');
     }
@@ -83,18 +106,21 @@ function CardDropdown({ snippet, removeMessage }) {
 
   async function deleteSnippetCard() {
     try {
-      await remove(snippet.snippetID).then(() => {
+      await deleteSnippet(snippet.snippetID).then(() => {
         message.success('Snippet deleted successfully');
       });
+      setDeleteModal(false);
     } catch (error) {
       message.error('Failed to delete snippet');
     }
     setDeleteModal(false);
   }
 
-  function onEventAddFolder() {
-    if (addFolderModal === false) setAddFolderModal(true);
-    else setAddFolderModal(false);
+  async function onEventAddFolder() {
+    if (addFolderModal === false) {
+      setAddFolderModal(true);
+      await fetchFolders();
+    } else setAddFolderModal(false);
   }
 
   function onEventDelete() {
@@ -102,14 +128,17 @@ function CardDropdown({ snippet, removeMessage }) {
     else setDeleteModal(false);
   }
 
+
   function onEventRemove() {
     if (removeModal === false) setRemoveModal(true);
     else setRemoveModal(false);
   }
 
-  function onEventAddAccess() {
-    if (addAccessModal === false) setAddAccessModal(true);
-    else setAddAccessModal(false);
+  async function onEventAddAccess() {
+    if (addAccessModal === false) {
+      setAddAccessModal(true);
+      await fetchAccess();
+    } else setAddAccessModal(false);
   }
 
   function onChangeFolder(fieldValue, fieldOption) {
@@ -230,10 +259,10 @@ function CardDropdown({ snippet, removeMessage }) {
           value={viewersText}
         />
         <br />
-        <Text>Viewer Link: -----</Text>
+        <Text>Viewer Link: {viewerLink}</Text>
         <br />
         <br />
-        <Text>Editors:</Text>
+        <Text>Editors: </Text>
         <br />
         <Select
           maxTagCount="responsive"
@@ -245,7 +274,7 @@ function CardDropdown({ snippet, removeMessage }) {
           value={editorsText}
         />
         <br />
-        <Text>Editor Link: ------</Text>
+        <Text>Editor Link: {editorLink}</Text>
         <br />
       </Modal>
       <Modal

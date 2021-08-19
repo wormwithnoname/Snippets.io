@@ -17,7 +17,7 @@ import 'ace-builds/src-noconflict/mode-typescript';
 import 'ace-builds/src-noconflict/theme-monokai';
 
 import './styles.scss';
-import { create } from 'model/SnippetModel';
+import { createSnippet } from 'model/SnippetModel';
 import routes from 'constants/routes';
 import { useAuth } from 'hooks/useAuth';
 import { useHistory } from 'react-router-dom';
@@ -39,17 +39,17 @@ function AddSnippet() {
       const Snippet = {
         title: titleText,
         description: descriptionText,
-        path: 'root',
         ownerID: currentUser.uid,
         tags,
         body: snippetText,
         language,
       };
-      await create({ ...Snippet }, currentUser.email).then(() => {
+      await createSnippet({ ...Snippet }, currentUser.email).then(() => {
         message.success('Snippet created successfully');
       });
       history.push(routes.ROOT);
     } catch (error) {
+      message.destroy('Failed to create a snippet');
       console.log(error.message);
     }
   }

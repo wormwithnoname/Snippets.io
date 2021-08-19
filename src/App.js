@@ -19,6 +19,7 @@ const OpenFolder = lazy(() => import('pages/OpenFolder'));
 const Signup = lazy(() => import('pages/Signup'));
 const Snippet = lazy(() => import('pages/Snippet'));
 const SnippetView = lazy(() => import('pages/SnippetView'));
+const SearchPage = lazy(() => import('pages/SearchResult'));
 
 function App() {
   return (
@@ -38,9 +39,10 @@ function App() {
             <PrivateSnippetRouteView exact path={routes.SNIPPET_VIEW} component={SnippetView} />
             <Route path={routes.LOGIN} component={Login} />
             <Route path={routes.SIGNUP} component={Signup} />
-            <Route path={routes.ERROR} component={ErrorPage} />
+            <Route exact path={routes.SEARCH} component={SearchPage} />
             <Route path={routes.FOLDER} component={OpenFolder} />
-            <Redirect to={routes.LOGIN} />
+            <Route exact path={routes.ERROR} component={ErrorPage} />
+            <Redirect to={routes.ROOT} />
           </Switch>
         </Suspense>
       </AuthProvider>

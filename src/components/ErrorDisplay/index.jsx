@@ -1,11 +1,36 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Typography } from 'antd';
+import { Button, Typography } from 'antd';
+
+import './styles.scss';
+
+import errorlogo from 'assets/img/jett.png';
+
+import routes from 'constants/routes';
 
 const { Text } = Typography;
 
 function DisplayError() {
-  return <Text>You don&apos;t have access to this snippet</Text>;
+  const history = useHistory();
+  function redirectHome() {
+    history.push(routes.ROOT);
+  }
+  return (
+    <div className="layout">
+      <div className="image-container">
+        <img alt="errorlogo" className="error-pic" src={errorlogo} />
+      </div>
+      <Text className="text">
+        Oops! Sorry, this page doesn&apos;t exist
+        <br />
+        or you don&apos;t have access to this page.
+      </Text>
+      <Button className="link" onClick={redirectHome}>
+        Back
+      </Button>
+    </div>
+  );
 }
 
 export default DisplayError;

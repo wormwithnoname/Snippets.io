@@ -1,0 +1,10 @@
+@import '../../utils/variables.scss';
+.error {
+  .error-bg {
+    background-image: url('../../assets/img/background.svg');
+    background-color: $primary-background;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+  }
+}
