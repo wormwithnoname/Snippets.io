@@ -1,0 +1,43 @@
+@import '../../utils/variables.scss';
+
+.open-folder {
+  height: 100vh;
+  background-color: $darkmode_black;
+
+  .folder-icon {
+    color: $white;
+    padding-right: 16px;
+    font-size: 2.5em;
+  }
+
+  .close-icon {
+    color: $white;
+    font-size: 2em;
+  }
+
+  .folder-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 16px;
+
+    .folder-name {
+      font: $raleway;
+      color: $white;
+      font-size: 2.5em;
+    }
+  }
+
+  .ant-row {
+    row-gap: 32px;
+  }
+}
+
+.folder-container {
+  padding: 40px;
+}
+
+.folder-content {
+  padding: 0 50px;
+}

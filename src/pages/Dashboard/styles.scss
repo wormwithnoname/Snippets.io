@@ -3,10 +3,14 @@
 .dashboard {
   height: 100vh;
   display: flex;
-  background-color: $white;
+  background-color: $darkmode_black;
   h4.ant-typography {
     font-family: $roboto;
     color: $white;
+  }
+
+  .ant-layout {
+    background: $darkmode_black;
   }
 
   .dashboard-buttons {

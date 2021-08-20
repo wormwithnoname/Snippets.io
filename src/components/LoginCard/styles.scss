@@ -11,7 +11,7 @@
 
     text-align: center;
 
-    color: $white;
+    color: $white-primary;
   }
 
   .Login-container {
@@ -37,9 +37,9 @@
     line-height: 16px;
     /* identical to box height */
     background-color: transparent;
-    border: 2px solid $white;
+    border: 2px solid $white-primary;
     border-radius: 5px;
-    color: $white;
+    color: $white-primary;
 
     cursor: pointer;
     /* Neutral/0 */
@@ -68,7 +68,7 @@
     font-weight: normal;
     font-size: 0.85rem;
     text-align: center;
-    color: $white;
+    color: $white-primary;
     margin-bottom: 10px;
   }
 
@@ -79,7 +79,7 @@
     font-weight: normal;
     font-size: 0.75rem;
     text-align: center;
-    color: $white;
+    color: $white-primary;
     margin-bottom: 10px;
   }
   .Login-link {
@@ -88,5 +88,5 @@
 }
 
 .ant-modal-confirm-error .ant-modal-confirm-body > .anticon {
-    color: $primary-background
+  color: $primary-background;
 }

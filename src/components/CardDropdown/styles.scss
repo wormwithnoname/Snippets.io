@@ -1,0 +1,73 @@
+@import '../../utils/variables.scss';
+
+.dropdown {
+
+  .ant-tag {
+    font-size: 15px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 15px;
+    background-color:#abab00;
+  }
+
+  .menu-icon {
+    .ant-dropdown-menu-item-icon {
+      max-width: 50px;
+    }
+  }
+  
+  .ant-card-extra {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.ant-modal-content {
+  background-color: $modal-color;
+  height: max-content;
+  border-radius: 16px;
+}
+
+.ant-modal-header {
+  background-color: $secondary-background;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.ant-modal-body {
+  .form-tags {
+    background: $text-black;
+    margin-left: auto;
+    margin-right: 0;
+    .ant-select-selection-overflow {
+      align-content: flex-end;
+    }
+    .ant-select-selection-placeholder {
+      color: $white-secondary;
+      font-weight: 600;
+    }
+    .ant-select-selection-item {
+      background: $secondary-color;
+      cursor: default;
+      border: none;
+      color: $black;
+    }
+  }
+}
+
+.ant-btn.ant-btn-primary {
+  color: $white;
+  background: $secondary-background;
+  border-color: $secondary-background;
+}
+
+.ant-btn {
+  color: $black;
+  background: $white;
+  border-color: $secondary-background;
+}
+
+.ant-select-multiple.ant-select-show-search {
+  width: 50%;
+}

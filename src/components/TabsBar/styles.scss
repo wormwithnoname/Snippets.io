@@ -2,12 +2,19 @@
 
 /* Dashboard Page */
 
-.dashboard {
-  display: flex;
-  justify-content: center;
-  background: $primary-background;
+.tabs {
+  width: 100%;
 
-  .dashboard-text {
+  .tabs-head {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+  }
+
+  .tabs-text {
+    .ant-tabs-nav-wrap {
+      overflow: visible;
+    }
     .ant-tabs-nav-list {
       background-color: $secondary-background;
       height: 50px;
@@ -16,6 +23,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      top: 15px;
       :hover {
         color: $secondary-color;
       }
@@ -32,14 +40,14 @@
       pointer-events: none;
     }
 
-    .dashboard-subtitle {
+    .tabs-subtitle {
       align-self: auto;
       font-family: $ibm-plex-mono;
       font-style: normal;
       font-weight: normal;
       font-size: 0.75rem;
       text-align: center;
-      color: $white;
+      color: $white-primary;
       margin-bottom: 10px;
     }
 
@@ -49,11 +57,19 @@
 
     font-family: $raleway;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1rem;
-    text-align: center;
+    letter-spacing: 0.02rem;
+    // text-align: center;
     color: $black;
     margin-bottom: 10px;
     padding-top: 25px;
+  }
+
+  .ant-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 32px;
   }
 }

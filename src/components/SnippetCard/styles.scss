@@ -1,0 +1,81 @@
+@import '../../utils/variables.scss';
+
+.snippet-container {
+  top: auto;
+  padding-left: 3px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .ant-card {
+    box-shadow: $card-box-shadow;
+    // padding: 10px;
+    background: $snippet-card;
+    border-radius: 16px;
+    height: max-content;
+    width: 400px;
+  }
+
+  .ant-card-bordered {
+    border: none;
+  }
+
+  .ant-card-head {
+    background-color: $secondary-color;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    font: $raleway;
+  }
+
+  a.ant-typography,
+  .ant-typography a {
+    color: $black;
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .ant-card-actions {
+    background-color: transparent;
+    border-top: none;
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  .ant-card-actions > li {
+    border-right: 0;
+  }
+
+  :hover {
+    transition: all 0.2s ease-out;
+    top: -3px;
+  }
+}
+
+.snippet-card {
+  font-weight: 600;
+
+  .ant-btn {
+    background: #defeca;
+    color: $black;
+    border: none;
+    margin-right: 8px;
+  }
+  .ant-btn:not([disabled]):hover,
+  .ant-btn:focus > span,
+  .ant-btn:active > span {
+    transition: none;
+    top: 0;
+  }
+  .tagButton {
+    background: $primary-background;
+    color: $white;
+    .ant-card-actions > li > span {
+      position: static;
+    }
+  }
+}

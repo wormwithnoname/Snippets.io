@@ -1,5 +1,8 @@
 const collections = {
-  USERLIST: 'users',
+  FOLDERS: 'folders',
+  USERS: 'users',
+  SNIPPETS: 'snippets',
+  SNIPPETACCESS: 'snippets-access',
 };
 
 export const defaultPhoto =

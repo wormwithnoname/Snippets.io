@@ -1,0 +1,104 @@
+@import '../../utils/variables.scss';
+
+@import '../../utils/variables.scss';
+
+/* Dashboard Page */
+
+.tabs {
+  width: 100%;
+
+  .search-results {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: $darkmode_black;
+    background-size: cover;
+    font-size: 25px;
+   
+    .search-text {
+      color: $white;
+      font-family: $ibm-plex-mono;
+      font-weight: 1000;
+    }
+    .result-text {
+      background-color: $secondary_background;
+      padding: 10px;
+      border-radius: 5px;
+      color: $darkmode_black;
+      font-weight: 500;
+    }
+  }
+
+  
+  
+  .tabs-head {
+    position: absolute;
+    top: 5%;
+    width: 100%;
+  }
+
+  .tabs-text {
+    .ant-tabs-nav-wrap{
+      overflow: visible;
+    }
+    .ant-tabs-nav-list {
+      background-color: $secondary-background;
+      height: 50px;
+      width: 300px;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 15px;
+      :hover {
+        color: $secondary-color;
+      }
+    }
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      color: $black;
+      background-color: $secondary-color;
+      padding: 5px 25px;
+      border-radius: 25px;
+    }
+
+    .ant-tabs-ink-bar {
+      background: transparent;
+      pointer-events: none;
+    }
+
+    .tabs-subtitle {
+      align-self: auto;
+      font-family: $ibm-plex-mono;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.75rem;
+      text-align: center;
+      color: $white-primary;
+      margin-bottom: 10px;
+    }
+
+    ::before {
+      display: none;
+    }
+
+    font-family: $raleway;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.02rem;
+    // text-align: center;
+    color: $black;
+    margin-bottom: 10px;
+    padding-top: 25px;
+  }
+
+  .ant-row {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    row-gap: 32px;
+  }
+}
+

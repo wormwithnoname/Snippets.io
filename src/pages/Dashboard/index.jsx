@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Button, Layout } from 'antd';
-import { PlusCircleFilled } from '@ant-design/icons';
-
 import AddFolderButton from 'components/AddFolderButton';
 import NavBar from 'components/NavBar';
 import TabsBar from 'components/TabsBar';
 
 import './styles.scss';
+import Layout from 'antd/lib/layout/layout';
+import AddButton from 'components/AddButton';
+import { Space } from 'antd';
 
 function DashboardPage() {
   return (
@@ -17,13 +17,10 @@ function DashboardPage() {
         <TabsBar />
       </Layout>
       <div className="dashboard-buttons">
-        <Button
-          className="dashboard-add-button"
-          icon={<PlusCircleFilled />}
-          size="large"
-          shape="round"
-        />
-        <AddFolderButton />
+        <Space>
+          <AddButton />
+          <AddFolderButton />
+        </Space>
       </div>
     </div>
   );

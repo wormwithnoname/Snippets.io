@@ -1,0 +1,127 @@
+@import '../../utils/variables.scss';
+
+.form-page{
+
+  .add-snippet-card {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 350px;
+    padding-left: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $darkmode_black;
+    border: none;
+    
+   
+
+    .ant-card-body{
+      background-color: transparent;
+      width: 100%;
+    }
+
+  }
+  
+  .add-snippet-form {
+  
+    textarea.ant-input {
+      background-color: $text-black;
+      border-color: $white-primary;
+      font-family: $ibm-plex-mono;
+      color: $white;
+    }
+  
+    .ant-input-lg {
+      font-size: 22px;
+      background-color: $text-black;
+      border-color: $white-primary;
+      color: $white-primary;
+    }
+  
+    .ant-btn-primary {
+      color: $white;
+      background: $text-black;
+      border-color: $white-primary;
+      border-radius: 20px;
+    }
+  
+    .tagText{
+      color: $white;
+      font-weight: 400;
+      font-size: 25px;
+    }
+    
+    .tagNames{
+      background-color: $secondary_background;
+      padding: 5px;
+      display: inline-flex;
+      font-size: 15px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .ant-select {
+    width: 30%;
+    border-radius: 15px;
+  
+    .ant-select-selection-placeholder {
+      color: $white-primary;
+    }
+  }
+
+  .ant-select-multiple.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    cursor: default;
+    background: $text-black;
+  }
+
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    background-color: $text-black;
+    border-color: $white-primary;
+    color: $white-primary;
+  }
+
+  .ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    cursor: default;
+  }
+
+  .editor {
+  border-color: $secondary-background;
+  .ant-select {
+    width: 30%;
+    border-radius: 15px;
+    background-color: $text-black;
+
+    .ant-select-selection-placeholder {
+      color: $white-primary;
+    }
+
+  }
+
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    background-color: $text-black;
+    border-color: $white-primary;
+    color: $white-primary;
+  }
+
+  .ant-select-arrow {
+    color: $white-primary;
+  }
+}
+
+.ace-editor-card{
+  margin: 0;
+  padding: 0;
+  border: 1px solid $white-primary;
+
+
+  .ant-card-body{
+    margin: 0;
+    padding: 0;
+    
+  }
+}
+
+}
+
+
