@@ -23,28 +23,28 @@
   .add-snippet-form {
   
     textarea.ant-input {
-      background-color: #272822;
+      background-color: $text-black;
       border-color: $white-primary;
       font-family: $ibm-plex-mono;
-      color: #fff;
+      color: $white;
     }
   
     .ant-input-lg {
       font-size: 22px;
-      background-color: #272822;
+      background-color: $text-black;
       border-color: $white-primary;
       color: $white-primary;
     }
   
     .ant-btn-primary {
-      color: #fff;
-      background: #272822;
+      color: $white;
+      background: $text-black;
       border-color: $white-primary;
       border-radius: 20px;
     }
   
     .form-tags {
-      background: #272822;
+      background: $text-black;
       margin-left: auto;
       margin-right: 0;
       .ant-select-selection-overflow {
@@ -74,11 +74,11 @@
 
   .ant-select-multiple.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
     cursor: default;
-    background: #272822;
+    background: $text-black;
   }
 
   .ant-select:not(.ant-select-customize-input) .ant-select-selector{
-    background-color: #272822;
+    background-color: $text-black;
     border-color: $white-primary;
     color: $white-primary;
   }
@@ -92,7 +92,7 @@
   .ant-select {
     width: 30%;
     border-radius: 15px;
-    background-color: #272822;
+    background-color: $text-black;
 
     .ant-select-selection-placeholder {
       color: $white-primary;
@@ -101,7 +101,7 @@
   }
 
   .ant-select:not(.ant-select-customize-input) .ant-select-selector{
-    background-color: #272822;
+    background-color: $text-black;
     border-color: $white-primary;
     color: $white-primary;
   }

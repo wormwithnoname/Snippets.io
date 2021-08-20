@@ -18,10 +18,10 @@
     height: 30px;
     width: 250px;
     border-radius: 25px;
-    border-color: #297870;
+    border-color: $input-turq;
     display: flex;
     align-items: flex-end;
-    background-color: #297870;
+    background-color: $input-turq;
 
     font-family: $ibm-plex-mono;
     font-style: normal;
@@ -33,7 +33,7 @@
   }
 
   .ant-input-borderless{
-    color: white;
+    color: $white;
   }
 
   .ant-btn {

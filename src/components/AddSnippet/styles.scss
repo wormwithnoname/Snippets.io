@@ -23,7 +23,7 @@
       background-color: $text-black;
       border-color: $white-primary;
       font-family: $ibm-plex-mono;
-      color: #fff;
+      color: $white-primary;
     }
 
     .ant-input-lg {
@@ -34,7 +34,7 @@
     }
 
     .ant-btn-primary {
-      color: #fff;
+      color: $white-primary;
       background: $text-black;
       border-color: $white-primary;
       border-radius: 20px;

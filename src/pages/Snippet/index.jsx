@@ -10,7 +10,7 @@ const { Content } = Layout;
 
 function SnippetViewPage() {
   return (
-    <div className="dashboard">
+    <div className="snippet-edit">
       <Layout>
         <NavBar />
         <Content>
