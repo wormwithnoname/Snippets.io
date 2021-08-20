@@ -4,6 +4,9 @@ import { createOwnerAccess, deleteSnippetAccess } from './SnippetAccessModel';
 
 const collection = collections.SNIPPETS;
 const searchFields = {
+  dateUpdate: 'dateUpdated',
+  owner: 'ownerID',
+  snippet: 'snippetID',
   tags: 'tags',
   title: 'searchTitle',
 };
@@ -29,7 +32,7 @@ async function updateSnippet(data, id) {
 
 async function getByRecent(ownerID) {
   try {
-    return BaseModel.getByRecent(collection, ownerID);
+    return BaseModel.getByRecent(collection, ownerID, searchFields.owner, searchFields.dateUpdate);
   } catch (error) {
     throw new Error('There was an error getting the Snippets');
   }
@@ -45,7 +48,7 @@ async function getByID(snippetID) {
 
 async function getByIDs(ids, ownerID) {
   try {
-    return BaseModel.getSome(collection, ids, ownerID);
+    return BaseModel.getSome(collection, ids, ownerID, searchFields.snippet, searchFields.owner, searchFields.dateUpdate);
   } catch (error) {
     throw new Error('There was an error getting the Snippets');
   }

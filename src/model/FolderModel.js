@@ -4,6 +4,9 @@ import BaseModel from './BaseModel';
 const collection = collections.FOLDERS;
 const fields = {
   contents: 'snippetIDs',
+  dateUpdate: 'dateUpdated',
+  folder: 'folderName',
+  owner: 'ownerID',
 };
 
 async function createFolder(data) {
@@ -25,7 +28,7 @@ async function updateFolder(data, id) {
 
 async function getByRecent(ownerID) {
   try {
-    return BaseModel.getByRecent(collection, ownerID);
+    return BaseModel.getByRecent(collection, ownerID, fields.owner, fields.folder);
   } catch (error) {
     throw new Error('There was an error getting Folders');
   }
@@ -33,7 +36,7 @@ async function getByRecent(ownerID) {
 
 async function getByName(ownerID) {
   try {
-    return BaseModel.getByName(collection, ownerID);
+    return BaseModel.getByName(collection, ownerID, fields.owner, fields.folder);
   } catch (error) {
     throw new Error('There was an error getting the Folder');
   }
@@ -42,14 +45,6 @@ async function getByName(ownerID) {
 async function getByID(snippetID) {
   try {
     return BaseModel.getOne(collection, snippetID);
-  } catch (error) {
-    throw new Error('There was an error getting the Folder');
-  }
-}
-
-async function getByIDs(ids) {
-  try {
-    return BaseModel.getSome(collection, ids);
   } catch (error) {
     throw new Error('There was an error getting the Folder');
   }
@@ -78,7 +73,6 @@ export {
   getByName,
   getByRecent,
   getByID,
-  getByIDs,
   deleteSnippetFromFolder,
   deleteFolder,
 };

@@ -59,15 +59,15 @@ async function getByField(collection, id, field) {
   return docRef.get(field);
 }
 
-async function getByName(collection, id) {
-  return db.collection(collection).where('ownerID', '==', id).orderBy('folderName', 'asc');
+async function getByName(collection, id, filter, order) {
+  return db.collection(collection).where(filter, '==', id).orderBy(order, 'asc');
 }
 
-async function getByRecent(collection, ownerID, limit) {
+async function getByRecent(collection, id, filter, order, limit) {
   return db
     .collection(collection)
-    .where('ownerID', '==', ownerID)
-    .orderBy('dateUpdated', 'desc')
+    .where(filter, '==', id)
+    .orderBy(order, 'desc')
     .limit(limit);
 }
 
@@ -81,12 +81,12 @@ async function getAll({ collection }) {
   return db.collection(collection).get();
 }
 
-async function getSome(collection, ids, ownerID, limit) {
+async function getSome(collection, ids, id, filterField, filterDoc, order, limit) {
   return db
     .collection(collection)
-    .where('snippetID', 'in', ids)
-    .where('ownerID', '==', ownerID)
-    .orderBy('dateUpdated', 'desc')
+    .where(filterField, 'in', ids)
+    .where(filterDoc, '==', id)
+    .orderBy(order, 'desc')
     .limit(limit);
 }
 
