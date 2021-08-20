@@ -5,6 +5,7 @@ import { Form, Input, message, Modal } from 'antd';
 import { createFolder } from 'model/FolderModel';
 import { useAuth } from 'hooks/useAuth';
 
+
 import './styles.scss';
 
 function AddFolderModal({ onCancel, isModalVisible }) {
@@ -30,7 +31,6 @@ function AddFolderModal({ onCancel, isModalVisible }) {
   function onChangeText(fieldValue) {
     setFolderName(fieldValue.target.value);
   }
-
   return (
     <Modal
       className="modal"
